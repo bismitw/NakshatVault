@@ -1,4 +1,14 @@
-import express from "express"
 
+import connectDB from "./src/config/database"
+const PORT = process.env.PORT || 8001
 
-const app = express()
+connectDB()
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`)
+        });
+    })
+
+    .catch((err) => {
+        console.log("MonogoDB connection Error", err);
+    })
