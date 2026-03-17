@@ -1,6 +1,6 @@
-import bcrypt from "bcrypt"
-import jwt from "jsonwebtoken"
-import mongoose, { Schema } from "mongoose"
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import mongoose, { Schema } from "mongoose";
 
 
 const userSchema = new Schema(
@@ -105,3 +105,17 @@ userSchema.methods.generateAccessToken = function () {
         }
     )
 }
+
+//generate refresh token (longer‑lived)
+userSchema.methods.generateRefreshToken = function () {
+    return jwt.sign(
+        {
+            _id: this._id
+        },
+        process.env.REFRESH_TOKEN_SECRET,
+        {
+            expiresIn: process.env.REFRESH_TOKEN_EXPIRY
+        }
+    )
+}
+
