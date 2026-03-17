@@ -76,9 +76,17 @@ const userSchema = new Schema(
                 ref: Kundli,
             }
         ],
-        
-            
-        
-
-}
+    },
+    {timestamps: true}
 )
+
+//Pre save hash password
+userSchema.pre("save", async function (next) {
+    if(!this.ismodified("password")) return next();
+    this.password = await bcrypt.hash(this.password, 10)
+})
+
+//method to compare password
+userSchema.methods.isPasswordCorrect = async function(password){
+    return await bcrypt.compare(password, this.password)
+}
