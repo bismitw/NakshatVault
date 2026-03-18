@@ -39,6 +39,11 @@ const appointmentSchema = new Schema(
         },
 
         //Status flow
+        status: {
+            type: String,
+            enum: ["Booked", "In Review", "Approved", "Cancelled"],
+            default: "Booked"
+        },
         
 
     },
