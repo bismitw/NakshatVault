@@ -32,7 +32,14 @@ const appointmentSchema = new Schema(
             required: true,
             trim: true,
         },
-            
+        consultationType: {
+            type: String,
+            enum: ["General", "Marriage", "Career", "Finance", "Health", "Other"],
+            default: "General",
+        },
+
+        //Status flow
+        
 
     },
     { timestamps: true }
