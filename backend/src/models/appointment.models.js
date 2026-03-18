@@ -50,7 +50,15 @@ const appointmentSchema = new Schema(
             Default: "Online",
         },
 
-        
+        //track if Email Sent to User
+        emailSentToUser: {
+            type: Boolean,
+            default: false,
+        },
+        emailSentToAdmin: {
+            type: Boolean,
+            default: false,
+        },
 
     },
     { timestamps: true }
