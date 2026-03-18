@@ -8,8 +8,22 @@ const appointmentSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: "User",
             required: true
-        }
-        
+        },
+
+        //Expert Info
+        expertName: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        expertEmail: {
+            type: String,
+            trim: true,
+            lowercase: true,
+        },
+
+            
+
     }
 )
 
