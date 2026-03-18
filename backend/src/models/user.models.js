@@ -35,16 +35,16 @@ const userSchema = new Schema(
         //Astro Details
         dateofBirth: {
             type: Date,
-            required: true,
+            default: null,
         },
         timeofBirth: {
             type: String,
-            required: true,
+            default:null,
             trim: true,
         },
         placeofBirth:{
             type: String,
-            required: true,
+            default: null,
             trim: true,
         },
 
@@ -63,6 +63,11 @@ const userSchema = new Schema(
             default: null,
         },
 
+        //Simple flag to track onboarding
+        isProfileComplete:{
+            type: Boolean,
+            default: false,
+        },
         //reference to appointments and kundlis
         appointment: [
             {
@@ -76,13 +81,18 @@ const userSchema = new Schema(
                 ref: Kundli,
             }
         ],
+        //JWT Refresh Token
+        refreshToken: {
+            type: String,
+            default: null,
+        }
     },
     {timestamps: true}
 )
 
 //Pre save hash password
 userSchema.pre("save", async function (next) {
-    if(!this.ismodified("password")) return next();
+    if(!this.isModified("password")) return next();
     this.password = await bcrypt.hash(this.password, 10)
 })
 
