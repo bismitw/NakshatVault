@@ -22,9 +22,20 @@ const appointmentSchema = new Schema(
             lowercase: true,
         },
 
+         // Date & time slot
+        date: {
+            type: Date,
+            required: true,
+        },
+        timeSlot: {
+            type: String,
+            required: true,
+            trim: true,
+        },
             
 
-    }
+    },
+    { timestamps: true }
 )
 
 export const Appointment = mongoose.model("Appointment", appointmentSchema);
