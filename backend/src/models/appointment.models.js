@@ -44,6 +44,12 @@ const appointmentSchema = new Schema(
             enum: ["Booked", "In Review", "Approved", "Cancelled"],
             default: "Booked"
         },
+        mode: {
+            type: String,
+            enum: ["Online", "Offline"],
+            Default: "Online",
+        },
+
         
 
     },
