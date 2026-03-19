@@ -47,7 +47,7 @@ const appointmentSchema = new Schema(
         mode: {
             type: String,
             enum: ["Online", "Offline"],
-            Default: "Online",
+            default: "Online",
         },
 
         //track if Email Sent to User and Admin

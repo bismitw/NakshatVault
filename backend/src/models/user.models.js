@@ -69,16 +69,16 @@ const userSchema = new Schema(
             default: false,
         },
         //reference to appointments and kundlis
-        appointment: [
+        appointments: [
             {
                 type: Schema.Types.ObjectId,
-                ref: Appointment,
+                ref: "Appointment",
             }
         ],
-        kundli: [
+        kundlis: [
             {
                 type: Schema.Types.ObjectId,
-                ref: Kundli,
+                ref: "Kundli",
             }
         ],
         //JWT Refresh Token
@@ -89,7 +89,8 @@ const userSchema = new Schema(
 
         role: {
             type: String, 
-            enum: ["user", "admin"]
+            enum: ["user", "admin"],
+            default: "user",
         }
     },
     {timestamps: true}
@@ -108,6 +109,13 @@ userSchema.methods.isPasswordCorrect = async function(password){
 
 //generate access token (JWT issued per user)
 userSchema.methods.generateAccessToken = function () {
+
+    if(!process.env.ACCESS_TOKEN_SECRET)
+        throw new Error("ACCESS_TOKEN_SECRET is not defined");
+
+    if(!process.env.ACCESS_TOKEN_EXPIRY)
+        throw new Error("ACCESS_TOKEN_EXPIRY is not defined");
+
     return jwt.sign(
         {
             _id: this._id,

@@ -110,4 +110,4 @@ const kundliSchema = new Schema(
 {timestamps: true}
 );
 
-export const kundli = mongoose.model("Kundli", kundliSchema)
+export const Kundli = mongoose.model("Kundli", kundliSchema);
