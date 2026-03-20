@@ -2,6 +2,7 @@
     import express from "express"
     import cors from "cors";
     import cookieParser from "cookie-parser";
+    import helmet from "helmet"
 
     const app = express()
 
@@ -12,4 +13,5 @@
         })
     )
 
+    app.use(helmet())
     export {app}
