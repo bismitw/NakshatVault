@@ -37,12 +37,6 @@ const kundliSchema = new Schema(
         trim: true,
     },
 
-    //chart Type
-    chartType: {
-        type: String,
-        enum: ["Lagna", "Chandra", "Navamsa", "D9", "Other"],
-        default: "Lagna",
-    }, 
 
     //Very simplified Planet structure
     planets:[
@@ -100,12 +94,6 @@ const kundliSchema = new Schema(
             }
         }
     ],
-
-    //ChartImage(URL to PNG/SVG from a chart generator)
-    chartImage: {
-        type: String,
-        default: null,
-    },
 },
 {timestamps: true}
 );
