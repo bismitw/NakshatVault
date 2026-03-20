@@ -3,7 +3,7 @@
     import cors from "cors";
     import cookieParser from "cookie-parser";
     import helmet from "helmet"
-
+    import compression from "compression";
     const app = express()
 
     app.use(
@@ -14,4 +14,5 @@
     )
 
     app.use(helmet())
+    app.use(compression())
     export {app}
