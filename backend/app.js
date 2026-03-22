@@ -15,4 +15,7 @@
 
     app.use(helmet())
     app.use(compression())
+
+
+    app.use(express.json({limit:"16kb"}))
     export {app}
