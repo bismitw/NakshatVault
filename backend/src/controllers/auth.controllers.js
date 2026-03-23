@@ -1,4 +1,4 @@
-import { registerUserService } from "../services/auth.services";
+import { registerUserService } from "../services/auth.services.js";
 import { ApiResponse } from "../utils/apiResponse.utils.js";
 import { asyncHandler } from "../utils/asyncHandler.utils.js";
 
@@ -15,7 +15,7 @@ const registerUser  = asyncHandler( async(req, res)=> {
 
     return res
     .status(201)
-    .json(new ApiResponse(201,user, "User registered Successfully"))
+    .json(new ApiResponse(201,user, "User registered successfully"))
 })
 
 export {registerUser}
