@@ -6,7 +6,7 @@ import mongoose, { Schema } from "mongoose";
 const userSchema = new Schema(
     {
         //Basic Profile
-        name: {
+        fullName: {
             type: String,
             required: true,
             trim: true,
@@ -120,7 +120,7 @@ userSchema.methods.generateAccessToken = function () {
         {
             _id: this._id,
             email: this.email,
-            name: this.name,
+            fullName: this.fullName,
             role: this.role,
             isAdmin: this.role === "admin",
         }, 
