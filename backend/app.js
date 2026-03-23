@@ -6,7 +6,6 @@
     import compression from "compression";
     import authRouter from "./src/routes/auth.routes.js"
 
-
     const app = express()
 
     app.use(
