@@ -8,5 +8,7 @@ const registerUserService = async({fullName, email, password, phone}) => {
 
     const existingUser = await User.findOne({email: email.tolowercase().trim()});
 
-    
+    if(existingUser){
+        throw new ApiError(400, "User with this email already exists");
+    }
 }
