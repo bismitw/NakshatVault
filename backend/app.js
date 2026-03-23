@@ -23,10 +23,13 @@
     app.use(express.json({limit:"16kb"}))
     app.use(cookieParser());
 
-    app.use(errorHandler);
-
     //routes
+
+    app.get("/", (req, res) => {
+        res.status(200).json({ message: "NakshatVault backend is running" });
+    });
+
     app.use("/api/v1/auth", authRouter)
 
-
+    app.use(errorHandler);
     export {app}
