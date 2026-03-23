@@ -18,4 +18,12 @@ const registerUserService = async({fullName, email, password, phone}) => {
         password,
         phone: phone.trim()|| "",
     })
+
+    const createdUser = await User.findById(user._id).select("-password,-refreshToken");
+
+    if(!createdUser){
+        throw new error(500,"Failed to create User")
+    }
+
+    return createdUser;
 }
