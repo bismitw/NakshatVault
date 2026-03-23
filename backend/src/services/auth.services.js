@@ -9,12 +9,12 @@ const registerUserService = async({fullName, email, password, phone}) => {
     const existingUser = await User.findOne({email: email.toLowerCase().trim()});
 
     if(existingUser){
-        throw new ApiError(400, "User with this email already exists");
+        throw new ApiError(409, "User with this email already exists");
     }
 
     const user = await User.create({
         fullName: fullName.trim(),
-        email: email.tolowercase().trim(),
+        email: email.toLowerCase().trim(),
         password,
         phone: phone?.trim()|| "",
     })
