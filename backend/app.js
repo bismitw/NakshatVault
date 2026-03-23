@@ -5,6 +5,7 @@
     import helmet from "helmet"
     import compression from "compression";
     import authRouter from "./src/routes/auth.routes.js"
+    import { errorHandler } from "./src/middlewares/errorHandler.middlewares.js";
 
     const app = express()
 
@@ -22,6 +23,7 @@
     app.use(express.json({limit:"16kb"}))
     app.use(cookieParser());
 
+    app.use(errorHandler);
 
     //routes
     app.use("/api/v1/auth", authRouter)
