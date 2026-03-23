@@ -6,4 +6,7 @@ const registerUserService = async({fullName, email, password, phone}) => {
         throw new ApiError(400, "FullName, email and password are required");
     }
 
+    const existingUser = await User.findOne({email: email.tolowercase().trim()});
+
+    
 }
