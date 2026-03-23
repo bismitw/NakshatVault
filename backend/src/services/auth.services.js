@@ -11,4 +11,11 @@ const registerUserService = async({fullName, email, password, phone}) => {
     if(existingUser){
         throw new ApiError(400, "User with this email already exists");
     }
+
+    const user = User.create({
+        fullName: fullName.trim(),
+        email: email.tolowercase().trim(),
+        password,
+        phone: phone.trim()|| "",
+    })
 }
