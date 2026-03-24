@@ -51,7 +51,15 @@ const loginUserService = async({email, password}) => {
     const refreshToken = user.generateRefreshToken();
 
     user.refreshToken = refreshToken;
-    
-}
+    await user.save({validateBeforeSave: false});
+
+    const loggedInUser = await User.findById(user._id).select("-password -refreshToken");
+
+    return {
+        user: loggedInUser,
+        accessToken,
+        refreshToken,
+    };
+};
 
 export {registerUserService}
