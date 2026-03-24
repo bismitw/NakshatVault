@@ -62,4 +62,4 @@ const loginUserService = async({email, password}) => {
     };
 };
 
-export {registerUserService}
+export {registerUserService, loginUserService}
