@@ -32,6 +32,12 @@ const loginUserService = async({email, password}) => {
     if(!email || !password){
         throw new ApiError(400, "Email and password are required")
     }
+
+    const user = await User.findOne({
+        email: email.toLowerCase().trim()
+    }).select("+password");
+
+    
 }
 
 export {registerUserService}
