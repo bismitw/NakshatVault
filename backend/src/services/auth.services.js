@@ -28,4 +28,10 @@ const registerUserService = async({fullName, email, password, phone}) => {
     return createdUser;
 }
 
+const loginUserService = async({email, password}) => {
+    if(!email || !password){
+        throw new ApiError(400, "Email and password are required")
+    }
+}
+
 export {registerUserService}
