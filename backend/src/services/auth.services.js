@@ -46,6 +46,12 @@ const loginUserService = async({email, password}) => {
     if(!isPasswordValid){
         throw new ApiError(401, "Invalid user credentials")
     }
+
+    const accessToken = user.generateAccessToken();
+    const refreshToken = user.generateRefreshToken();
+
+    user.refreshToken = refreshToken;
+    
 }
 
 export {registerUserService}
