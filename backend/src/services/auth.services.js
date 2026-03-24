@@ -37,6 +37,10 @@ const loginUserService = async({email, password}) => {
         email: email.toLowerCase().trim()
     }).select("+password");
 
+    if(!user){
+        throw new ApiError(400, "User not found");
+    }
+
     
 }
 
