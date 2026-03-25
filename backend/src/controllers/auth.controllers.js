@@ -1,4 +1,4 @@
-import { loginUserService, registerUserService } from "../services/auth.services.js";
+import { loginUserService, registerUserService, logoutUserService } from "../services/auth.services.js";
 import { ApiResponse } from "../utils/apiResponse.utils.js";
 import { asyncHandler } from "../utils/asyncHandler.utils.js";
 
@@ -46,4 +46,9 @@ const getCurrentUser = asyncHandler(async(req, res) => {
     .json(new ApiResponse(200, req.user, "Current user fetched successfully"));
 });
 
-export {registerUser, loginUser, getCurrentUser}
+const logoutUser = asyncHandler(async (req, res) => {
+    return res
+    .status(200)
+    .json(new ApiResponse(200, null, "User Logged out successfully"));
+});
+export {registerUser, loginUser, getCurrentUser, logoutUser}
