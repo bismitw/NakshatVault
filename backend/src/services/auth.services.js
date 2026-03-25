@@ -62,4 +62,23 @@ const loginUserService = async({email, password}) => {
     };
 };
 
-export {registerUserService, loginUserService}
+const logoutUserService = async(userId) => {
+    if(!userId){
+        throw new ApiError(400, "User Id is required");
+    }
+
+    await User.findByIdAndUpdate(
+        userId,
+        {
+            $set: {
+                refreshToken: null,
+            },
+        },
+        {
+            new: true,
+        }
+    );
+    return null;
+};
+
+export {registerUserService, loginUserService, logoutUserService}
