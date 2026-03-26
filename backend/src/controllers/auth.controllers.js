@@ -1,4 +1,4 @@
-import { loginUserService, registerUserService, logoutUserService } from "../services/auth.services.js";
+import { loginUserService, registerUserService, logoutUserService, refreshAccessTokenService } from "../services/auth.services.js";
 import { ApiResponse } from "../utils/apiResponse.utils.js";
 import { asyncHandler } from "../utils/asyncHandler.utils.js";
 
@@ -52,4 +52,15 @@ const logoutUser = asyncHandler(async (req, res) => {
     .status(200)
     .json(new ApiResponse(200, null, "User Logged out successfully"));
 });
+
+
+const refreshAccessToken = asyncHandler(async(req, res) => {
+    const incomingRefreshToken = req.body?.refreshToken;
+
+    const { accessToken, refreshToken} = await refreshAccessTokenService(
+        incomingRefreshToken
+    );
+
+    
+})
 export {registerUser, loginUser, getCurrentUser, logoutUser}
