@@ -101,6 +101,10 @@ const refreshAccessTokenService = async (incomingRefreshToken) => {
     if(user.refreshToken !== incomingRefreshToken ){
         throw new ApiError(401, "Refresh token is expired or used");
     }
+
+    const accessToken = user.generateAccessToken();
+    const refreshToken = user.generateRefreshToken();
+    
 }
 
 export {registerUserService, loginUserService, logoutUserService}
