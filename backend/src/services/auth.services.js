@@ -82,4 +82,15 @@ const logoutUserService = async(userId) => {
     return null;
 };
 
+const refreshAccessTokenService = async (incomingRefreshToken) => {
+    if(!incomingRefreshToken){
+        throw new ApiError(401, "Refresh Token is required");
+    }
+
+    const decodedToken = jwt.verify(
+        incomingRefreshToken,
+        process.env.REFRESH_TOKEN_SECRET
+    );
+}
+
 export {registerUserService, loginUserService, logoutUserService}
