@@ -93,6 +93,14 @@ const refreshAccessTokenService = async (incomingRefreshToken) => {
     );
 
     const user = await User.findById(decodedToken?._id)
+
+    if(!user){
+        throw new ApiError(401, "Invalid refresh token");
+    }
+
+    if(user.refreshToken !== incomingRefreshToken ){
+        throw new ApiError(401, "Refresh token is expired or used");
+    }
 }
 
 export {registerUserService, loginUserService, logoutUserService}
