@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken"
+import jwt, { decode } from "jsonwebtoken"
 import {User} from "../models/user.models.js"
 import {ApiError} from "../utils/apiError.utils.js"
 
@@ -91,6 +91,8 @@ const refreshAccessTokenService = async (incomingRefreshToken) => {
         incomingRefreshToken,
         process.env.REFRESH_TOKEN_SECRET
     );
+
+    const user = await User.findById(decodedToken?._id)
 }
 
 export {registerUserService, loginUserService, logoutUserService}
