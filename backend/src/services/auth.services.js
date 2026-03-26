@@ -103,8 +103,15 @@ const refreshAccessTokenService = async (incomingRefreshToken) => {
     }
 
     const accessToken = user.generateAccessToken();
-    const refreshToken = user.generateRefreshToken();
-    
-}
+    const newRefreshToken = user.generateRefreshToken();
+
+    user.refreshToken = newRefreshToken;
+    await user.save({validateBeforeSave: false});
+
+    return {
+        accessToken,
+        refreshToken: newRefreshToken
+    };
+};
 
 export {registerUserService, loginUserService, logoutUserService}
