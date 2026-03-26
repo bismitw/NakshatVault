@@ -61,6 +61,13 @@ const refreshAccessToken = asyncHandler(async(req, res) => {
         incomingRefreshToken
     );
 
-    
+    return res.status(200).json(
+        new ApiResponse(
+            200, {
+                accessToken, refreshToken
+            },
+            "Access token refreshed Successfully"
+        )
+    )
 })
 export {registerUser, loginUser, getCurrentUser, logoutUser}
