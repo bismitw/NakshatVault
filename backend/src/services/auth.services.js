@@ -114,4 +114,4 @@ const refreshAccessTokenService = async (incomingRefreshToken) => {
     };
 };
 
-export {registerUserService, loginUserService, logoutUserService}
+export {registerUserService, loginUserService, logoutUserService, refreshAccessTokenService}
