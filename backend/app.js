@@ -5,6 +5,7 @@
     import helmet from "helmet"
     import compression from "compression";
     import authRouter from "./src/routes/auth.routes.js"
+    import userRouter from "./src/routes/user.routes.js"
     import { errorHandler } from "./src/middlewares/errorHandler.middlewares.js";
 
     const app = express()
@@ -28,8 +29,12 @@
     app.get("/", (req, res) => {
         res.status(200).json({ message: "NakshatVault backend is running" });
     });
-
+    
+    //Auth Route
     app.use("/api/v1/auth", authRouter)
+
+    //User Route
+    app.use("/api/v1/user", userRouter)
 
     app.use(errorHandler);
     export {app}
