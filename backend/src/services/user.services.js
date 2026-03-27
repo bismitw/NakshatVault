@@ -17,5 +17,17 @@ const updateUserProfileServer = async (userId, updateData) => {
         }
     }
 
-    
+    const updatedUser = await User.findByIdAndUpdate(
+        userId,{
+            $set: filteredData,
+        },
+        {
+            new : true,
+            runValidators: true,
+        }
+    ).select("-password -refreshToken");
+    if(!updatedUser) {
+        throw new ApiError(404, "User Not found");;
+    }
+
 }
