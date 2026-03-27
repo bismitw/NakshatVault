@@ -1,7 +1,7 @@
 import { User } from "../models/user.models.js"
 import { ApiError } from "../utils/apiError.utils.js"
 
-const updateUserProfileServer = async (userId, updateData) => {
+const updateUserProfileService = async (userId, updateData) => {
     if(!userId){
         throw new ApiError(400, "User id is required")
     }
@@ -27,7 +27,9 @@ const updateUserProfileServer = async (userId, updateData) => {
         }
     ).select("-password -refreshToken");
     if(!updatedUser) {
-        throw new ApiError(404, "User Not found");;
+        throw new ApiError(404, "User Not found");
     }
-
+    return updatedUser;
 }
+
+export { updateUserProfileService }
