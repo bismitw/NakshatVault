@@ -34,7 +34,7 @@
     app.use("/api/v1/auth", authRouter)
 
     //User Route
-    app.use("/api/v1/user", userRouter)
+    app.use("/api/v1/users", userRouter)
 
     app.use(errorHandler);
     export {app}
