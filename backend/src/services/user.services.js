@@ -5,5 +5,7 @@ const updateUserProfileServer = async (userId, updateDate) => {
     if(!userId){
         throw new ApiError(400, "User id is required")
     }
-    
+
+    const allowedFields = ["fullName", "phone", "avatar"];
+    const filteredData = {};
 }
