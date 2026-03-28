@@ -60,4 +60,4 @@ const updateBirthDetailsService = async (userId, birthData) => {
     return updatedUser
 }
 
-export { updateUserProfileService }
+export { updateUserProfileService, updateBirthDetailsService }
