@@ -52,8 +52,12 @@ const updateBirthDetailsService = async (userId, birthData) => {
             runValidators: true,
         }
     ).select("-password -refreshToken")
-    
 
+    if(!updatedUser){
+        throw new ApiError(404, "User Not found");
+    }
+
+    return updatedUser
 }
 
 export { updateUserProfileService }
