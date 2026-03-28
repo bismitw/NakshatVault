@@ -32,4 +32,16 @@ const updateUserProfileService = async (userId, updateData) => {
     return updatedUser;
 }
 
+const updateBirthDetailsService = async (userId, birthData) => {
+    if(!userId){
+        throw new ApiError(400, "User id is required")
+    }
+    const {dateofBirth, timeofBirth, placeofBirth} = birthData;
+
+    const updatedUser = await User.findByIdAndUpdate(
+        
+    )
+
+}
+
 export { updateUserProfileService }
