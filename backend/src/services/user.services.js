@@ -39,8 +39,20 @@ const updateBirthDetailsService = async (userId, birthData) => {
     const {dateofBirth, timeofBirth, placeofBirth} = birthData;
 
     const updatedUser = await User.findByIdAndUpdate(
-        
-    )
+        userId,
+        {
+            $set: {
+                dateofBirth,
+                timeofBirth: timeofBirth?.trim(),
+                placeofBirth: placeofBirth.trim(),
+            },
+        },
+        {
+            new: true,
+            runValidators: true,
+        }
+    ).select("-password -refreshToken")
+    
 
 }
 
