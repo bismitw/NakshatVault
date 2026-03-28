@@ -44,7 +44,7 @@ const updateBirthDetailsService = async (userId, birthData) => {
             $set: {
                 dateofBirth,
                 timeofBirth: timeofBirth?.trim(),
-                placeofBirth: placeofBirth.trim(),
+                placeofBirth: placeofBirth?.trim(),
             },
         },
         {
@@ -54,7 +54,7 @@ const updateBirthDetailsService = async (userId, birthData) => {
     ).select("-password -refreshToken")
 
     if(!updatedUser){
-        throw new ApiError(404, "User Not found");
+        throw new ApiError(404, "User not found");
     }
 
     return updatedUser
