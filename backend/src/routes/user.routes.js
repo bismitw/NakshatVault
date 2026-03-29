@@ -8,5 +8,6 @@ router.route("/profile")
 .get(verifyJWT, getUserProfile)
 .patch(verifyJWT, updateUserProfile)
 
+router.route("/birth-details").patch(verifyJWT, updateBirthDetails);
 
 export default router;
