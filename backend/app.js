@@ -6,6 +6,7 @@
     import compression from "compression";
     import authRouter from "./src/routes/auth.routes.js"
     import userRouter from "./src/routes/user.routes.js"
+    import kundliRouter from "./src/routes/kundli.routes.js"
     import { errorHandler } from "./src/middlewares/errorHandler.middlewares.js";
 
     const app = express()
@@ -35,6 +36,9 @@
 
     //User Route
     app.use("/api/v1/users", userRouter)
+
+    //kundli Route
+    app.use("/api/v1/kundli", kundliRouter)
 
     app.use(errorHandler);
     export {app}
