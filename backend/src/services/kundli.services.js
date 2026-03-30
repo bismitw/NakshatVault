@@ -21,4 +21,11 @@ const createKundliService = async ( userId, kundliData ) => {
         timeOfBirth: timeOfBirth?.trim(),
         placeOfBirth: placeOfBirth?.trim(),
     });
+        await User.findByIdAndUpdate(userId, {
+            $push: {
+                kundlis: kundli._id,
+            },
+        });
+        return kundli;
 }
+export { createKundliService };
