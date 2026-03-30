@@ -9,11 +9,11 @@ const createKundliService = async ( userId, kundliData ) => {
 
     const{ title, description, dateOfBirth, timeOfBirth, placeOfBirth} = kundliData;
 
-    if(!dateOfBirth || !timeOfBirth || placeOfBirth) {
+    if(!dateOfBirth || !timeOfBirth || !placeOfBirth) {
         throw new ApiError(400, "Date of birth, time of birth, and place of birth are required");
     }
 
-    const  kundli = await kundli.create({
+    const  kundli = await Kundli.create({
         userId, 
         title: title?.trim()|| "My birth Kundli",
         description: description?.trim() || null,
