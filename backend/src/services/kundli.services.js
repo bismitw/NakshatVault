@@ -12,4 +12,13 @@ const createKundliService = async ( userId, kundliData ) => {
     if(!dateOfBirth || !timeOfBirth || placeOfBirth) {
         throw new ApiError(400, "Date of birth, time of birth, and place of birth are required");
     }
+
+    const  kundli = await kundli.create({
+        userId, 
+        title: title?.trim()|| "My birth Kundli",
+        description: description?.trim() || null,
+        dateOfBirth,
+        timeOfBirth: timeOfBirth?.trim(),
+        placeOfBirth: placeOfBirth?.trim(),
+    });
 }
