@@ -28,4 +28,15 @@ const createKundliService = async ( userId, kundliData ) => {
         });
         return kundli;
 }
-export { createKundliService };
+
+const getUserKundlisService = async (userId) => {
+    if(!userId){
+        throw new ApiError(400, "User id is required")
+    }
+
+    const kundlis = await Kundli.find({userId}).sort({createdAT: -1});
+
+    return kundlis;
+};
+
+export { createKundliService, getUserKundlisService };
