@@ -34,7 +34,7 @@ const getUserKundlisService = async (userId) => {
         throw new ApiError(400, "User id is required")
     }
 
-    const kundlis = await Kundli.find({userId}).sort({createdAT: -1});
+    const kundlis = await Kundli.find({userId}).sort({createdAt: -1});
 
     return kundlis;
 };
