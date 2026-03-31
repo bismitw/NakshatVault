@@ -1,7 +1,11 @@
-import { createKundliService } from "../services/kundli.services.js";
 import { ApiResponse } from "../utils/apiResponse.utils.js";
 import { asyncHandler } from "../utils/asyncHandler.utils.js";
-import { getUserKundlisService, getKundliByIdService } from "../services/kundli.services.js";
+import {
+    createKundliService, 
+    getUserKundlisService,
+    getKundliByIdService,
+    updateKundliService,
+} from "../services/kundli.services.js";
 
 const createKundli = asyncHandler(async (req, res) => {
     const kundli = await createKundliService(req.user?._id, req.body);
