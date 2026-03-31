@@ -39,4 +39,26 @@ const getUserKundlisService = async (userId) => {
     return kundlis;
 };
 
-export { createKundliService, getUserKundlisService };
+const getKundliByIdService = async (userId, kundliId) => {
+    if (!userId) {
+        throw new ApiError(400, "User id is required");
+    }
+
+    if (!kundliId) {
+        throw new ApiError(400, "Kundli id is required");
+    }
+
+    const kundli = await Kundli.findOne({
+        _id: kundliId,
+        userId,
+    });
+
+    if (!kundli) {
+        throw new ApiError(404, "Kundli not found");
+    }
+
+    return kundli;
+};
+
+
+export { createKundliService, getUserKundlisService, getKundliByIdService };
