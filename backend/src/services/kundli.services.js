@@ -61,4 +61,54 @@ const getKundliByIdService = async (userId, kundliId) => {
 };
 
 
-export { createKundliService, getUserKundlisService, getKundliByIdService };
+    const updateKundliService = async (userId, kundliId, updateData) => {
+    if (!userId) {
+        throw new ApiError(400, "User id is required");
+    }
+
+    if (!kundliId) {
+        throw new ApiError(400, "Kundli id is required");
+    }
+
+    const allowedFields = [
+        "title",
+        "description",
+        "dateOfBirth",
+        "timeOfBirth",
+        "placeOfBirth",
+    ];
+
+    const filteredData = {};
+
+    for (const field of allowedFields) {
+        if (updateData[field] !== undefined) {
+        filteredData[field] =
+            typeof updateData[field] === "string"
+            ? updateData[field].trim()
+            : updateData[field];
+        }
+    }
+
+    const updatedKundli = await Kundli.findOneAndUpdate(
+        {
+        _id: kundliId,
+        userId,
+        },
+        {
+        $set: filteredData,
+        },
+        {
+        new: true,
+        runValidators: true,
+        },
+    );
+
+    if (!updatedKundli) {
+        throw new ApiError(404, "Kundli not found");
+    }
+
+    return updatedKundli;
+    };
+
+
+export { createKundliService, getUserKundlisService, getKundliByIdService, updateKundliService };
