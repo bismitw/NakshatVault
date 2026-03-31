@@ -18,4 +18,13 @@ const getUserKundlis = asyncHandler(async (req, res) => {
     .status(200)
     .json(new ApiResponse(200, kundlis, "Kundlis fetched successfully"));
 });
-export { createKundli, getUserKundlis };
+
+
+const getKundliById = asyncHandler(async (req, res) => {
+    const kundli = await getKundliByIdService(req.user?._id, req.params.id);
+    return res
+    .status(200)
+    .json(new ApiResponse(200, kundli, "Kundli fetched successfully"));
+});
+
+export { createKundli, getUserKundlis, getKundliById };
