@@ -5,6 +5,7 @@ import {
     getUserKundlisService,
     getKundliByIdService,
     updateKundliService,
+    deleteKundliService,
 } from "../services/kundli.services.js";
 
 const createKundli = asyncHandler(async (req, res) => {
@@ -42,5 +43,6 @@ const updateKundli = asyncHandler(async (req, res) => {
     .status(200)
     .json(new ApiResponse(200, kundli, "Kundli updated successfully"));
 });
+
 
 export { createKundli, getUserKundlis, getKundliById, updateKundli };

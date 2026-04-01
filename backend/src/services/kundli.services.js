@@ -61,7 +61,7 @@ const getKundliByIdService = async (userId, kundliId) => {
 };
 
 
-    const updateKundliService = async (userId, kundliId, updateData) => {
+const updateKundliService = async (userId, kundliId, updateData) => {
     if (!userId) {
         throw new ApiError(400, "User id is required");
     }
@@ -111,4 +111,32 @@ const getKundliByIdService = async (userId, kundliId) => {
     };
 
 
-export { createKundliService, getUserKundlisService, getKundliByIdService, updateKundliService };
+const deleteKundliService = async (userId, kundliId) => {
+    if (!userId) {
+        throw new ApiError(400, "User id is required");
+    }
+
+    if (!kundliId) {
+        throw new ApiError(400, "Kundli id is required");
+    }
+
+    const deletedKundli = await Kundli.findOneAndDelete({
+        _id: kundliId,
+        userId,
+    });
+
+    if (!deletedKundli) {
+        throw new ApiError(404, "Kundli not found");
+    }
+
+    await User.findByIdAndUpdate(userId, {
+        $pull: {
+        kundlis: kundliId,
+        },
+    });
+
+    return deletedKundli;
+};
+
+
+export { createKundliService, getUserKundlisService, getKundliByIdService, updateKundliService, deleteKundliService };
