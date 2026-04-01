@@ -15,4 +15,8 @@ const createAppointmentService = async (userId, appointmentData) => {
         consultationType,
         mode,
     } = appointmentData;
+
+    if(!expertName || !date || !timeSlot ){
+        throw new ApiError(400, "Expert name, date, and time slot are required")
+    }
 }
