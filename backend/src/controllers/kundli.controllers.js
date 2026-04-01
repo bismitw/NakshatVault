@@ -44,5 +44,15 @@ const updateKundli = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, kundli, "Kundli updated successfully"));
 });
 
+const deleteKundli = asyncHandler(async(req, res) => {
+    const kundli = await deleteKundliService(
+        req.user?._id, 
+        req.params.id
+    );
 
-export { createKundli, getUserKundlis, getKundliById, updateKundli };
+    return res 
+    .status(200)
+    .json(new ApiResponse(200, kundli, "Kundli deleted successfully"));
+})
+
+export { createKundli, getUserKundlis, getKundliById, updateKundli, deleteKundli };
