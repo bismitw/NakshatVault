@@ -6,4 +6,13 @@ const createAppointmentService = async (userId, appointmentData) => {
     if(!userId){
         throw new ApiError(400, "UserId is required");
     }
+
+    const {
+        expertName,
+        expertEmail,
+        date,
+        timeSlot,
+        consultationType,
+        mode,
+    } = appointmentData;
 }
