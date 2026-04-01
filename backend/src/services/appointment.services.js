@@ -4,7 +4,7 @@ import {ApiError} from "../utils/apiError.utils.js"
 
 const createAppointmentService = async (userId, appointmentData) => {
     if(!userId){
-        throw new ApiError(400, "UserId is required");
+        throw new ApiError(400, "User id is required");
     }
 
     const {
@@ -29,4 +29,14 @@ const createAppointmentService = async (userId, appointmentData) => {
         consultationType: consultationType || "General",
         mode: mode || "Online"
     });
+
+    await User.findByIdAndUpdate(userId, {
+        $push: {
+            appointments: appointment._id,
+        },
+
+    })
+    return appointment;
 }
+
+export {createAppointmentService}
