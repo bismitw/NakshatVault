@@ -7,6 +7,7 @@
     import authRouter from "./src/routes/auth.routes.js"
     import userRouter from "./src/routes/user.routes.js"
     import kundliRouter from "./src/routes/kundli.routes.js"
+    import appointmentRouter from "./src/routes/appointment.routes.js"
     import { errorHandler } from "./src/middlewares/errorHandler.middlewares.js";
 
     const app = express()
@@ -39,6 +40,9 @@
 
     //kundli Route
     app.use("/api/v1/kundli", kundliRouter)
+
+    //Appointment Route
+    app.use("/api/v1/appointments", appointmentRouter)
 
     app.use(errorHandler);
     export {app}
