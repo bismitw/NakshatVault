@@ -51,4 +51,25 @@ const getUserAppointmentsService = async (userId) => {
     return appointments;
 };
 
-export {createAppointmentService, getUserAppointmentsService}
+const getAppointmentByIdService = async (userId, appointmentId) => {
+    if (!userId) {
+        throw new ApiError(400, "User id is required");
+    }
+
+    if (!appointmentId) {
+        throw new ApiError(400, "Appointment id is required");
+    }
+
+    const appointment = await Appointment.findOne({
+        _id: appointmentId,
+        userId,
+    });
+
+    if (!appointment) {
+    throw new ApiError(404, "Appointment not found");
+    }
+
+    return appointment;
+};
+
+export {createAppointmentService, getUserAppointmentsService, getAppointmentByIdService}
