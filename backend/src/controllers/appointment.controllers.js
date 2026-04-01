@@ -1,4 +1,4 @@
-import { createAppointmentService, getUserAppointmentsService } from "../services/appointment.services.js";
+import { createAppointmentService, getUserAppointmentsService, getAppointmentByIdService } from "../services/appointment.services.js";
 import { ApiResponse } from "../utils/apiResponse.utils.js";
 import { asyncHandler } from "../utils/asyncHandler.utils.js";
 
@@ -22,5 +22,17 @@ const getUserAppointments = asyncHandler(async (req, res) => {
     );
 });
 
+const getAppointmentById = asyncHandler(async (req, res) => {
+    const appointment = await getAppointmentByIdService(
+        req.user?._id,
+        req.params.id,
+    );
 
-export { createAppointment, getUserAppointments };
+    return res
+    .status(200)
+    .json(new ApiResponse(200, appointment, "Appointment fetched successfully"),);
+});
+
+
+
+export { createAppointment, getUserAppointments, getAppointmentById };
