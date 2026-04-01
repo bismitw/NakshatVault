@@ -72,4 +72,37 @@ const getAppointmentByIdService = async (userId, appointmentId) => {
     return appointment;
 };
 
-export {createAppointmentService, getUserAppointmentsService, getAppointmentByIdService}
+
+const cancelAppointmentService = async (userId, appointmentId) => {
+    if (!userId) {
+        throw new ApiError(400, "User id is required");
+    }
+
+    if (!appointmentId) {
+        throw new ApiError(400, "Appointment id is required");
+    }
+
+    const appointment = await Appointment.findOneAndUpdate(
+        {
+        _id: appointmentId,
+        userId,
+        },
+        {
+        $set: {
+            status: "Cancelled",
+        },
+        },
+        {
+        new: true,
+        runValidators: true,
+        },
+    );
+
+    if (!appointment) {
+        throw new ApiError(404, "Appointment not found");
+    }
+
+    return appointment;
+    };
+
+export {createAppointmentService, getUserAppointmentsService, getAppointmentByIdService, cancelAppointmentService}
