@@ -39,4 +39,16 @@ const createAppointmentService = async (userId, appointmentData) => {
     return appointment;
 }
 
-export {createAppointmentService}
+const getUserAppointmentsService = async (userId) => {
+    if (!userId) {
+    throw new ApiError(400, "User id is required");
+    }
+
+    const appointments = await Appointment.find({ userId }).sort({
+    createdAt: -1,
+    });
+
+    return appointments;
+};
+
+export {createAppointmentService, getUserAppointmentsService}
