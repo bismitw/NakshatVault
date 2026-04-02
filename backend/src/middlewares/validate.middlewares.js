@@ -10,13 +10,11 @@ const validateRequiredFields = (fields) => {
 
         if(missingFields.length > 0) {
             return next (
-                next ( 
                     new ApiError(
                         400,
                         `Missing required fields: ${missingFields.join(", ")}` 
             )
         )
-            )
         }
         next();
     };
