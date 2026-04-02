@@ -4,10 +4,15 @@ import { verifyJWT } from "../middlewares/auth.middlewares.js";
 import { validateRequiredFields } from "../middlewares/validate.middlewares.js";
 
 const router = Router();
-router.route("/register").post(registerUser);
-router.route("/login").post(loginUser);
+router.route("/register")
+.post(validateRequiredFields(["fullName", "email", "password"]),registerUser);
+
+router.route("/login")
+.post(validateRequiredFields(["email", "password"]),loginUser);
+
 router.route("/me").get(verifyJWT, getCurrentUser);
 router.route("/logout").post(verifyJWT, logoutUser);
+
 router.route("/refresh-token")
 .post(validateRequiredFields(["refreshToken"]), refreshAccessToken);
 
