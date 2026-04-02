@@ -1,4 +1,4 @@
-import { ApiError } from "../utils/apiError.utils";
+import { ApiError } from "../utils/apiError.utils.js";
 
 const validateRequiredFields = (fields) => {
     return (req, res, next) => {
@@ -18,5 +18,8 @@ const validateRequiredFields = (fields) => {
         )
             )
         }
-    }
-}
+        next();
+    };
+};
+
+export { validateRequiredFields };
