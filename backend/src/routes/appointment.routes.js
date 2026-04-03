@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { createAppointment, getUserAppointments, getAppointmentById, cancelAppointment } from "../controllers/appointment.controllers.js";
 import { verifyJWT } from "../middlewares/auth.middlewares.js";
+import { validateRequiredFields } from "../middlewares/validate.middlewares.js";
 
 const router = Router();
 
