@@ -9,6 +9,7 @@
     import kundliRouter from "./src/routes/kundli.routes.js"
     import appointmentRouter from "./src/routes/appointment.routes.js"
     import { errorHandler } from "./src/middlewares/errorHandler.middlewares.js";
+    import { notFoundHandler } from "./src/middlewares/notFound.middlewares.js";
 
     const app = express()
 
@@ -43,6 +44,9 @@
 
     //Appointment Route
     app.use("/api/v1/appointments", appointmentRouter)
+
+    //notFound handler
+    app.use(notFoundHandler)
 
     app.use(errorHandler);
     export {app}
