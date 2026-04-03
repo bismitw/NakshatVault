@@ -7,7 +7,7 @@ const router = Router();
 
 router
     .route("/")
-    .post(verifyJWT, createAppointment)
+    .post(verifyJWT,validateRequiredFields(["expertName", "date", "timeSlot"]), createAppointment)
     .get(verifyJWT, getUserAppointments);
 
 router.route("/:id").get(verifyJWT, getAppointmentById)
