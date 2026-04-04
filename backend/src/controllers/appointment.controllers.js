@@ -6,6 +6,22 @@ import { sendAppointmentBookedEmail } from "../services/email.services.js";
 const createAppointment = asyncHandler(async (req, res) => {
     const appointment = await createAppointmentService(req.user?._id, req.body);
 
+    try {
+        await sendAppointmentBookedEmail({
+            to: req.user?.email,
+            fullName: req.user?.fullName,
+            expertName: appointment.expertName,
+            date: appointment.date,
+            timeSlot: appointment.timeSlot,
+            consultationType: appointment.consultationType,
+            mode: appointment.mode,
+        });
+        
+    } catch (error) {
+        console.error("Appointment booking email failed:", error.message);
+        
+    }
+
     return res
     .status(201)
     .json(
