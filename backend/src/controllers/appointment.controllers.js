@@ -1,6 +1,7 @@
 import { createAppointmentService, getUserAppointmentsService, getAppointmentByIdService, cancelAppointmentService } from "../services/appointment.services.js";
 import { ApiResponse } from "../utils/apiResponse.utils.js";
 import { asyncHandler } from "../utils/asyncHandler.utils.js";
+import { sendAppointmentBookedEmail } from "../services/email.services.js";
 
 const createAppointment = asyncHandler(async (req, res) => {
     const appointment = await createAppointmentService(req.user?._id, req.body);
