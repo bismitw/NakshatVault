@@ -6,15 +6,15 @@ import { authRateLimiter } from "../middlewares/rateLimit.middlewares.js";
 
 const router = Router();
 router.route("/register")
-.post(validateRequiredFields(["fullName", "email", "password"]),registerUser);
+.post(authRateLimiter,validateRequiredFields(["fullName", "email", "password"]),registerUser);
 
 router.route("/login")
-.post(validateRequiredFields(["email", "password"]),loginUser);
+.post(authRateLimiter, validateRequiredFields(["email", "password"]),loginUser);
 
 router.route("/me").get(verifyJWT, getCurrentUser);
 router.route("/logout").post(verifyJWT, logoutUser);
 
 router.route("/refresh-token")
-.post(validateRequiredFields(["refreshToken"]), refreshAccessToken);
+.post(authRateLimiter, validateRequiredFields(["refreshToken"]), refreshAccessToken);
 
 export default router;
