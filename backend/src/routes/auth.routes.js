@@ -2,6 +2,7 @@ import {Router} from "express";
 import { loginUser, registerUser, getCurrentUser, logoutUser, refreshAccessToken } from "../controllers/auth.controllers.js";
 import { verifyJWT } from "../middlewares/auth.middlewares.js";
 import { validateRequiredFields } from "../middlewares/validate.middlewares.js";
+import { authRateLimiter } from "../middlewares/rateLimit.middlewares.js";
 
 const router = Router();
 router.route("/register")
