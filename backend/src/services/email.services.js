@@ -33,4 +33,14 @@
     return response;
     };
 
+    const sendAppointmentCancelledEmail = async({
+        to, 
+        fullName,
+        expertName,
+        date,
+        timeSlot,
+        consultationType,
+        mode,
+    })
+
     export { sendAppointmentBookedEmail };
