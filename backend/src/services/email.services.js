@@ -42,5 +42,10 @@
         consultationType,
         mode,
     })
+    if(!to){
+        return null
+    }
+
+    
 
     export { sendAppointmentBookedEmail };
