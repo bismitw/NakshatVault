@@ -1,7 +1,7 @@
 import { createAppointmentService, getUserAppointmentsService, getAppointmentByIdService, cancelAppointmentService } from "../services/appointment.services.js";
 import { ApiResponse } from "../utils/apiResponse.utils.js";
 import { asyncHandler } from "../utils/asyncHandler.utils.js";
-import { sendAppointmentBookedEmail } from "../services/email.services.js";
+import { sendAppointmentBookedEmail, sendAppointmentCancelledEmail } from "../services/email.services.js";
 
 const createAppointment = asyncHandler(async (req, res) => {
     const appointment = await createAppointmentService(req.user?._id, req.body);
@@ -55,6 +55,19 @@ const cancelAppointment = asyncHandler(async (req, res) => {
         req.user?._id,
         req.params.id,
     );
+    try { 
+        await sendAppointmentCancelledEmail({
+            to: req.user?.email,
+            fullName: req.user?.fullName,
+            expertName: appointment.expertName,
+            date: appointment.date,
+            timeSlot: appointment.timeSlot,
+            consultationType: appointment.consultationType,
+            mode: appointment.mode,
+        });
+    } catch (error) {
+        console.error("Appointment cancellation email failed:", error.message);
+    }
 
     return res
     .status(200)
