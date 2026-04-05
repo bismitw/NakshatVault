@@ -66,4 +66,4 @@
     }   
 
 
-    export { sendAppointmentBookedEmail };
+    export { sendAppointmentBookedEmail,sendAppointmentCancelledEmail };
