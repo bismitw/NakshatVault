@@ -9,3 +9,15 @@ describe("App Health Check", () => {
         expect(response.body.message).toBe("NakshatVault backend is running");
     });
 });
+
+describe("Auth Routes", () => {
+    it("should return 400 when required register fields are missing", async () => {
+    const response = await request(app).post("/api/v1/auth/register").send({
+        email: "test@example.com",
+    });
+
+    expect(response.statusCode).toBe(400);
+    expect(response.body.success).toBe(false);
+    expect(response.body.message).toContain("Missing required fields");
+    });
+});
