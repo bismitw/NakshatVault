@@ -7,10 +7,10 @@ import { validateRegisterInput, validateLoginInput } from "../validators/auth.va
 
 const router = Router();
 router.route("/register")
-.post(authRateLimiter,validateRequiredFields(["fullName", "email", "password"]),registerUser);
+.post(validateRegisterInput,authRateLimiter,registerUser);
 
 router.route("/login")
-.post(authRateLimiter, validateRequiredFields(["email", "password"]),loginUser);
+.post(validateLoginInput,authRateLimiter,loginUser);
 
 router.route("/me").get(verifyJWT, getCurrentUser);
 router.route("/logout").post(verifyJWT, logoutUser);
