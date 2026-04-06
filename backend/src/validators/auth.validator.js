@@ -7,4 +7,6 @@ const validateRegisterInput =  (req, res, next) => {
         return next(new ApiError(400, "FullName, Email and Password are required"));
     }
 
+    const trimmedFullName = fullName.trim();
+    const trimmedEmail = email.trim().toLowerCase();
 }
