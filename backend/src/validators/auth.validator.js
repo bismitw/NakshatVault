@@ -9,4 +9,20 @@ const validateRegisterInput =  (req, res, next) => {
 
     const trimmedFullName = fullName.trim();
     const trimmedEmail = email.trim().toLowerCase();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!trimmedFullName) {
+        return next(new ApiError(400, "Full name cannot be empty"));
+    }
+
+    if (!emailRegex.test(trimmedEmail)) {
+        return next(new ApiError(400, "Invalid email format"));
+    }
+
+    if (password.length < 6) {
+        return next(
+            new ApiError(400, "Password must be at least 6 characters long"),
+        );
+    }
 }
