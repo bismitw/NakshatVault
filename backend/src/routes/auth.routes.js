@@ -3,6 +3,7 @@ import { loginUser, registerUser, getCurrentUser, logoutUser, refreshAccessToken
 import { verifyJWT } from "../middlewares/auth.middlewares.js";
 import { validateRequiredFields } from "../middlewares/validate.middlewares.js";
 import { authRateLimiter } from "../middlewares/rateLimit.middlewares.js";
+import { validateRegisterInput, validateLoginInput } from "../validators/auth.validator.js";
 
 const router = Router();
 router.route("/register")
