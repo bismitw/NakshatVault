@@ -18,7 +18,7 @@ describe("Auth Routes", () => {
 
     expect(response.statusCode).toBe(400);
     expect(response.body.success).toBe(false);
-    expect(response.body.message).toContain("Missing required fields");
+    expect(response.body.message).toContain("FullName, Email and Password are required");
     });
 });
 
@@ -29,7 +29,7 @@ it("should return 400 when login fields are missing", async () => {
 
     expect(response.statusCode).toBe(400);
     expect(response.body.success).toBe(false);
-    expect(response.body.message).toContain("Missing required fields");
+    expect(response.body.message).toContain("Email and password are required");
 });
 
 it("should return 400 when refresh token is missing", async () => {
