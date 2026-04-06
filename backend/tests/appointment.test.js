@@ -12,4 +12,14 @@ describe("Appointment Routes", () => {
     expect(response.statusCode).toBe(401);
     expect(response.body.success).toBe(false);
     });
+
+
+it("should return 401 when updating appointment status without token", async () => {
+    const response = await request(app)
+    .patch("/api/v1/appointments/test-id/status")
+    .send({ status: "Approved" });
+
+    expect(response.statusCode).toBe(401);
+    expect(response.body.success).toBe(false);
+});
 });
