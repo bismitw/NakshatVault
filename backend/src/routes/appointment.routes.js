@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createAppointment, getUserAppointments, getAppointmentById, cancelAppointment } from "../controllers/appointment.controllers.js";
+import { createAppointment, getUserAppointments, getAppointmentById, cancelAppointment, updateAppointmentStatus } from "../controllers/appointment.controllers.js";
 import { verifyJWT } from "../middlewares/auth.middlewares.js";
 import { validateRequiredFields } from "../middlewares/validate.middlewares.js";
 
@@ -11,6 +11,15 @@ router
     .get(verifyJWT, getUserAppointments);
 
 router.route("/:id").get(verifyJWT, getAppointmentById)
-router.route("/:id/cancel").patch(verifyJWT, cancelAppointment)
+router.route("/:id/cancel").patch(verifyJWT, cancelAppointment);
+
+router
+    .route("/:id/status")
+    .patch(
+    verifyJWT,
+    verifyAdmin,
+    validateRequiredFields(["status"]),
+    updateAppointmentStatus,
+    );
 
 export default router;
