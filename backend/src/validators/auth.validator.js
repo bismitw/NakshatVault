@@ -30,11 +30,6 @@ const validateRegisterInput =  (req, res, next) => {
     );
     }
 
-    if (password.length < 6) {
-        return next(
-            new ApiError(400, "Password must be at least 6 characters long"),
-        );
-    }
 
     req.body.fullName = trimmedFullName;
     req.body.email = trimmedEmail;
