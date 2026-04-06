@@ -35,4 +35,33 @@ const validateRegisterInput =  (req, res, next) => {
             new ApiError(400, "Password must be at least 6 characters long"),
         );
     }
+
+    req.body.fullName = trimmedFullName;
+    req.body.email = trimmedEmail;
+
+    next();
 }
+const validateLoginInput = (req, res, next) => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        return next(new ApiError(400, "Email and password are required"));
+    }
+
+    const trimmedEmail = email.trim().toLowerCase();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(trimmedEmail)) {
+        return next(new ApiError(400, "Invalid email format"));
+    }
+
+    if (!password.trim()) {
+        return next(new ApiError(400, "Password cannot be empty"));
+    }
+
+    req.body.email = trimmedEmail;
+
+    next();
+};
+
+export { validateRegisterInput, validateLoginInput };
