@@ -1,4 +1,4 @@
-import { createAppointmentService, getUserAppointmentsService, getAppointmentByIdService, cancelAppointmentService } from "../services/appointment.services.js";
+import { createAppointmentService, getUserAppointmentsService, getAppointmentByIdService, cancelAppointmentService, updateAppointmentStatusService } from "../services/appointment.services.js";
 import { ApiResponse } from "../utils/apiResponse.utils.js";
 import { asyncHandler } from "../utils/asyncHandler.utils.js";
 import { sendAppointmentBookedEmail, sendAppointmentCancelledEmail } from "../services/email.services.js";
@@ -76,5 +76,23 @@ const cancelAppointment = asyncHandler(async (req, res) => {
     );
 });
 
+const updateAppointmentStatus = asyncHandler(async (req, res) => {
+    const appointment = await updateAppointmentStatusService(
+    req.params.id,
+    req.body?.status,
+    );
 
-export { createAppointment, getUserAppointments, getAppointmentById, cancelAppointment };
+    return res
+    .status(200)
+    .json(
+        new ApiResponse(
+        200,
+        appointment,
+        "Appointment status updated successfully",
+        ),
+    );
+});
+
+
+
+export { createAppointment, getUserAppointments, getAppointmentById, cancelAppointment, updateAppointmentStatus };
