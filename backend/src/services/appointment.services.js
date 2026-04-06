@@ -103,6 +103,40 @@ const cancelAppointmentService = async (userId, appointmentId) => {
     }
 
     return appointment;
-    };
+};
 
-export {createAppointmentService, getUserAppointmentsService, getAppointmentByIdService, cancelAppointmentService}
+const updateAppointmentStatusService = async (appointmentId, status) => {
+    if (!appointmentId) {
+        throw new ApiError(400, "Appointment id is required");
+    }
+
+    if (!status) {
+        throw new ApiError(400, "Status is required");
+    }
+
+    const allowedStatuses = ["Booked", "In Review", "Approved", "Cancelled"];
+
+    if (!allowedStatuses.includes(status)) {
+        throw new ApiError(400, "Invalid appointment status");
+    }
+
+    const appointment = await Appointment.findByIdAndUpdate(
+        appointmentId,
+        {
+        $set: { status },
+        },
+        {
+        new: true,
+        runValidators: true,
+        },
+    );
+
+    if (!appointment) {
+        throw new ApiError(404, "Appointment not found");
+    }
+
+    return appointment;
+};
+
+
+export {createAppointmentService, getUserAppointmentsService, getAppointmentByIdService, cancelAppointmentService, updateAppointmentStatusService}
