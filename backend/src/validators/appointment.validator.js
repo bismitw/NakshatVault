@@ -51,3 +51,5 @@ const validateAppointmentStatusInput = (req, res, next) => {
     next();
 
 }
+
+export { validateAppointmentInput, validateAppointmentStatusInput };
