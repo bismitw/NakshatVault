@@ -2,7 +2,6 @@ import { Router } from "express";
 import { createAppointment, getUserAppointments, getAppointmentById, cancelAppointment, updateAppointmentStatus } from "../controllers/appointment.controllers.js";
 import { verifyJWT } from "../middlewares/auth.middlewares.js";
 import {verifyAdmin} from "../middlewares/admin.middlewares.js"
-import { validateRequiredFields } from "../middlewares/validate.middlewares.js";
 import { validateAppointmentInput, validateAppointmentStatusInput } from "../validators/appointment.validator.js";
 
 
