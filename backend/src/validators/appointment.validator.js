@@ -28,4 +28,7 @@ const validateAppointmentInput = (req, res, next) => {
     if (mode && !allowedModes.includes(mode)) {
         return next(new ApiError(400, "Invalid appointment mode"));
     }
+
+    req.body.expertName = expertName.trim();
+    req.body.timeSlot = timeSlot.trim();
 }
