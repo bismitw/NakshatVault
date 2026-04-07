@@ -1,4 +1,4 @@
-import { ApiError } from "../utils/apiError.utils";
+import { ApiError } from "../utils/apiError.utils.js";
 
 const validateKundliInput = (req,res,next) => {
     const {title, description, dateOfBirth, timeOfBirth, placeOfBirth} = req.body
