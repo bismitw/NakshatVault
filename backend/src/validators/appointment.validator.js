@@ -41,5 +41,13 @@ const validateAppointmentInput = (req, res, next) => {
 
 const validateAppointmentStatusInput = (req, res, next) => {
     const {status} = req.body;
-    
+    if (!status) {
+        return next(new ApiError(400, "Status is required"));
+    }
+
+    if (!allowedStatuses.includes(status)) {
+        return next(new ApiError(400, "Invalid appointment status"));
+    }
+    next();
+
 }
