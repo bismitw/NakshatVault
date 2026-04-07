@@ -31,4 +31,10 @@ const validateAppointmentInput = (req, res, next) => {
 
     req.body.expertName = expertName.trim();
     req.body.timeSlot = timeSlot.trim();
+
+    if (req.body.expertEmail) {
+        req.body.expertEmail = req.body.expertEmail.trim().toLowerCase();
+    }
+
+    next();
 }
