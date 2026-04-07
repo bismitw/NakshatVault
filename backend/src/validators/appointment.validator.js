@@ -38,3 +38,8 @@ const validateAppointmentInput = (req, res, next) => {
 
     next();
 }
+
+const validateAppointmentStatusInput = (req, res, next) => {
+    const {status} = req.body;
+    
+}
