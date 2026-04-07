@@ -10,7 +10,7 @@ const router = Router();
 
 router
     .route("/")
-    .post(verifyJWT,validateRequiredFields(["expertName", "date", "timeSlot"]), createAppointment)
+    .post(verifyJWT,validateAppointmentInput, createAppointment)
     .get(verifyJWT, getUserAppointments);
 
 router.route("/:id").get(verifyJWT, getAppointmentById)
@@ -21,8 +21,9 @@ router
     .patch(
     verifyJWT,
     verifyAdmin,
-    validateRequiredFields(["status"]),
+    validateAppointmentStatusInput,
     updateAppointmentStatus,
     );
+
 
 export default router;
