@@ -9,3 +9,5 @@ const allowedConsultationTypes = [
     "Other",
 ];
 
+const allowedModes = ["Online", "Offline"];
+const allowedStatuses = ["Booked", "In Review", "Approved", "Cancelled"];
