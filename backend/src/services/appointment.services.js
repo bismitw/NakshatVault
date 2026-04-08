@@ -164,6 +164,10 @@ const markAppointmentEmailSentService = async (appointmentId, field) => {
         }
     );
 
+    if(!appointment){
+        throw new ApiError(404, "Appointment not found");
+    }
+    return appointment
 }
 
 
