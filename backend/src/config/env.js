@@ -8,6 +8,7 @@ const requiredEnvVars = [
     "REFRESH_TOKEN_EXPIRY",
     "RESEND_API_KEY",
     "EMAIL_FROM",
+    "ADMIN_EMAIL",
 ];
 
 const validateEnv = () => {
