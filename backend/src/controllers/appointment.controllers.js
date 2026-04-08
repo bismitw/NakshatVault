@@ -16,7 +16,7 @@ const createAppointment = asyncHandler(async (req, res) => {
             consultationType: appointment.consultationType,
             mode: appointment.mode,
         });
-        
+        await markAppointmentEmailSentService(appointment._id, "emailSentToUser");
     } catch (error) {
         console.error("Appointment booking email failed:", error.message);
         
