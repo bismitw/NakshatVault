@@ -1,7 +1,7 @@
 import { createAppointmentService, getUserAppointmentsService, getAppointmentByIdService, cancelAppointmentService, updateAppointmentStatusService, markAppointmentEmailSentService } from "../services/appointment.services.js";
 import { ApiResponse } from "../utils/apiResponse.utils.js";
 import { asyncHandler } from "../utils/asyncHandler.utils.js";
-import { sendAppointmentBookedEmail, sendAppointmentCancelledEmail } from "../services/email.services.js";
+import { sendAppointmentBookedEmail, sendAppointmentCancelledEmail, sendAppointmentRequestToAdmin } from "../services/email.services.js";
 
 const createAppointment = asyncHandler(async (req, res) => {
     const appointment = await createAppointmentService(req.user?._id, req.body);
@@ -22,7 +22,21 @@ const createAppointment = asyncHandler(async (req, res) => {
         
     }
 
-    await markAppointmentEmailSentService(appointment._id, "emailSentToUser");
+    try {
+        await sendAppointmentRequestToAdmin({
+            to: process.env.ADMIN_EMAIL,
+            userFullName: req.user?.fullName,
+            userEmail: req.user?.email,
+            expertName: appointment.expertName,
+            date: appointment.date,
+            timeSlot: appointment.timeSlot,
+            consultationType: appointment.consultationType,
+            mode: appointment.mode,
+        });
+        await markAppointmentEmailSentService(appointment._id, "emailSentToAdmin");
+    } catch (error) {
+        console.error("Admin appointment email failed:", error.message);
+    };
     return res
     .status(201)
     .json(
@@ -66,11 +80,11 @@ const cancelAppointment = asyncHandler(async (req, res) => {
             consultationType: appointment.consultationType,
             mode: appointment.mode,
         });
+        await markAppointmentEmailSentService(appointment._id, "emailSentToUser");
     } catch (error) {
         console.error("Appointment cancellation email failed:", error.message);
     }
 
-    await markAppointmentEmailSentService(appointment._id, "emailSentToUser");
     return res
     .status(200)
     .json(
