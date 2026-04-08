@@ -12,11 +12,13 @@ describe("Kundli Routes", () => {
     expect(response.statusCode).toBe(401);
     expect(response.body.success).toBe(false);
     });
-});
 
-it("Should return 401 when fetching kundlis without token", async() => {
-    const response = (await request(app).get("api/v1/kundli"));
+    it("Should return 401 when fetching kundlis without token", async () => {
+    const response = await request(app).get("/api/v1/kundli");
 
     expect(response.statusCode).toBe(401);
     expect(response.body.success).toBe(false);
-})
+    });
+});
+
+
