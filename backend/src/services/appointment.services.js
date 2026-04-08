@@ -146,6 +146,14 @@ const markAppointmentEmailSentService = async (appointmentId, field) => {
     if(!field){
         throw new ApiError(400, "Field is required")
     }
+
+    const allowedFields = ["emailSentToUser", "emailSentToAdmin"]
+
+    if(!allowedFields.includes(field)){
+        throw new ApiError(400, "Invalid email Flag field");
+    }
+
+
 }
 
 
