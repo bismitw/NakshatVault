@@ -171,11 +171,18 @@ const markAppointmentEmailSentService = async (appointmentId, field) => {
 }
 
 
+const getAllAppointmentsService = async () => {
+    const appointments = await Appointment.find().sort({createdAt: -1});
+    
+    return appointments;
+}
+
 export {
     createAppointmentService, 
     getUserAppointmentsService,
     getAppointmentByIdService, 
     cancelAppointmentService, 
     updateAppointmentStatusService, 
-    markAppointmentEmailSentService
+    markAppointmentEmailSentService,
+    getAllAppointmentsService
 }
