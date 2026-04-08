@@ -153,6 +153,16 @@ const markAppointmentEmailSentService = async (appointmentId, field) => {
         throw new ApiError(400, "Invalid email Flag field");
     }
 
+    const appointment = await Appointment.findByIdAndUpdate(
+        appointmentId, {
+            $set: {
+                [field]: true,
+            },
+        },
+        {
+            new: true,
+        }
+    );
 
 }
 
