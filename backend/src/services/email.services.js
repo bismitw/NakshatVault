@@ -98,4 +98,4 @@
     }
 
 
-    export { sendAppointmentBookedEmail,sendAppointmentCancelledEmail };
+    export { sendAppointmentBookedEmail,sendAppointmentCancelledEmail, sendAppointmentRequestToAdmin };
