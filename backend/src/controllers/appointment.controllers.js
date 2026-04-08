@@ -1,4 +1,4 @@
-import { createAppointmentService, getUserAppointmentsService, getAppointmentByIdService, cancelAppointmentService, updateAppointmentStatusService } from "../services/appointment.services.js";
+import { createAppointmentService, getUserAppointmentsService, getAppointmentByIdService, cancelAppointmentService, updateAppointmentStatusService, markAppointmentEmailSentService } from "../services/appointment.services.js";
 import { ApiResponse } from "../utils/apiResponse.utils.js";
 import { asyncHandler } from "../utils/asyncHandler.utils.js";
 import { sendAppointmentBookedEmail, sendAppointmentCancelledEmail } from "../services/email.services.js";
@@ -22,6 +22,7 @@ const createAppointment = asyncHandler(async (req, res) => {
         
     }
 
+    await markAppointmentEmailSentService(appointment._id, "emailSentToUser");
     return res
     .status(201)
     .json(
@@ -69,6 +70,7 @@ const cancelAppointment = asyncHandler(async (req, res) => {
         console.error("Appointment cancellation email failed:", error.message);
     }
 
+    await markAppointmentEmailSentService(appointment._id, "emailSentToUser");
     return res
     .status(200)
     .json(
@@ -92,6 +94,7 @@ const updateAppointmentStatus = asyncHandler(async (req, res) => {
         ),
     );
 });
+
 
 
 
