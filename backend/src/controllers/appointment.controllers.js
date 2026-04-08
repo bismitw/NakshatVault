@@ -37,10 +37,16 @@ const createAppointment = asyncHandler(async (req, res) => {
     } catch (error) {
         console.error("Admin appointment email failed:", error.message);
     };
+
+    const updatedAppointment = await getAppointmentByIdService(
+        req.user?._id,
+        appointment._id
+    );
+
     return res
     .status(201)
     .json(
-        new ApiResponse(201, appointment, "Appointment created successfully"),
+        new ApiResponse(201, updatedAppointment, "Appointment created successfully"),
     );
 });
 
@@ -84,11 +90,15 @@ const cancelAppointment = asyncHandler(async (req, res) => {
     } catch (error) {
         console.error("Appointment cancellation email failed:", error.message);
     }
+    const updatedAppointment = await getAppointmentByIdService(
+        req.user?._id,
+        appointment._id
+    )
 
     return res
     .status(200)
     .json(
-    new ApiResponse(200, appointment, "Appointment cancelled successfully"),
+    new ApiResponse(200, updatedAppointment, "Appointment cancelled successfully"),
     );
 });
 
