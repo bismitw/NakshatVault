@@ -63,7 +63,39 @@
     });
 
     return response;
-    }   
+    }
+    
+    const sendAppointmentRequestToAdmin = async({
+        to,
+        userFullName,
+        userEmail,
+        expertName,
+        date,
+        timeSlot,
+        consultationType,
+        mode,
+    }) => {
+        if(!to){
+            return null
+        }
+        const response = await resend.emails.send({
+            from: process.env.EMAIL_FROM,
+            to,
+            subject: "New Appointment Request",
+            html: `
+            <h2>New Appointment Request</h2>
+            <p>A new appointment has been booked.</p>
+            <p><strong>User:</strong> ${userFullName || "User"}</p>
+            <p><strong>User Email:</strong> ${userEmail}</p>
+            <p><strong>Expert:</strong> ${expertName}</p>
+            <p><strong>Date:</strong> ${date}</p>
+            <p><strong>Time Slot:</strong> ${timeSlot}</p>
+            <p><strong>Consultation Type:</strong> ${consultationType}</p>
+            <p><strong>Mode:</strong> ${mode}</p>
+            `
+        });
+        return response;
+    }
 
 
     export { sendAppointmentBookedEmail,sendAppointmentCancelledEmail };
