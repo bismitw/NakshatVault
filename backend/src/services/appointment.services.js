@@ -138,5 +138,15 @@ const updateAppointmentStatusService = async (appointmentId, status) => {
     return appointment;
 };
 
+const markAppointmentEmailSentService = async (appointmentId, field) => {
+    if(!appointmentId){
+        throw new ApiError(400,"Appointment id is required")
+    }
+
+    if(!field){
+        throw new ApiError(400, "Field is required")
+    }
+}
+
 
 export {createAppointmentService, getUserAppointmentsService, getAppointmentByIdService, cancelAppointmentService, updateAppointmentStatusService}
