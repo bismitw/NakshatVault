@@ -171,4 +171,11 @@ const markAppointmentEmailSentService = async (appointmentId, field) => {
 }
 
 
-export {createAppointmentService, getUserAppointmentsService, getAppointmentByIdService, cancelAppointmentService, updateAppointmentStatusService}
+export {
+    createAppointmentService, 
+    getUserAppointmentsService,
+    getAppointmentByIdService, 
+    cancelAppointmentService, 
+    updateAppointmentStatusService, 
+    markAppointmentEmailSentService
+}
