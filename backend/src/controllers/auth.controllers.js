@@ -2,6 +2,31 @@ import { loginUserService, registerUserService, logoutUserService, refreshAccess
 import { ApiResponse } from "../utils/apiResponse.utils.js";
 import { asyncHandler } from "../utils/asyncHandler.utils.js";
 
+const getCookieOptions = () => {
+    const isProduction = process.env.NODE_ENV === "production";
+
+    return {
+        httpOnly: true,
+        secure: isProduction,
+        sameSite: isProduction ? "none" : "lax",
+    };
+};
+
+const setAuthCookies = (res, accessToken, refreshToken) => {
+    const cookieOptions = getCookieOptions();
+
+    return res
+    .cookie("accessToken", accessToken, cookieOptions)
+    .cookie("refreshToken", refreshToken, cookieOptions);
+};
+
+const clearAuthCookies = (res) => {
+    const cookieOptions = getCookieOptions();
+
+    return res
+    .clearCookie("accessToken", cookieOptions)
+    .clearCookie("refreshToken", cookieOptions);
+};
 
 const registerUser  = asyncHandler( async(req, res)=> {
     const {fullName, email, password, phone} = req.body;
@@ -27,7 +52,7 @@ const loginUser = asyncHandler(async(req, res) => {
         password,
     });
 
-    return res.status(200).json(
+    return setAuthCookies(res, accessToken, refreshToken).status(200).json(
         new ApiResponse(
             200,
             {
@@ -48,20 +73,20 @@ const getCurrentUser = asyncHandler(async(req, res) => {
 
 const logoutUser = asyncHandler(async (req, res) => {
     await logoutUserService(req.user?._id);
-    return res
+    return clearAuthCookies(res)
     .status(200)
     .json(new ApiResponse(200, null, "User Logged out successfully"));
 });
 
 
 const refreshAccessToken = asyncHandler(async(req, res) => {
-    const incomingRefreshToken = req.body?.refreshToken;
+    const incomingRefreshToken = req.body?.refreshToken || req.cookies?.refreshToken;
 
     const { accessToken, refreshToken} = await refreshAccessTokenService(
         incomingRefreshToken
     );
 
-    return res.status(200).json(
+    return setAuthCookies(res, accessToken, refreshToken).status(200).json(
         new ApiResponse(
             200, {
                 accessToken, refreshToken
