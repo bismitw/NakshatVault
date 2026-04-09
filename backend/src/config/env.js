@@ -1,6 +1,5 @@
 const requiredEnvVars = [
     "MONGODB_URI",
-    "PORT",
     "CORS_ORIGIN",
     "ACCESS_TOKEN_SECRET",
     "ACCESS_TOKEN_EXPIRY",
