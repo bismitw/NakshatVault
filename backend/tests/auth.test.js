@@ -32,10 +32,10 @@ it("should return 400 when login fields are missing", async () => {
     expect(response.body.message).toContain("Email and password are required");
 });
 
-it("should return 400 when refresh token is missing", async () => {
+it("should return 401 when refresh token is missing", async () => {
     const response = await request(app).post("/api/v1/auth/refresh-token").send({});
 
-    expect(response.statusCode).toBe(400);
+    expect(response.statusCode).toBe(401);
     expect(response.body.success).toBe(false);
-    expect(response.body.message).toContain("Missing required fields");
+    expect(response.body.message).toContain("Refresh Token is required");
 });
