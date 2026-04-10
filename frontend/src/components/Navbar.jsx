@@ -8,6 +8,12 @@
 
             <nav className="hidden items-center gap-8 md:flex">
             <a
+                href="#about"
+                className="text-sm text-stone-200/80 transition hover:text-amber-200"
+            >
+                About
+            </a>
+            <a
                 href="#features"
                 className="text-sm text-stone-200/80 transition hover:text-amber-200"
             >
