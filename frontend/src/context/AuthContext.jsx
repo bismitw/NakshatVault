@@ -42,6 +42,27 @@ function AuthProvider  ({ children }) {
         });
         return response;
     }
+
+    const logout = async () => {
+        const response = await apiRequest("/auth/logout", {
+            method: "POST",
+        });
+        setUser(null);
+    }
+
+    return (
+        <AuthContext.Provider
+            value = {{
+                user, 
+                setUser,
+                authLoading,
+                login,
+                register,
+                logout,
+            }}
+        >{children}</AuthContext.Provider>
+    );
 }
+
 
 
