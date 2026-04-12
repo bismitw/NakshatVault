@@ -23,6 +23,16 @@ function AuthProvider  ({ children }) {
         }
         fetchCurrentUser();
     }, []);
+
+    const login = async (payload) => {
+
+        const response = await apiRequest("auth/login", {
+            method: "POST",
+            body: JSON.stringify(payload),
+        });
+        setUser(response.data.user);
+        return response;
+    }
 }
 
 
