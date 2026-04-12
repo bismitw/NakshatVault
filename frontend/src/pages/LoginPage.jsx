@@ -12,4 +12,13 @@ function LoginPage(){
     });
 
     const [submitting, setSubmitting] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const handleChange = (event) => {
+        const {name, value} = event.target;
+        setFormData((prevData) => ({
+            ...current,
+            [name]: value,
+        }));
+    }
 }
