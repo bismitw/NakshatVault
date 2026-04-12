@@ -4,7 +4,7 @@ import {useAuth} from "../context/AuthContext.jsx";
 
 function LoginPage(){
     const navigate = useNavigate();
-    const {Login} = useAuth();
+    const {login} = useAuth();
 
     const [formData, setFormData] = useState({
         email: "",
@@ -21,4 +21,23 @@ function LoginPage(){
             [name]: value,
         }));
     }
+
+    const handleInput = async (event) => { 
+        event.preventDefault();
+        setSubmitting(true);
+        setErrorMessage(" ");
+
+
+        try {
+            await login(formData);
+            navigate("/dashboard");
+        } catch (error) {
+            setErrorMessage(error.message);
+        }finally{
+            setSubmitting(false);
+        }
+    };
+
+    
+
 }
