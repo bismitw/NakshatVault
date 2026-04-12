@@ -33,6 +33,15 @@ function AuthProvider  ({ children }) {
         setUser(response.data.user);
         return response;
     }
+
+    const register = async (payload) => {
+
+        const response = await apiRequest("auth/register", {
+            method: "POST",
+            body: JSON.stringify(payload),
+        });
+        return response;
+    }
 }
 
 
