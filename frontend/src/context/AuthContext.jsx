@@ -11,7 +11,7 @@ function AuthProvider  ({ children }) {
     useEffect(() => {
         const fetchCurrentUser = async () => {
             try {
-                const response = await apiRequest("auth/me/", {
+                const response = await apiRequest("/auth/me/", {
                     method: "GET",
                 });
                 setUser(response.data);
@@ -26,7 +26,7 @@ function AuthProvider  ({ children }) {
 
     const login = async (payload) => {
 
-        const response = await apiRequest("auth/login", {
+        const response = await apiRequest("/auth/login", {
             method: "POST",
             body: JSON.stringify(payload),
         });
@@ -36,7 +36,7 @@ function AuthProvider  ({ children }) {
 
     const register = async (payload) => {
 
-        const response = await apiRequest("auth/register", {
+        const response = await apiRequest("/auth/register", {
             method: "POST",
             body: JSON.stringify(payload),
         });
