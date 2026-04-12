@@ -12,4 +12,8 @@ function ProtectedRoute({ children }) {
             </div>
         )
     }
+
+    if(!user){
+        return <Navigate to= "/login" replace />;
+    }
 }
