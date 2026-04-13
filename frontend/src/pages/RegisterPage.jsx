@@ -8,7 +8,7 @@ function RegisterPage() {
     const {register} = useAuth();
 
 
-    const [formData, setFormDate] = useState({
+    const [formData, setFormData] = useState({
         fullName: "",
         email: "",
         password: "",
@@ -21,7 +21,7 @@ function RegisterPage() {
     
     const handleChange = (event) => {
         const {name, value} = event.target;
-        setFormDate((current) => ({
+        setFormData((current) => ({
             ...current,
             [name]: value,
         }));
