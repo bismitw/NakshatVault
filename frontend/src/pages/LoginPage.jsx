@@ -25,7 +25,7 @@ function LoginPage(){
     const handleSubmit = async (event) => { 
         event.preventDefault();
         setSubmitting(true);
-        setErrorMessage(" ");
+        setErrorMessage("");
 
 
         try {
