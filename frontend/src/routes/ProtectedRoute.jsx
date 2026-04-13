@@ -3,9 +3,9 @@ import { useAuth } from "../context/AuthContext.jsx";
 
 function ProtectedRoute({ children }) {
 
-    const {user, authloading} = useAuth();
+    const {user, authLoading} = useAuth();
 
-    if(authloading){
+    if(authLoading){
         return (
             <div className="flex min-h-screen items-center justify-center text-stone-200">
                 Checking Session
