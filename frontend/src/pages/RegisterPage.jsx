@@ -19,4 +19,13 @@ function RegisterPage() {
     const [submitting, setSubmitting] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     
+    const handleChange = (event) => {
+        const {name, value} = event.target;
+        setFormDate((current) => ({
+            ...current,
+            [name]: value,
+        }));
+    };
+
+
 }
