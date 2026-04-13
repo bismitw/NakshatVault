@@ -3,5 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 
 function RegisterPage() { 
+
+    const navigate = useNavigate();
+    const {register} = useAuth();
     
 }
