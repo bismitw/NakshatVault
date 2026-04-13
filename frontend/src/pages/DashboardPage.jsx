@@ -44,3 +44,5 @@ function DashBoardPage() {
         </main>
     );
 }
+
+export default DashBoardPage;
