@@ -124,3 +124,5 @@ function RegisterPage() {
         </main>
     );
 }
+
+export default RegisterPage;
