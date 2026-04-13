@@ -1,5 +1,5 @@
 const API_BASE_URL =
-    import.meta.VITE_API_BASE_URL || "http://localhost:8001/api/v1";
+    import.meta.env.VITE_API_BASE_URL || "http://localhost:8001/api/v1";
 
 async function  apiRequest(endpoint, options={}) {
     const response = await fetch(`${API_BASE_URL}${endpoint}`, {
