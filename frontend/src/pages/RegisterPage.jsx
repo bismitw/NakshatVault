@@ -15,4 +15,8 @@ function RegisterPage() {
         phone: "",
 
     });
+
+    const [submitting, setSubmitting] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    
 }
