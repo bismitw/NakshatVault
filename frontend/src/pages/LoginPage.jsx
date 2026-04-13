@@ -16,13 +16,13 @@ function LoginPage(){
 
     const handleChange = (event) => {
         const {name, value} = event.target;
-        setFormData((prevData) => ({
+        setFormData((current) => ({
             ...current,
             [name]: value,
         }));
     }
 
-    const handleInput = async (event) => { 
+    const handleSubmit = async (event) => { 
         event.preventDefault();
         setSubmitting(true);
         setErrorMessage(" ");
