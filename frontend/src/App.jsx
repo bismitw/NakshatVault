@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import DashBoardPage from './pages/DashBoardPage.jsx'
 import RegisterPage from './pages/RegisterPage.jsx'
-import ProtectedRoute from './components/ProtectedRoute.jsx'
+import ProtectedRoute from './routes/ProtectedRoute.jsx'
 
 function App() {
 
