@@ -6,5 +6,13 @@ function RegisterPage() {
 
     const navigate = useNavigate();
     const {register} = useAuth();
-    
+
+
+    const [formData, setFormDate] = useState({
+        fullName: "",
+        email: "",
+        password: "",
+        phone: "",
+
+    });
 }
