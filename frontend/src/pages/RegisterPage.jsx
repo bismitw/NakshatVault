@@ -27,5 +27,18 @@ function RegisterPage() {
         }));
     };
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        setSubmitting(true);
+        setErrorMessage("");
+        try {
+            await register(formData);
+            navigate("/login");
+        } catch (error) {
+            setErrorMessage(error.message);
+        }finally{
+            setSubmitting(false);
+        }
+    }
 
 }
