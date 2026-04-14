@@ -23,4 +23,11 @@ function ProfilePage(){
         placeofBirth: "",
     })
 
+    const [loading, setLoading] = useState(true);
+    const [profileSaving, setProfileSaving] = useState(false);
+    const [birthSaving, setBirthSaving] = useState(false);
+    const [profileMessage, setProfileMessage] = useState("");
+    const [birthMessage, setBirthMessage] = useState("");
+    const [profileError, setProfileError] = useState("");
+    const [birthError, setBirthError] = useState("");
 }
