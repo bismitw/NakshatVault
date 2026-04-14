@@ -17,5 +17,10 @@ function ProfilePage(){
         avatar: "",
     });
 
-    
+    const [birthForm, setBirthForm] = useState({
+        dateofBith: "",
+        timeofBirth: "",
+        placeofBirth: "",
+    })
+
 }
