@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
     getUserProfile,
@@ -44,13 +44,13 @@ function ProfilePage(){
                     avatar: profile.avatar || "",
                 });
                 setBirthForm({
-                    dateofBith: profile.dateofBirth? new Date(profile.dateofBirth).toISOString().split("T")[0]: "",
+                    dateofBirth: profile.dateofBirth? new Date(profile.dateofBirth).toISOString().split("T")[0]: "",
                     timeofBirth: profile.timeofBirth || "",
                     placeofBirth: profile.placeofBirth || "",
                 });
 
             } catch (error) {
-                setErrorMessage(error.message);
+                setProfileError(error.message);
             }finally {
                 setLoading(false);
             }
@@ -102,7 +102,7 @@ function ProfilePage(){
             setUser(response.data);
             setBirthMessage("Birth details updated successfully");
         } catch (error) {
-            setErrorMessage(error.message)
+            setProfileError(error.message)
         }finally {
             setBirthSaving(false);
         }
@@ -321,3 +321,5 @@ function ProfilePage(){
         </main>
     );
 }
+
+export default ProfilePage;
