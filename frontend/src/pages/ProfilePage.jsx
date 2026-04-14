@@ -73,4 +73,11 @@ function ProfilePage(){
             [name]: value,
         }));
     };
+
+    const handleProfileSubmit = async (event) => {
+        event.preventDefault();
+        setProfileSaving(true);
+        setProfileMessage("");
+        setProfileError(""); 
+    }
 }
