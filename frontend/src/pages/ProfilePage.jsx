@@ -43,7 +43,11 @@ function ProfilePage(){
                     phone: profile.phone || "",
                     avatar: profile.avatar || "",
                 });
-
+                setBirthForm({
+                    dateofBith: profile.dateofBirth? new Date(profile.dateofBirth).toISOString().split("T")[0]: "",
+                    timeofBirth: profile.timeofBirth || "",
+                    placeofBirth: profile.placeofBirth || "",
+                });
 
             } catch (error) {
                 
