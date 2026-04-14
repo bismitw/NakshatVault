@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
     getUserProfile,
@@ -30,4 +30,24 @@ function ProfilePage(){
     const [birthMessage, setBirthMessage] = useState("");
     const [profileError, setProfileError] = useState("");
     const [birthError, setBirthError] = useState("");
+
+    useEffect(() => {
+        const loadProfile = async () => {
+            try {
+                const response = await getUserProfile();
+                const profile = response.data;
+
+                setUser(profile);
+                setProfileForm({
+                    fullName: profile.fullName || "",
+                    phone: profile.phone || "",
+                    avatar: profile.avatar || "",
+                });
+
+
+            } catch (error) {
+                
+            }
+        }
+    })
 }
