@@ -6,3 +6,8 @@ import {
     updateUserProfile,
 } from "../services/user.js";
 import { useAuth } from "../context/AuthContext.jsx";
+
+
+function ProfilePage(){
+    const {user, setUser} = useAuth();
+}
