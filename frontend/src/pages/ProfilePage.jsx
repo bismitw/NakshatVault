@@ -66,5 +66,11 @@ function ProfilePage(){
         }))
     };
 
-    
+    const handleBirthChange = (event) => {
+        const {name, value} = event.target;
+        setBirthForm((current) => ({
+            ...current,
+            [name]: value,
+        }));
+    };
 }
