@@ -50,8 +50,11 @@ function ProfilePage(){
                 });
 
             } catch (error) {
-                
+                setErrorMessage(error.message);
+            }finally {
+                setLoading(false);
             }
-        }
-    })
+        };
+        loadProfile();
+    }, [setUser]);
 }
