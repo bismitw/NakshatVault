@@ -97,6 +97,14 @@ function ProfilePage(){
         setBirthMessage("");
         setBirthError("");
 
-        
+        try {
+            const response = await updateBirthDetails(birthForm);
+            setUser(response.data);
+            setBirthMessage("Birth details updated successfully");
+        } catch (error) {
+            setErrorMessage(error.message)
+        }finally {
+            setBirthSaving(false);
+        }
     }
 }
