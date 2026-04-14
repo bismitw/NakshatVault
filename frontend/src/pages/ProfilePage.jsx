@@ -18,7 +18,7 @@ function ProfilePage(){
     });
 
     const [birthForm, setBirthForm] = useState({
-        dateofBith: "",
+        dateofBirth: "",
         timeofBirth: "",
         placeofBirth: "",
     })
@@ -85,7 +85,7 @@ function ProfilePage(){
             setUser(response.data);
             setProfileMessage("Profile updated successfully");
         } catch (error) {
-            setErrorMessage(error.message)
+            setProfileError(error.message)
         }finally {
             setProfileSaving(false);
         }
@@ -102,7 +102,7 @@ function ProfilePage(){
             setUser(response.data);
             setBirthMessage("Birth details updated successfully");
         } catch (error) {
-            setProfileError(error.message)
+            setBirthError(error.message)
         }finally {
             setBirthSaving(false);
         }
