@@ -6,3 +6,9 @@ async function getUserProfile() {
     });
 }
 
+async function updateUserProfile(){
+    return apiRequest("users/profile", {
+        method: "PATCH",
+        body: JSON.stringify(payload),
+    });
+}
