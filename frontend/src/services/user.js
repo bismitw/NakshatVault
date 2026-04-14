@@ -7,8 +7,15 @@ async function getUserProfile() {
 }
 
 async function updateUserProfile(){
-    return apiRequest("users/profile", {
+    return apiRequest("/users/profile", {
         method: "PATCH",
         body: JSON.stringify(payload),
     });
+}
+
+async function updateBirthDetails() {
+    return apiRequest("/users/birth-details", {
+        method: "PATCH",
+        body: JSON.stringify(payload),
+    })
 }
