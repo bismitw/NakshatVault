@@ -78,6 +78,16 @@ function ProfilePage(){
         event.preventDefault();
         setProfileSaving(true);
         setProfileMessage("");
-        setProfileError(""); 
+        setProfileError("");
+
+        try {
+            const response = await updateUserProfile(profileForm);
+            setUser(response.data);
+            setProfileMessage("Profile updated successfully");
+        } catch (error) {
+            setErrorMessage(error.message)
+        }finally {
+            setProfileSaving(false);
+        }
     }
 }
