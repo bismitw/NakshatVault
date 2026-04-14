@@ -7,7 +7,7 @@ function DashboardPage() {
 
     const handleLogout = async () => {
         await logout();
-        navigate("/Login")
+        navigate("/login")
     }
 
 
