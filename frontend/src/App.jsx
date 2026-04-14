@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import DashboardPage from './pages/DashboardPage.jsx'
 import RegisterPage from './pages/RegisterPage.jsx'
+import ProfilePage from './pages/ProfilePage.jsx'
 import ProtectedRoute from './routes/ProtectedRoute.jsx'
 
 function App() {
@@ -20,6 +21,15 @@ function App() {
           <DashboardPage />
         </ProtectedRoute>
       } />
+
+      <Route 
+      path="/profile"
+      element={
+        <ProtectedRoute>
+          <ProfilePage />
+        </ProtectedRoute>
+      }
+      />
     </Routes>
   );
 }
