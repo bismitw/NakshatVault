@@ -90,4 +90,13 @@ function ProfilePage(){
             setProfileSaving(false);
         }
     }
+
+    const handleBirthSubmit = async (event) => {
+        event.preventDefault();
+        setBirthSaving(true);
+        setBirthMessage("");
+        setBirthError("");
+
+        
+    }
 }
