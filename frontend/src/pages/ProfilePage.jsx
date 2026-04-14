@@ -10,4 +10,12 @@ import { useAuth } from "../context/AuthContext.jsx";
 
 function ProfilePage(){
     const {user, setUser} = useAuth();
+
+    const [profileForm, setProfileForm] = useState({
+        fullName: "",
+        phone: "",
+        avatar: "",
+    });
+
+    
 }
