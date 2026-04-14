@@ -19,3 +19,5 @@ async function updateBirthDetails() {
         body: JSON.stringify(payload),
     })
 }
+
+export { getUserProfile, updateUserProfile, updateBirthDetails };
