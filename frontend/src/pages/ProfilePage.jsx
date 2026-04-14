@@ -57,4 +57,14 @@ function ProfilePage(){
         };
         loadProfile();
     }, [setUser]);
+
+    const handleProfileChange = (event) => {
+        const {name, value} = event.target;
+        setProfileForm((current) => ({
+            ...current,
+            [name]: value,
+        }))
+    };
+
+    
 }
