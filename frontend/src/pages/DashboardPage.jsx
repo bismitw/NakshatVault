@@ -1,7 +1,7 @@
 import {Link, useNavigate} from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 
-function DashBoardPage() { 
+function DashboardPage() { 
     const {user, logout} = useAuth();
     const navigate = useNavigate();
 
@@ -83,4 +83,4 @@ function DashBoardPage() {
     );
 }
 
-export default DashBoardPage;
+export default DashboardPage;
