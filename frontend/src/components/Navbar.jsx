@@ -1,3 +1,7 @@
+import { Link, useNavigate } from "react-router-dom"; 
+import toast from "react-hot-toast";
+import { useAuth } from "../context/AuthContext.jsx";
+    
     function Navbar() {
     return (
         <header className="sticky top-0 z-30">
