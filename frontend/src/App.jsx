@@ -6,6 +6,8 @@ import DashboardPage from './pages/DashboardPage.jsx'
 import RegisterPage from './pages/RegisterPage.jsx'
 import ProfilePage from './pages/ProfilePage.jsx'
 import ProtectedRoute from './routes/ProtectedRoute.jsx'
+import AdminRoute from './routes/AdminRoute.jsx'
+import AdminDashboardPage from './pages/AdminDashboardPage.jsx'
 
 function App() {
 
@@ -28,6 +30,15 @@ function App() {
         <ProtectedRoute>
           <ProfilePage />
         </ProtectedRoute>
+      }
+      />
+
+      <Route
+      path="/admin"
+      element= {
+        <AdminRoute>
+          <AdminDashboardPage />
+        </AdminRoute>
       }
       />
     </Routes>
