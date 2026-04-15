@@ -32,7 +32,7 @@ function LoginPage(){
             const response = await login(formData);
             const loggedInUser = response.data.user
             
-            toast.success(`Welcome back, ${loggedInUser.name}!`);
+            toast.success(`Welcome back, ${loggedInUser.fullName}!`);
 
             if(loggedInUser.role === "admin"){
                 navigate("/admin/dashboard");
