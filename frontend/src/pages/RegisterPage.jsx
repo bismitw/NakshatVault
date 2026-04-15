@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext.jsx";
 
 function RegisterPage() { 
@@ -33,9 +34,11 @@ function RegisterPage() {
         setErrorMessage("");
         try {
             await register(formData);
+            toast.success("Account created successfully! Please login.");
             navigate("/login");
         } catch (error) {
             setErrorMessage(error.message);
+            toast.error("Registration failed. Please try again." || error.message);
         }finally{
             setSubmitting(false);
         }
