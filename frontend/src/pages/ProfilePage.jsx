@@ -1,5 +1,6 @@
 import {  useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 import {
     getUserProfile,
     updateBirthDetails,
@@ -51,6 +52,7 @@ function ProfilePage(){
 
             } catch (error) {
                 setProfileError(error.message);
+                toast.error(error.message||"Failed to load profile");
             }finally {
                 setLoading(false);
             }
@@ -84,8 +86,10 @@ function ProfilePage(){
             const response = await updateUserProfile(profileForm);
             setUser(response.data);
             setProfileMessage("Profile updated successfully");
+            toast.success("Profile updated successfully");
         } catch (error) {
             setProfileError(error.message)
+            toast.error(error.message || "Failed to update profile");
         }finally {
             setProfileSaving(false);
         }
@@ -101,8 +105,10 @@ function ProfilePage(){
             const response = await updateBirthDetails(birthForm);
             setUser(response.data);
             setBirthMessage("Birth details updated successfully");
+            toast.success("Birth details updated successfully");
         } catch (error) {
             setBirthError(error.message)
+            toast.error(error.message || "Failed to update birth details");
         }finally {
             setBirthSaving(false);
         }
