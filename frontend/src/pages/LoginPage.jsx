@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {Link, useNavigate} from "react-router-dom";
+import toast from "react-hot-toast";
 import {useAuth} from "../context/AuthContext.jsx";
 
 function LoginPage(){
@@ -27,12 +28,19 @@ function LoginPage(){
         setSubmitting(true);
         setErrorMessage("");
 
-
         try {
-            await login(formData);
-            navigate("/dashboard");
+            const response = await login(formData);
+            const loggedInUser = response.data.user
+            
+            toast.success(`Welcome back, ${loggedInUser.name}!`);
+
+            if(loggedInUser.role === "admin"){
+                navigate("/admin/dashboard");
+            }else{
+                navigate("/");
+            }
         } catch (error) {
-            setErrorMessage(error.message);
+            toast.error("Login failed. Please check your credentials and try again." || error.message);
         }finally{
             setSubmitting(false);
         }
