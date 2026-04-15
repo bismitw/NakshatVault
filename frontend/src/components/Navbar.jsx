@@ -3,6 +3,10 @@ import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext.jsx";
     
     function Navbar() {
+        const { user, logout } = useAuth();
+        const navigate = useNavigate();
+
+        
     return (
         <header className="sticky top-0 z-30">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between rounded-full border border-amber-200/15 bg-slate-950/60 px-6 py-4 shadow-[0_10px_40px_rgba(0,0,0,0.28)] backdrop-blur-xl">
