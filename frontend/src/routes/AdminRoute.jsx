@@ -12,4 +12,15 @@ function AdminRoute({children}) {
             </div>
         );
     }
+
+    if(!user){
+        return <Navigate to="/login" replace />
+    }
+
+    if(user.role !== "admin"){
+        return <Navigate to="/" replace />
+    }
+    return children;
 }
+
+export default AdminRoute;
