@@ -41,6 +41,7 @@ function LoginPage(){
             }
         } catch (error) {
             toast.error("Login failed. Please check your credentials and try again." || error.message);
+            setErrorMessage(error.message)
         }finally{
             setSubmitting(false);
         }
