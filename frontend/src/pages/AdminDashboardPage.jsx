@@ -85,3 +85,5 @@ function AdminDashboardPage() {
         </main>
     );
 }
+
+export default AdminDashboardPage;
