@@ -22,6 +22,7 @@ const getProkeralaAccessToken = async () => {
 
         return tokenResponse.data?.access_token;
     } catch (error) {
+        console.error("Prokerala token error:", error.response?.data || error.message);
         throw new ApiError(500, "Failed to generate Prokerala access token");
     }
 }
@@ -41,7 +42,7 @@ const fetchKundliDataFromProkerala = async ({
                 Authorization: `Bearer ${accessToken}`,
             },
             params: {
-                datetime: `${dateOfBirth} ${timeOfBirth}`,
+                datetime: `${dateOfBirth}T${timeOfBirth}${timezone}`,
                 coordinates: `${latitude},${longitude}`,
                 ayanamsa: 1,
             }
@@ -49,7 +50,8 @@ const fetchKundliDataFromProkerala = async ({
 
         return response.data;
     } catch (error) {
-        throw new ApiError(500, "Failed to fetch kundli data from Prokerala")
+        console.error("Prokerala kundli fetch error:", error.response?.data || error.message);
+        throw new ApiError(error.response?.status || 500, error.response?.data?.message || "Failed to fetch kundli data from Prokerala")
     }
 
 };
