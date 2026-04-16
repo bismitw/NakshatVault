@@ -33,8 +33,25 @@ const fetchKundliDataFromProkerala = async ({
     longitude,
     timezone,
 }) => {
+    try {
+        const accessToken = await getProkeralaAccessToken();
 
-    
+        const response = await astrologyApi.get("/astrology/birth-details",{
+            headers:{
+                Authorization: `Bearer ${accessToken}`,
+            },
+            params: {
+                datetime: `${dateOfBirth} ${timeOfBirth}`,
+                coordinates: `${latitude},${longitude}`,
+                ayanamsa: 1,
+            }
+        })
+
+        return response.data;
+    } catch (error) {
+        throw new ApiError(500, "Failed to fetch kundli data from Prokerala")
+    }
+
 };
 
-export { getProkeralaAccessToken }
+export { getProkeralaAccessToken, fetchKundliDataFromProkerala }
