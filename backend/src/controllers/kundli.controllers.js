@@ -56,4 +56,7 @@ const deleteKundli = asyncHandler(async(req, res) => {
     .json(new ApiResponse(200, kundli, "Kundli deleted successfully"));
 })
 
+const previewGeneratedKundli = asyncHandler(async(req,res) => {
+    const {dateOfBirth, timeOfBirth, latitude, longitude, timezone} = req.body 
+})
 export { createKundli, getUserKundlis, getKundliById, updateKundli, deleteKundli };
