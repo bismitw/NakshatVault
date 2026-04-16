@@ -58,5 +58,17 @@ const deleteKundli = asyncHandler(async(req, res) => {
 
 const previewGeneratedKundli = asyncHandler(async(req,res) => {
     const {dateOfBirth, timeOfBirth, latitude, longitude, timezone} = req.body 
+
+    const kundliData = await fetchKundliDataFromProkerala({
+        dateOfBirth,
+        timeOfBirth,
+        latitude,
+        longitude,
+        timezone,
+    })
+
+    return res
+    .status(200)
+    .json(new ApiResponse(200, kundliData, "Prokerala kundli data fetched successfully"))
 })
 export { createKundli, getUserKundlis, getKundliById, updateKundli, deleteKundli };
