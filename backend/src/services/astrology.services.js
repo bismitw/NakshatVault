@@ -22,6 +22,6 @@ const getProkeralaAccessToken = async () => {
 
         return tokenResponse.data?.access_token;
     } catch (error) {
-        
+        throw new ApiError(500, "Failed to generate Prokerala access token");
     }
 }
