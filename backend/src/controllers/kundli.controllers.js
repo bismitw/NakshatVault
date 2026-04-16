@@ -1,5 +1,6 @@
 import { ApiResponse } from "../utils/apiResponse.utils.js";
 import { asyncHandler } from "../utils/asyncHandler.utils.js";
+import { fetchKundliDataFromProkerala } from "../services/astrology.services.js";
 import {
     createKundliService, 
     getUserKundlisService,
