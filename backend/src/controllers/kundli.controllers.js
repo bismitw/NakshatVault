@@ -71,4 +71,4 @@ const previewGeneratedKundli = asyncHandler(async(req,res) => {
     .status(200)
     .json(new ApiResponse(200, kundliData, "Prokerala kundli data fetched successfully"))
 })
-export { createKundli, getUserKundlis, getKundliById, updateKundli, deleteKundli };
+export { createKundli, getUserKundlis, getKundliById, updateKundli, deleteKundli, previewGeneratedKundli };
