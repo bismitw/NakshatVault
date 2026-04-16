@@ -25,3 +25,5 @@ const getProkeralaAccessToken = async () => {
         throw new ApiError(500, "Failed to generate Prokerala access token");
     }
 }
+
+export { getProkeralaAccessToken }
