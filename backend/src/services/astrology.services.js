@@ -15,7 +15,7 @@ const getProkeralaAccessToken = async () => {
             }).toString(),
             {
                 headers: {
-                    "Content_Type":"application/x-www-form-urlencoded",
+                    "Content_Type": "application/x-www-form-urlencoded",
                 },
             }
         );
