@@ -26,4 +26,8 @@ const getProkeralaAccessToken = async () => {
     }
 }
 
+const fetchKundliDataFromProkerala = async () => {
+    
+}
+
 export { getProkeralaAccessToken }
