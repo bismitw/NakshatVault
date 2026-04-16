@@ -8,6 +8,9 @@ const requiredEnvVars = [
     "RESEND_API_KEY",
     "EMAIL_FROM",
     "ADMIN_EMAIL",
+    "PROKERALA_CLIENT_ID",
+    "PROKERALA_CLIENT_SECRET",
+    "PROKERALA_BASE_URL",
 ];
 
 const validateEnv = () => {
