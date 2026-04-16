@@ -26,8 +26,15 @@ const getProkeralaAccessToken = async () => {
     }
 }
 
-const fetchKundliDataFromProkerala = async () => {
+const fetchKundliDataFromProkerala = async ({
+    dateOfBirth,
+    timeOfBirth,
+    latitude,
+    longitude,
+    timezone,
+}) => {
+
     
-}
+};
 
 export { getProkeralaAccessToken }
