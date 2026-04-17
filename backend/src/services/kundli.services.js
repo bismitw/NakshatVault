@@ -163,6 +163,24 @@ const generateKundliService = async(userId, kundliInput) => {
     });
 
     const generatedProfile = providerResponse?.data || {};
+
+    const kundli = await Kundli.create({
+        userId,
+        title: title?.trim() || "Generated Kundli",
+        description: description?.trim() || "Generated using Prokerala API",
+        dateOfBirth,
+        timeOfBirth: timeOfBirth.trim(),
+        placeOfBirth: placeOfBirth.trim(),
+        provider: "Prokerala",
+        nakshatraName: generatedProfile?.nakshatra?.name || null,
+        nakshatraLord: generatedProfile?.nakshatra?.lord?.name || null,
+        nakshatraPada: generatedProfile?.nakshatra?.pada || null,
+        moonSign: generatedProfile?.chandra_rasi?.name || null,
+        sunSign: generatedProfile?.soorya_rasi?.name || null,
+        zodiac: generatedProfile?.zodiac?.name || null,
+        additionalInfo: generatedProfile?.additional_info || null,
+        generatedData: providerResponse,
+    });
 }
 
 
