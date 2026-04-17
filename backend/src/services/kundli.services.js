@@ -143,6 +143,8 @@ const generateKundliService = async(userId, kundliInput) => {
     if(!userId){
         throw new ApiError(400, "User id is required")
     }
+
+    const {title, description, dateOfBirth, timeOfBirth, placeOfBirth, latitude, longitude, timezone} = kundliInput
 }
 
 
