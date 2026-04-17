@@ -153,6 +153,16 @@ const generateKundliService = async(userId, kundliInput) => {
     if(!latitude || !longitude ||!timezone){
         throw new ApiError(400, "Latitude, longitude, and timezone are required for kundli generation")
     }
+
+    const providerResponse = await fetchKundliDataFromProkerala({
+        dateOfBirth,
+        timeOfBirth,
+        latitude,
+        longitude,
+        timezone,
+    });
+
+    const generatedProfile = providerResponse?.data || {};
 }
 
 
