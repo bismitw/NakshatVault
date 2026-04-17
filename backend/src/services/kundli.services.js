@@ -181,6 +181,14 @@ const generateKundliService = async(userId, kundliInput) => {
         additionalInfo: generatedProfile?.additional_info || null,
         generatedData: providerResponse,
     });
+
+    await User.findByIdAndUpdate(userId, {
+        $push: {
+            kundlis: kundli._id,
+        },
+    });
+
+    return kundli;
 }
 
 
