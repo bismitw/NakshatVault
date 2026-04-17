@@ -80,4 +80,4 @@ const generateKundli = asyncHandler(async(req, res) => {
     .json(new ApiResponse(201, "Kundli Created Successfully"));
 }); 
 
-export { createKundli, getUserKundlis, getKundliById, updateKundli, deleteKundli, previewGeneratedKundli };
+export { createKundli, getUserKundlis, getKundliById, updateKundli, deleteKundli, previewGeneratedKundli, generateKundli };
