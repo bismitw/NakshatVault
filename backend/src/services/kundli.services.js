@@ -192,4 +192,4 @@ const generateKundliService = async(userId, kundliInput) => {
 }
 
 
-export { createKundliService, getUserKundlisService, getKundliByIdService, updateKundliService, deleteKundliService };
+export { createKundliService, getUserKundlisService, getKundliByIdService, updateKundliService, deleteKundliService, generateKundliService };
