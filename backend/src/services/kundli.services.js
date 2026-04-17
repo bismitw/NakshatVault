@@ -139,5 +139,11 @@ const deleteKundliService = async (userId, kundliId) => {
     return deletedKundli;
 };
 
+const generateKundliService = async(userId, kundliInput) => {
+    if(!userId){
+        throw new ApiError(400, "User id is required")
+    }
+}
+
 
 export { createKundliService, getUserKundlisService, getKundliByIdService, updateKundliService, deleteKundliService };
