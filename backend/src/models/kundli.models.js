@@ -37,6 +37,43 @@ const kundliSchema = new Schema(
         trim: true,
     },
 
+    //Generated Astrology Profile
+    provider: {
+        type: String,
+        default: null,
+    },
+        nakshatraName: {
+        type: String,
+        default: null,
+    },
+    nakshatraLord: {
+        type: String,
+        default: null,
+    },
+    nakshatraPada: {
+        type: Number,
+        default: null,
+    },
+    moonSign: {
+        type: String,
+        default: null,
+    },
+    sunSign: {
+        type: String,
+        default: null,
+    },
+    zodiac: {
+        type: String,
+        default: null,
+    },
+    additionalInfo: {
+        type: Schema.Types.Mixed,
+        default: null,
+    },
+    generatedData: {
+        type: Schema.Types.Mixed,
+        default: null,
+    },
 
     //Very simplified Planet structure
     planets:[
