@@ -145,6 +145,10 @@ const generateKundliService = async(userId, kundliInput) => {
     }
 
     const {title, description, dateOfBirth, timeOfBirth, placeOfBirth, latitude, longitude, timezone} = kundliInput
+
+    if(!dateOfBirth || !placeOfBirth || !timeOfBirth){
+        throw new ApiError(400, "Date of birth, time of birth, and place of birth are required");
+    }
 }
 
 
