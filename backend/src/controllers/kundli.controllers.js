@@ -1,6 +1,5 @@
 import { ApiResponse } from "../utils/apiResponse.utils.js";
 import { asyncHandler } from "../utils/asyncHandler.utils.js";
-import { fetchKundliDataFromProkerala } from "../services/astrology.services.js";
 import {
     createKundliService, 
     getUserKundlisService,
@@ -62,7 +61,7 @@ const generateKundli = asyncHandler(async(req, res) => {
     const kundli = await generateKundliService(req.user?._id, req.body);
     return res
     .status(201)
-    .json(new ApiResponse(201, "Kundli Created Successfully"));
+    .json(new ApiResponse(201,kundli, "Kundli Created Successfully"));
 }); 
 
-export { createKundli, getUserKundlis, getKundliById, updateKundli, deleteKundli, previewGeneratedKundli, generateKundli };
+export { createKundli, getUserKundlis, getKundliById, updateKundli, deleteKundli, generateKundli };
