@@ -9,12 +9,13 @@ router.route("/")
 .post(verifyJWT, validateKundliInput,createKundli)
 .get(verifyJWT, getUserKundlis)
 
+router.route("/generate").post(verifyJWT, generateKundli);
+
 router.route("/:id")
 .get(verifyJWT, getKundliById)
 .patch(verifyJWT, updateKundli)
 .delete(verifyJWT, deleteKundli)
 
 
-router.route("/generate")
-.post(verifyJWT, generateKundli)
+
 export default router;
