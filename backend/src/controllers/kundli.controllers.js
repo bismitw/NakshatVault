@@ -57,21 +57,6 @@ const deleteKundli = asyncHandler(async(req, res) => {
     .json(new ApiResponse(200, kundli, "Kundli deleted successfully"));
 })
 
-const previewGeneratedKundli = asyncHandler(async(req,res) => {
-    const {dateOfBirth, timeOfBirth, latitude, longitude, timezone} = req.body 
-
-    const kundliData = await fetchKundliDataFromProkerala({
-        dateOfBirth,
-        timeOfBirth,
-        latitude,
-        longitude,
-        timezone,
-    })
-
-    return res
-    .status(200)
-    .json(new ApiResponse(200, kundliData, "Prokerala kundli data fetched successfully"))
-})
 
 const generateKundli = asyncHandler(async(req, res) => {
     const kundli = await generateKundliService(req.user?._id, req.body);
