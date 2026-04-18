@@ -59,5 +59,11 @@ if (!dateOfBirth || !timeOfBirth || !placeOfBirth) {
     ),
     );
 }
+
+if(!longitude || !latitude || !timezone){
+    return next(
+        new ApiError(400, "Latitude, longitude, and timezone are required for kundli generation")
+    )
+}
 }
 export {validateKundliInput}
