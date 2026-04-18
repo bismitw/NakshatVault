@@ -38,4 +38,17 @@ if(!dateOfBirth || !timeOfBirth || !placeOfBirth){
     next();
 };
 
+const valdateGeneratedInput = (req, res, next) => {
+    const 
+{   
+    title,
+    description,
+    dateOfBirth,
+    timeOfBirth,
+    placeOfBirth,
+    latitude,
+    longitude,
+    timezone,
+} = req.body
+}
 export {validateKundliInput}
