@@ -38,7 +38,7 @@ if(!dateOfBirth || !timeOfBirth || !placeOfBirth){
     next();
 };
 
-const valdateGeneratedInput = (req, res, next) => {
+const validateGeneratedInput = (req, res, next) => {
     const 
 {   
     title,
@@ -91,4 +91,4 @@ if (description !== undefined) {
 
     next();
 }
-export {validateKundliInput}
+export {validateKundliInput, validateGeneratedInput}
