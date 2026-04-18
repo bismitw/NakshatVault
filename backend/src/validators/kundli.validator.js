@@ -50,5 +50,14 @@ const valdateGeneratedInput = (req, res, next) => {
     longitude,
     timezone,
 } = req.body
+
+if (!dateOfBirth || !timeOfBirth || !placeOfBirth) {
+    return next(
+    new ApiError(
+        400,
+        "Date of birth, time of birth, and place of birth are required",
+    ),
+    );
+}
 }
 export {validateKundliInput}
