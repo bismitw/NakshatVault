@@ -65,5 +65,18 @@ if(!longitude || !latitude || !timezone){
         new ApiError(400, "Latitude, longitude, and timezone are required for kundli generation")
     )
 }
+
+if (title !== undefined && !title.trim()) {
+    return next(new ApiError(400, "Title cannot be empty"));
+}
+
+if (!timeOfBirth.trim()) {
+    return next(new ApiError(400, "Time of birth cannot be empty"));
+}
+
+if (!placeOfBirth.trim()) {
+    return next(new ApiError(400, "Place of birth cannot be empty"));
+}
+
 }
 export {validateKundliInput}
