@@ -78,5 +78,17 @@ if (!placeOfBirth.trim()) {
     return next(new ApiError(400, "Place of birth cannot be empty"));
 }
 
+if (title !== undefined) {
+    req.body.title = title.trim();
+}
+
+if (description !== undefined) {
+    req.body.description = description.trim();
+}
+
+    req.body.timeOfBirth = timeOfBirth.trim();
+    req.body.placeOfBirth = placeOfBirth.trim();
+
+    next();
 }
 export {validateKundliInput}
