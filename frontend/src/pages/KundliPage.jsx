@@ -7,4 +7,15 @@ function kundliPage() {
     const [kundlis, setKundlis] = useState([]);  
     const [loading, setLoading] = useState(true);
     const [submitting, setSubmitting] = useState(false);
+
+    const [formData, setFormData] = useState({
+        title: "",
+        description: "",
+        dateOfBirth: "",
+        timeOfBirth: "",
+        placeOfBirth: "",
+        latitude: "",
+        longitude: "",
+        timezone: "Asia/Kolkata",
+    });
 }
