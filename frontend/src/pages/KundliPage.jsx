@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { generateKundli, getKundlis } from "../services/kundli.js";
+import { set } from "mongoose";
 
 function kundliPage() {
     const [kundlis, setKundlis] = useState([]);  
@@ -32,4 +33,13 @@ function kundliPage() {
         }
         loadKundlis();
     }, []);
+
+    const handleChange = async(event) => {
+
+        const {name, value} = event.target;
+        setFormData((current) => ({
+            ...current,
+            [name]: value,
+        }))
+    }
 }
