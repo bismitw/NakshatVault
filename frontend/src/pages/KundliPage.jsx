@@ -18,4 +18,18 @@ function kundliPage() {
         longitude: "",
         timezone: "Asia/Kolkata",
     });
+
+    useEffect(() => {
+        const loadKundlis = async () => {
+            try {
+                const response = await getKundlis();
+                setKundlis(response.data || []);
+            } catch (error) {
+                toast.error(error.message || "Failed to load kundlis");
+            }finally {
+                setLoading(false);
+            }
+        }
+        loadKundlis();
+    }, []);
 }
