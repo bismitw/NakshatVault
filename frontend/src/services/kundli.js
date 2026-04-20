@@ -19,4 +19,10 @@ async function generateKundli(payload) {
     });
 }
 
+async function updateKundli(kundliId, payload) {
+    return apiRequest(`/kundli/${kundliId}`, {
+        method: "PATCH",
+    })
+}
+
 export {getKundlis, generateKundli};
