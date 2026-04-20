@@ -33,7 +33,7 @@ function KundliPage() {
         loadKundlis();
     }, []);
 
-    const handleChange = async(event) => {
+    const handleChange = (event) => {
 
         const {name, value} = event.target;
         setFormData((current) => ({
@@ -308,6 +308,15 @@ return (
                         <span className="text-stone-400">Sun Sign:</span>{" "}
                         {kundli.sunSign || "-"}
                     </div>
+                    </div>
+
+                    <div className="mt-5">
+                    <Link
+                        to={`/kundli/${kundli._id}`}
+                        className="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-stone-100 transition hover:bg-white/10"
+                    >
+                        View Details
+                    </Link>
                     </div>
                 </article>
                 ))}
