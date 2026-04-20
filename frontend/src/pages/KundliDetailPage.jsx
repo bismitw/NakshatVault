@@ -6,3 +6,10 @@ import {
     getKundliById,
     updateKundli,
 } from "../services/kundli.js";
+
+function KundliDetailPage() {
+    const {id} = useParams();
+    const navigate = useNavigate();
+
+    
+}
