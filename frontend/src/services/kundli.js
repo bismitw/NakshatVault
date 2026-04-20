@@ -31,4 +31,4 @@ async function deleteKundli(kundliId) {
     });
 }
 
-export {getKundlis, generateKundli, updateKundli, deleteKundli};
+export {getKundlis, generateKundli, getKundliById, updateKundli, deleteKundli};
