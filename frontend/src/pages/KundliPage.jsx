@@ -42,4 +42,37 @@ function kundliPage() {
             [name]: value,
         }))
     }
+
+    const handleSubmit = async (event) => {
+    event.preventDefault();
+    setSubmitting(true);
+
+    try {
+        const payload = {
+        ...formData,
+        latitude: Number(formData.latitude),
+        longitude: Number(formData.longitude),
+    };
+
+    const response = await generateKundli(payload);
+    setKundlis((current) => [response.data, ...current]);
+
+    setFormData({
+        title: "",
+        description: "",
+        dateOfBirth: "",
+        timeOfBirth: "",
+        placeOfBirth: "",
+        latitude: "",
+        longitude: "",
+        timezone: "Asia/Kolkata",
+    });
+
+    toast.success("Kundli generated successfully");
+    } catch (error) {
+    toast.error(error.message || "Failed to generate kundli");
+    } finally {
+    setSubmitting(false);
+    }
+};
 }
