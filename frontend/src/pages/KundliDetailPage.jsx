@@ -55,4 +55,19 @@ function KundliDetailPage() {
             [name]: value,
         }))
     }
+
+    const handleUpdate = async () => {
+        event.preventDefault();
+        setSaving(true);
+
+        try {
+            const response = await updateKundli(id, formData);
+            setKundli(response.data);
+            toast.success("Kundli updated successfully");
+        } catch (error) {
+            toast.error("Failed to update kundli" || error.message);
+        }finally{
+            setSaving(false);
+        }
+    }
 }
