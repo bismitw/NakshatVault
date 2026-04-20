@@ -47,4 +47,12 @@ function KundliDetailPage() {
         loadKundli();
     }, [id]);
 
+
+    const handleChange = (event) => {
+        const {name, value} = event.target;
+        setFormData((current) => ({
+            ...current,
+            [name]: value,
+        }))
+    }
 }
