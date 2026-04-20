@@ -25,4 +25,10 @@ async function updateKundli(kundliId, payload) {
     })
 }
 
+async function deleteKundli(kundliId) {
+    return apiRequest(`/kundli/${kundliId}`, {
+        method: "DELETE",
+    });
+}
+
 export {getKundlis, generateKundli};
