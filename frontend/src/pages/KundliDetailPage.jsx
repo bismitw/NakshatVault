@@ -23,4 +23,28 @@ function KundliDetailPage() {
         timeOfBirth: "",
         placeOfBirth: "",
     });
+
+    useEffect(  () => {
+
+        const loadKundli = async () => {
+        try {
+            const response = await getKundliById(id);
+            const record = response.data
+            setKundli(record);
+            setFormData({
+                title: record.title || "",
+                description: record.description || "",
+                dateOfBirth: record.dateOfBirth? new Date(record.dateOfBirth).toISOString().split("T")[0] : "",
+                timeOfBirth: record.timeOfBirth || "",
+                placeOfBirth: record.placeOfBirth || "",
+            });
+        } catch (error) {
+            toast.error("failed to Load kundli details" || error.message);
+        }finally{
+            setLoading(false);
+        }
+    };
+        loadKundli();
+    }, [id]);
+
 }
