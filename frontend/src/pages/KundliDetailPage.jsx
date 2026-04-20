@@ -105,4 +105,165 @@ function KundliDetailPage() {
             </main>
         );
     }
+
+
+
+return (
+    <main className="min-h-screen px-4 py-8 md:px-6">
+        <div className="mx-auto max-w-6xl space-y-6">
+        <div className="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-white/10 bg-slate-950/70 p-6">
+            <div>
+            <p className="text-xs uppercase tracking-[0.35em] text-amber-300">
+                Kundli Details
+            </p>
+            <h1 className="mt-3 text-3xl font-semibold text-stone-100">
+                {kundli.title || "Untitled Kundli"}
+            </h1>
+            <p className="mt-2 text-sm text-stone-300">
+                Review and update this kundli record.
+            </p>
+            </div>
+
+            <Link
+            to="/kundli"
+            className="rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm text-stone-100"
+            >
+            Back to Kundli List
+            </Link>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+            <section className="rounded-3xl border border-white/10 bg-slate-950/70 p-6">
+            <h2 className="text-2xl font-semibold text-stone-100">Edit Kundli</h2>
+
+            <form
+                onSubmit={handleUpdate}
+                className="mt-6 grid gap-5 md:grid-cols-2"
+            >
+                <div>
+                <label className="mb-2 block text-sm text-stone-200">Title</label>
+                <input
+                    type="text"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleChange}
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                />
+                </div>
+
+                <div>
+                <label className="mb-2 block text-sm text-stone-200">
+                    Date of Birth
+                </label>
+                <input
+                    type="date"
+                    name="dateOfBirth"
+                    value={formData.dateOfBirth}
+                    onChange={handleChange}
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                />
+                </div>
+
+                <div>
+                <label className="mb-2 block text-sm text-stone-200">
+                    Time of Birth
+                </label>
+                <input
+                    type="text"
+                    name="timeOfBirth"
+                    value={formData.timeOfBirth}
+                    onChange={handleChange}
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                />
+                </div>
+
+                <div>
+                <label className="mb-2 block text-sm text-stone-200">
+                    Place of Birth
+                </label>
+                <input
+                    type="text"
+                    name="placeOfBirth"
+                    value={formData.placeOfBirth}
+                    onChange={handleChange}
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                />
+                </div>
+
+                <div className="md:col-span-2">
+                <label className="mb-2 block text-sm text-stone-200">
+                    Description
+                </label>
+                <textarea
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                    rows="4"
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                />
+                </div>
+
+                <div className="md:col-span-2 flex gap-4">
+                <button
+                    type="submit"
+                    disabled={saving}
+                    className="flex-1 rounded-full bg-linear-to-r from-amber-300 via-yellow-200 to-amber-500 px-5 py-3 text-sm font-semibold text-slate-950 disabled:opacity-60"
+                >
+                    {saving ? "Saving..." : "Update Kundli"}
+                </button>
+
+                <button
+                    type="button"
+                    onClick={handleDelete}
+                    disabled={deleting}
+                    className="rounded-full border border-red-400/25 bg-red-500/10 px-5 py-3 text-sm font-semibold text-red-200 disabled:opacity-60"
+                >
+                    {deleting ? "Deleting..." : "Delete"}
+                </button>
+                </div>
+            </form>
+            </section>
+
+            <section className="rounded-3xl border border-white/10 bg-slate-950/70 p-6">
+            <h2 className="text-2xl font-semibold text-stone-100">
+                Generated Snapshot
+            </h2>
+
+            <div className="mt-5 space-y-4 text-sm text-stone-200">
+                <div>
+                <span className="text-stone-400">Provider:</span>{" "}
+                {kundli.provider || "-"}
+                </div>
+                <div>
+                <span className="text-stone-400">Nakshatra:</span>{" "}
+                {kundli.nakshatraName || "-"}
+                </div>
+                <div>
+                <span className="text-stone-400">Nakshatra Lord:</span>{" "}
+                {kundli.nakshatraLord || "-"}
+                </div>
+                <div>
+                <span className="text-stone-400">Pada:</span>{" "}
+                {kundli.nakshatraPada || "-"}
+                </div>
+                <div>
+                <span className="text-stone-400">Moon Sign:</span>{" "}
+                {kundli.moonSign || "-"}
+                </div>
+                <div>
+                <span className="text-stone-400">Sun Sign:</span>{" "}
+                {kundli.sunSign || "-"}
+                </div>
+                <div>
+                <span className="text-stone-400">Zodiac:</span>{" "}
+                {kundli.zodiac || "-"}
+                </div>
+            </div>
+            </section>
+        </div>
+        </div>
+    </main>
+);
 }
+
+export default KundliDetailPage;
