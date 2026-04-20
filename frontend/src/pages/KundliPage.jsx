@@ -319,3 +319,5 @@ return (
     </main>
 );
 }
+
+export default kundliPage;
