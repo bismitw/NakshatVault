@@ -8,6 +8,7 @@ import ProtectedRoute from './routes/ProtectedRoute.jsx'
 import AdminRoute from './routes/AdminRoute.jsx'
 import AdminDashboardPage from './pages/AdminDashboardPage.jsx'
 import KundliPage from './pages/KundliPage.jsx'
+import KundliDetailsPage from './pages/KundliDetailsPage.jsx'
 
 function App() {
 
@@ -36,6 +37,15 @@ function App() {
       }
       />
 
+      <Route
+      path= "/kundli/:id"
+      element={
+        <ProtectedRoute>
+          <KundliDetailsPage />
+        </ProtectedRoute>
+      }
+      />
+      
       <Route
       path="/admin/dashboard"
       element= {
