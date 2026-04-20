@@ -7,6 +7,7 @@ import ProfilePage from './pages/ProfilePage.jsx'
 import ProtectedRoute from './routes/ProtectedRoute.jsx'
 import AdminRoute from './routes/AdminRoute.jsx'
 import AdminDashboardPage from './pages/AdminDashboardPage.jsx'
+import KundliPage from './pages/KundliPage.jsx'
 
 function App() {
 
@@ -25,6 +26,8 @@ function App() {
         </ProtectedRoute>
       }
       />
+
+
 
       <Route
       path="/admin/dashboard"
