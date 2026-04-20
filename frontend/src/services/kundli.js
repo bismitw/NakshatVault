@@ -6,6 +6,12 @@ async function getKundlis() {
     })
 }
 
+async function getKundliById(kundliId) {
+    return apiRequest(`/kundli/${kundliId}`, {
+        method: "GET",
+    })
+}
+
 async function generateKundli(payload) {
     return apiRequest("/kundli/generate", {
         method: "POST",
