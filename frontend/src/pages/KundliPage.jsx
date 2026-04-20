@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { generateKundli, getKundlis } from "../services/kundli.js";
-import { set } from "mongoose";
 
 function kundliPage() {
     const [kundlis, setKundlis] = useState([]);  
@@ -320,4 +319,4 @@ return (
 );
 }
 
-export default kundliPage;
+export default KundliPage;
