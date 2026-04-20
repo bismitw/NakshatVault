@@ -27,7 +27,14 @@ function App() {
       }
       />
 
-
+      <Route 
+      path="/kundli"
+      element={
+        <ProtectedRoute>
+          <KundliPage />
+        </ProtectedRoute>
+      }
+      />
 
       <Route
       path="/admin/dashboard"
