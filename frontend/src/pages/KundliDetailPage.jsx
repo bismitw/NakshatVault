@@ -92,9 +92,17 @@ function KundliDetailPage() {
 
     if(loading) {
         return (
-                <main className="flex min-h-screen items-center justify-center text-stone-200">
+            <main className="flex min-h-screen items-center justify-center text-stone-200">
                 Loading kundli...
-                </main>
+            </main>
         )
+    }
+
+    if(!kundli) { 
+        return (
+            <main className="flex min-h-screen items-center justify-center text-stone-200">
+                Kundli not found.
+            </main>
+        );
     }
 }
