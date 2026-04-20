@@ -89,4 +89,12 @@ function KundliDetailPage() {
             setDeleting(false);
         }
     }
+
+    if(loading) {
+        return (
+                <main className="flex min-h-screen items-center justify-center text-stone-200">
+                Loading kundli...
+                </main>
+        )
+    }
 }
