@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { generateKundli, getKundlis } from "../services/kundli.js";
 
-function kundliPage() {
+function KundliPage() {
     const [kundlis, setKundlis] = useState([]);  
     const [loading, setLoading] = useState(true);
     const [submitting, setSubmitting] = useState(false);
