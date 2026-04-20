@@ -70,4 +70,23 @@ function KundliDetailPage() {
             setSaving(false);
         }
     }
+
+    const handleDelete = async () => {
+        const confirmed = Window.confirm("Are you sure you want to delete this kundli?");
+        if(!confirmed){
+            return;
+        }
+
+        setDeleting(true);
+
+        try {
+            await deleteKundli(id);
+            toast.success("kundli deleted Successfully");
+            navigate("/kundli");
+        } catch (error) {
+            toast.error("Failed to delete kundli" || error.message);
+        }finally{
+            setDeleting(false);
+        }
+    }
 }
