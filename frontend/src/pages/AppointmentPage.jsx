@@ -22,4 +22,19 @@ function AppointmentPage() {
         consultationType: "General",
         mode: "Online",
     })
+
+    useEffect(() => {
+        const loadAppointments = async () => {
+            try {
+                const response = await getAppointments();
+                setAppointments(response.data || [])
+            } catch (error) {
+                toast.error(error.message || "Failed to load appointments");
+            }finally{
+                setLoading(false);
+            }
+        };
+
+        loadAppointments();
+    }, []);
 }
