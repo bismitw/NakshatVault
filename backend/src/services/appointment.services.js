@@ -8,22 +8,20 @@ const createAppointmentService = async (userId, appointmentData) => {
     }
 
     const {
-        expertName,
-        expertEmail,
         date,
         timeSlot,
         consultationType,
         mode,
     } = appointmentData;
 
-    if(!expertName || !date || !timeSlot ){
+    if( !date || !timeSlot ){
         throw new ApiError(400, "Expert name, date, and time slot are required")
     }
 
     const appointment = await Appointment.create({
         userId,
-        expertName: expertName.trim(),
-        expertEmail: expertEmail?.trim().toLowerCase() || "",
+        expertName: process.env.DEFAULT_EXPERT_NAME,
+        expertEmail: process.env.DEFAULT_EXPERT_EMAIL,
         date,
         timeSlot: timeSlot.trim(),
         consultationType: consultationType || "General",

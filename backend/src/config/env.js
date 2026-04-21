@@ -11,6 +11,8 @@ const requiredEnvVars = [
     "PROKERALA_CLIENT_ID",
     "PROKERALA_CLIENT_SECRET",
     "PROKERALA_BASE_URL",
+    "DEFAULT_EXPERT_NAME",
+    "DEFAULT_EXPERT_EMAIL",
 ];
 
 const validateEnv = () => {

@@ -16,9 +16,9 @@ const validateAppointmentInput = (req, res, next) => {
 
     const {expertName, date, timeSlot, consultationType, mode} = req.body;
 
-    if(!expertName || !date || !timeSlot){
+    if(!date || !timeSlot){
         return next(
-            new ApiError(400, "Expert name, date, and time slot are required")
+            new ApiError(400, " Date, and time slot are required")
         );
     }
     if (consultationType && !allowedConsultationTypes.includes(consultationType)) {
@@ -29,7 +29,6 @@ const validateAppointmentInput = (req, res, next) => {
         return next(new ApiError(400, "Invalid appointment mode"));
     }
 
-    req.body.expertName = expertName.trim();
     req.body.timeSlot = timeSlot.trim();
 
     if (req.body.expertEmail) {
