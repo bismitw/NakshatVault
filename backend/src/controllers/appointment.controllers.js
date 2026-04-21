@@ -2,6 +2,7 @@ import { createAppointmentService, getUserAppointmentsService, getAppointmentByI
 import { ApiResponse } from "../utils/apiResponse.utils.js";
 import { asyncHandler } from "../utils/asyncHandler.utils.js";
 import { sendAppointmentBookedEmail, sendAppointmentCancelledEmail, sendAppointmentRequestToAdmin } from "../services/email.services.js";
+import { APPOINTMENT_CONSULTATION_TYPES, APPOINTMENT_MODES, APPOINTMENT_TIME_SLOTS } from "../constants/appointment.constants.js";
 
 const createAppointment = asyncHandler(async (req, res) => {
     const appointment = await createAppointmentService(req.user?._id, req.body);
@@ -126,6 +127,20 @@ const getAllAppointments = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200,appointments,"All appointments fetched successfully"));
 })
 
+const getAppointmentOptions = asyncHandler(async (req, res) => {
+    return res.status(200).json(
+    new ApiResponse(
+        200,
+        {
+        consultationTypes: APPOINTMENT_CONSULTATION_TYPES,
+        modes: APPOINTMENT_MODES,
+        timeSlots: APPOINTMENT_TIME_SLOTS,
+        },
+        "Appointment options fetched successfully",
+    ),
+    );
+});
 
 
-export { createAppointment, getUserAppointments, getAppointmentById, cancelAppointment, updateAppointmentStatus, getAllAppointments };
+
+export { createAppointment, getUserAppointments, getAppointmentById, cancelAppointment, updateAppointmentStatus, getAllAppointments, getAppointmentOptions };
