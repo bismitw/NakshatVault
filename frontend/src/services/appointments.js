@@ -7,7 +7,7 @@ async function getAppointments() {
     });
 }
 
-async function createAppointments(payload) {
+async function createAppointment(payload) {
     return ("/appointments", {
         method: "POST",
         body: JSON.stringify(payload),
@@ -19,3 +19,5 @@ async function cancelAppointment(appointmentId) {
         method: "PATCH",
     })
 }
+
+export {getAppointments, createAppointment, cancelAppointment}
