@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createAppointment, getUserAppointments, getAppointmentById, cancelAppointment, updateAppointmentStatus, getAllAppointments } from "../controllers/appointment.controllers.js";
+import { createAppointment, getUserAppointments, getAppointmentById, cancelAppointment, updateAppointmentStatus, getAllAppointments, getAppointmentOptions } from "../controllers/appointment.controllers.js";
 import { verifyJWT } from "../middlewares/auth.middlewares.js";
 import {verifyAdmin} from "../middlewares/admin.middlewares.js"
 import { validateAppointmentInput, validateAppointmentStatusInput } from "../validators/appointment.validator.js";
@@ -16,6 +16,7 @@ router.route("/admin/all").get(verifyJWT, verifyAdmin, getAllAppointments);
 router.route("/:id").get(verifyJWT, getAppointmentById)
 router.route("/:id/cancel").patch(verifyJWT, cancelAppointment);
 
+router.route("/options").get(getAppointmentOptions);
 router
     .route("/:id/status")
     .patch(
