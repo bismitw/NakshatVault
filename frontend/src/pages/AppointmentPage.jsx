@@ -72,4 +72,23 @@ function AppointmentPage() {
             setSubmitting(false);
         }
     }
+
+    const handleCancel = async (appointmentId) => {
+        const confirmed = window.confirm("Are you sure you want to cancel this appointment?");
+        if (!confirmed) return;
+        setCancellingId(appointmentId);
+
+        try {
+            const response = await cancelAppointment(appointmentId);
+            setAppointments((current) => 
+            current.map((appointment) => appointment.id === appointmentId? response.data : appointment,
+        )
+        )
+        toast.success("Appointment cancelled successfully");
+        } catch (error) {
+            toast.error(error.message || "Failed to cancel appointment");
+        }finally {
+            setCancellingId("");
+        }
+    }
 }
