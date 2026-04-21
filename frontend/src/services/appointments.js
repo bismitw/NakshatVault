@@ -6,3 +6,10 @@ async function getAppointments() {
         method: "GET",
     });
 }
+
+async function createAppointments(payload) {
+    return ("/appointments", {
+        method: "POST",
+        body: JSON.stringify(payload),
+    })
+}
