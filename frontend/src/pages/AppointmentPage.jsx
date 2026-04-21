@@ -13,4 +13,13 @@ function AppointmentPage() {
     const [loading, setLoading] = useState(true);
     const [submitting, setSubmitting] = useState(false);
     const [cancellingId, setCancellingId] = useState("");
+
+    const [formData, setFormDate] = useState({
+        expertName: "",
+        expertEmail: "",
+        date: "",
+        timeSlot: "",
+        consultationType: "General",
+        mode: "Online",
+    })
 }
