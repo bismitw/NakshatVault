@@ -46,4 +46,30 @@ function AppointmentPage() {
             [name]: value,
         }));
     };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        setSubmitting(true);
+
+        try {
+            const response = await createAppointment(formData);
+            setAppointments((current) => [
+                response.data,
+                ...current
+            ])
+            setFormData({
+                expertName: "",
+                expertEmail: "",
+                date: "",
+                timeSlot: "",
+                consultationType: "General",
+                mode: "Online",
+            });
+            toast.success("Appointment booked successfully");
+        } catch (error) {
+            toast.error(error.message || "Failed to create appointment");
+        } finally {
+            setSubmitting(false);
+        }
+    }
 }
