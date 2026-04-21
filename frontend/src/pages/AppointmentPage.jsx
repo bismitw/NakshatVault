@@ -302,3 +302,5 @@ function AppointmentPage() {
         </main>
     );
 }
+
+export default AppointmentPage;
