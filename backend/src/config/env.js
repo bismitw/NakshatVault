@@ -13,6 +13,8 @@ const requiredEnvVars = [
     "PROKERALA_BASE_URL",
     "DEFAULT_EXPERT_NAME",
     "DEFAULT_EXPERT_EMAIL",
+    "GEOAPIFY_API_KEY",
+
 ];
 
 const validateEnv = () => {
