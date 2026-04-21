@@ -18,7 +18,7 @@ const validateAppointmentInput = (req, res, next) => {
 
     if(!date || !timeSlot){
         return next(
-            new ApiError(400, " Date, and time slot are required")
+            new ApiError(400, "Date, and time slot are required")
         );
     }
     if (consultationType && !allowedConsultationTypes.includes(consultationType)) {
