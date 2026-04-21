@@ -2,20 +2,20 @@ import {apiRequest} from "./api.js"
 
 
 async function getAppointments() {
-    return ("/appointments", {
+    return apiRequest("/appointments", {
         method: "GET",
     });
 }
 
 async function createAppointment(payload) {
-    return ("/appointments", {
+    return apiRequest("/appointments", {
         method: "POST",
         body: JSON.stringify(payload),
     })
 }
 
 async function cancelAppointment(appointmentId) {
-    return (`/appointments/${appointmentId}/cancel`,{
+    return apiRequest(`/appointments/${appointmentId}/cancel`,{
         method: "PATCH",
     })
 }
