@@ -37,4 +37,13 @@ function AppointmentPage() {
 
         loadAppointments();
     }, []);
+
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((current) => ({
+            ...current,
+            [name]: value,
+        }));
+    };
 }
