@@ -14,7 +14,7 @@ const allowedStatuses = ["Booked", "In Review", "Approved", "Cancelled"];
 
 const validateAppointmentInput = (req, res, next) => {
 
-    const {expertName, date, timeSlot, consultationType, mode} = req.body;
+    const { date, timeSlot, consultationType, mode} = req.body;
 
     if(!date || !timeSlot){
         return next(
