@@ -7,6 +7,7 @@ import ProfilePage from './pages/ProfilePage.jsx'
 import ProtectedRoute from './routes/ProtectedRoute.jsx'
 import AdminRoute from './routes/AdminRoute.jsx'
 import AdminDashboardPage from './pages/AdminDashboardPage.jsx'
+import AppointmentPage from './pages/AppointmentPage.jsx'
 import KundliPage from './pages/KundliPage.jsx'
 import KundliDetailPage from './pages/KundliDetailPage.jsx'
 
@@ -46,6 +47,14 @@ function App() {
       }
       />
 
+      <Route
+      path="/appointment"
+      element= {
+        <ProtectedRoute>
+          <AppointmentPage />
+        </ProtectedRoute> 
+      }
+      />
       <Route
       path="/admin/dashboard"
       element= {
