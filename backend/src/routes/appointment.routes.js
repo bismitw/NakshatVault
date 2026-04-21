@@ -12,11 +12,13 @@ router
     .post(verifyJWT,validateAppointmentInput, createAppointment)
     .get(verifyJWT, getUserAppointments);
 
+
+router.route("/options").get(getAppointmentOptions);
+
 router.route("/admin/all").get(verifyJWT, verifyAdmin, getAllAppointments);
 router.route("/:id").get(verifyJWT, getAppointmentById)
 router.route("/:id/cancel").patch(verifyJWT, cancelAppointment);
 
-router.route("/options").get(getAppointmentOptions);
 router
     .route("/:id/status")
     .patch(
