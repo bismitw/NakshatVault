@@ -14,7 +14,7 @@ function AppointmentPage() {
     const [submitting, setSubmitting] = useState(false);
     const [cancellingId, setCancellingId] = useState("");
 
-    const [formData, setFormDate] = useState({
+    const [formData, setFormData] = useState({
         expertName: "",
         expertEmail: "",
         date: "",
