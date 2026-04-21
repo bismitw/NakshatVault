@@ -13,3 +13,9 @@ async function createAppointments(payload) {
         body: JSON.stringify(payload),
     })
 }
+
+async function cancelAppointment(appointmentId) {
+    return (`/appointments/${appointmentId}/cancel`,{
+        method: "PATCH",
+    })
+}
