@@ -91,4 +91,214 @@ function AppointmentPage() {
             setCancellingId("");
         }
     }
+
+        return (
+        <main className="min-h-screen px-4 py-8 md:px-6">
+        <div className="mx-auto max-w-6xl space-y-6">
+            <div className="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-white/10 bg-slate-950/70 p-6">
+            <div>
+                <p className="text-xs uppercase tracking-[0.35em] text-amber-300">
+                Appointments
+                </p>
+                <h1 className="mt-3 text-3xl font-semibold text-stone-100">
+                Consultation Booking
+                </h1>
+                <p className="mt-2 text-sm text-stone-300">
+                Book astrology consultations and track your appointment status.
+                </p>
+            </div>
+
+            <Link
+                to="/"
+                className="rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm text-stone-100"
+            >
+                Back to Home
+            </Link>
+            </div>
+
+            <section className="rounded-3xl border border-white/10 bg-slate-950/70 p-6">
+            <h2 className="text-2xl font-semibold text-stone-100">
+                Book an Appointment
+            </h2>
+
+            <form onSubmit={handleSubmit} className="mt-6 grid gap-5 md:grid-cols-2">
+                <div>
+                <label className="mb-2 block text-sm text-stone-200">
+                    Expert Name
+                </label>
+                <input
+                    type="text"
+                    name="expertName"
+                    value={formData.expertName}
+                    onChange={handleChange}
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                    placeholder="Pandit Sharma"
+                    required
+                />
+                </div>
+
+                <div>
+                <label className="mb-2 block text-sm text-stone-200">
+                    Expert Email
+                </label>
+                <input
+                    type="email"
+                    name="expertEmail"
+                    value={formData.expertEmail}
+                    onChange={handleChange}
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                    placeholder="expert@example.com"
+                />
+                </div>
+
+                <div>
+                <label className="mb-2 block text-sm text-stone-200">Date</label>
+                <input
+                    type="date"
+                    name="date"
+                    value={formData.date}
+                    onChange={handleChange}
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                    required
+                />
+                </div>
+
+                <div>
+                <label className="mb-2 block text-sm text-stone-200">
+                    Time Slot
+                </label>
+                <input
+                    type="text"
+                    name="timeSlot"
+                    value={formData.timeSlot}
+                    onChange={handleChange}
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                    placeholder="10:00 AM - 10:30 AM"
+                    required
+                />
+                </div>
+
+                <div>
+                <label className="mb-2 block text-sm text-stone-200">
+                    Consultation Type
+                </label>
+                <select
+                    name="consultationType"
+                    value={formData.consultationType}
+                    onChange={handleChange}
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                >
+                    <option value="General">General</option>
+                    <option value="Marriage">Marriage</option>
+                    <option value="Career">Career</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Health">Health</option>
+                    <option value="Other">Other</option>
+                </select>
+                </div>
+
+                <div>
+                <label className="mb-2 block text-sm text-stone-200">Mode</label>
+                <select
+                    name="mode"
+                    value={formData.mode}
+                    onChange={handleChange}
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                >
+                    <option value="Online">Online</option>
+                    <option value="Offline">Offline</option>
+                </select>
+                </div>
+
+                <div className="md:col-span-2">
+                <button
+                    type="submit"
+                    disabled={submitting}
+                    className="w-full rounded-full bg-linear-to-r from-amber-300 via-yellow-200 to-amber-500 px-5 py-3 text-sm font-semibold text-slate-950 disabled:opacity-60"
+                >
+                    {submitting ? "Booking..." : "Book Appointment"}
+                </button>
+                </div>
+            </form>
+            </section>
+
+            <section className="rounded-3xl border border-white/10 bg-slate-950/70 p-6">
+            <h2 className="text-2xl font-semibold text-stone-100">
+                My Appointments
+            </h2>
+
+            {loading ? (
+                <p className="mt-4 text-sm text-stone-300">
+                Loading appointments...
+                </p>
+            ) : appointments.length === 0 ? (
+                <p className="mt-4 text-sm text-stone-300">
+                No appointments found yet.
+                </p>
+            ) : (
+                <div className="mt-6 grid gap-4">
+                {appointments.map((appointment) => (
+                    <article
+                    key={appointment._id}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-5"
+                    >
+                    <div className="flex flex-wrap items-start justify-between gap-4">
+                        <div>
+                        <h3 className="text-xl font-semibold text-stone-100">
+                            {appointment.expertName}
+                        </h3>
+                        <p className="mt-2 text-sm text-stone-300">
+                            {appointment.consultationType} consultation via{" "}
+                            {appointment.mode}
+                        </p>
+                        </div>
+
+                        <div className="rounded-full border border-amber-200/15 bg-amber-300/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-amber-300">
+                        {appointment.status}
+                        </div>
+                    </div>
+
+                    <div className="mt-4 grid gap-3 text-sm text-stone-200 md:grid-cols-4">
+                        <div>
+                        <span className="text-stone-400">Date:</span>{" "}
+                        {appointment.date
+                            ? new Date(appointment.date).toLocaleDateString()
+                            : "-"}
+                        </div>
+                        <div>
+                        <span className="text-stone-400">Time:</span>{" "}
+                        {appointment.timeSlot || "-"}
+                        </div>
+                        <div>
+                        <span className="text-stone-400">Mode:</span>{" "}
+                        {appointment.mode || "-"}
+                        </div>
+                        <div>
+                        <span className="text-stone-400">Type:</span>{" "}
+                        {appointment.consultationType || "-"}
+                        </div>
+                    </div>
+
+                    {appointment.status !== "Cancelled" ? (
+                        <div className="mt-5">
+                        <button
+                            type="button"
+                            onClick={() => handleCancel(appointment._id)}
+                            disabled={cancellingId === appointment._id}
+                            className="rounded-full border border-red-400/25 bg-red-500/10 px-4 py-2 text-sm text-red-200 disabled:opacity-60"
+                        >
+                            {cancellingId === appointment._id
+                            ? "Cancelling..."
+                            : "Cancel Appointment"}
+                        </button>
+                        </div>
+                    ) : null}
+                    </article>
+                ))}
+                </div>
+            )}
+            </section>
+        </div>
+        </main>
+    );
 }
