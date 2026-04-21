@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import {Link} from "react-router-dom";
 import toast from "react-hot-toast";
 import {
@@ -6,3 +6,11 @@ import {
     cancelAppointment,
     createAppointment,
 } from "../services/appointments.js";
+
+
+function AppointmentPage() {
+    const [appointments, setAppointments] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [submitting, setSubmitting] = useState(false);
+    const [cancellingId, setCancellingId] = useState("");
+}
