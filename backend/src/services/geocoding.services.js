@@ -27,6 +27,14 @@ const getLocationDataFromPlace = async (placeOfBirth) => {
         if(!latitude || !longitude || !timeZoneOffset){
                 throw new ApiError(400, "Incomplete location data returned from geocoding service");
         }
+
+        return {
+            latitude: String(latitude),
+            longitude: String(longitude),
+            timezone: timezoneOffset,
+            formattedAddress: result.formatted || placeOfBirth,
+            raw: result,
+        };
     } catch (error) {
         
     }
