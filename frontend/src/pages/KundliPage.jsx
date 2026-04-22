@@ -14,9 +14,6 @@ function KundliPage() {
         dateOfBirth: "",
         timeOfBirth: "",
         placeOfBirth: "",
-        latitude: "",
-        longitude: "",
-        timezone: "Asia/Kolkata",
     });
 
     useEffect(() => {
@@ -47,13 +44,7 @@ function KundliPage() {
     setSubmitting(true);
 
     try {
-        const payload = {
-        ...formData,
-        latitude: Number(formData.latitude),
-        longitude: Number(formData.longitude),
-    };
-
-    const response = await generateKundli(payload);
+    const response = await generateKundli(formData);
     setKundlis((current) => [response.data, ...current]);
 
     setFormData({
@@ -62,9 +53,6 @@ function KundliPage() {
         dateOfBirth: "",
         timeOfBirth: "",
         placeOfBirth: "",
-        latitude: "",
-        longitude: "",
-        timezone: "Asia/Kolkata",
     });
 
     toast.success("Kundli generated successfully");
@@ -104,8 +92,7 @@ return (
             Kundli Generation Form
             </h2>
             <p className="mt-2 text-sm text-stone-300">
-            Enter accurate birth and location details to generate a kundli from
-            the backend astrology provider.
+            Enter accurate birth details to generate a kundli.
             </p>
 
             <form
@@ -164,53 +151,6 @@ return (
                 onChange={handleChange}
                 className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
                 placeholder="City, State, Country"
-                required
-                />
-            </div>
-
-            <div>
-                <label className="mb-2 block text-sm text-stone-200">
-                Latitude
-                </label>
-                <input
-                type="number"
-                step="any"
-                name="latitude"
-                value={formData.latitude}
-                onChange={handleChange}
-                className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
-                placeholder="27.7172"
-                required
-                />
-            </div>
-
-            <div>
-                <label className="mb-2 block text-sm text-stone-200">
-                Longitude
-                </label>
-                <input
-                type="number"
-                step="any"
-                name="longitude"
-                value={formData.longitude}
-                onChange={handleChange}
-                className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
-                placeholder="85.3240"
-                required
-                />
-            </div>
-
-            <div className="md:col-span-2">
-                <label className="mb-2 block text-sm text-stone-200">
-                Timezone
-                </label>
-                <input
-                type="text"
-                name="timezone"
-                value={formData.timezone}
-                onChange={handleChange}
-                className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
-                placeholder="Asia/Kolkata"
                 required
                 />
             </div>
