@@ -8,10 +8,13 @@ function AdminDashboardPage() {
 
 
     const handleLogout = async () => {
+        const confirmed = window.confirm("Are you sure you want to logout?");
+        if (!confirmed) return;
+
         try {
             await logout();
             toast.success("Logged out successfully");
-            navigate("/");
+            navigate("/login");
         } catch (error) {
             toast.error(error.message || "Logout failed");
         }
