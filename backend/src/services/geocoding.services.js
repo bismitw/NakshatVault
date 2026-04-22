@@ -31,7 +31,7 @@ const getLocationDataFromPlace = async (placeOfBirth) => {
         return {
             latitude: String(latitude),
             longitude: String(longitude),
-            timezone: timezoneOffset,
+            timezone: timeZoneOffset,
             formattedAddress: result.formatted || placeOfBirth,
             raw: result,
         };
