@@ -7,6 +7,8 @@ import { useAuth } from "../context/AuthContext.jsx";
         const navigate = useNavigate();
 
         const handleLogout = async () => { 
+            const confirmed = window.confirm("Are you sure you want to logout?");
+            if (!confirmed) return;
             try {
                 await logout();
                 toast.success("Logged out successfully");
