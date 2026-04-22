@@ -1,4 +1,5 @@
 import {Link, useNavigate} from "react-router-dom";
+import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext.jsx";
 
 function DashboardPage() { 
@@ -6,8 +7,16 @@ function DashboardPage() {
     const navigate = useNavigate();
 
     const handleLogout = async () => {
-        await logout();
-        navigate("/login")
+        const confirmed = window.confirm("Are you sure you want to logout?");
+        if (!confirmed) return;
+
+        try {
+            await logout();
+            toast.success("Logged out successfully");
+            navigate("/login");
+        } catch (error) {
+            toast.error(error.message || "Failed to logout");
+        }
     }
 
 
