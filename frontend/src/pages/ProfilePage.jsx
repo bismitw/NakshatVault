@@ -138,10 +138,10 @@ function ProfilePage(){
             </div>
 
             <Link
-                to="/dashboard"
+                to="/"
                 className="rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm text-stone-100"
             >
-                Back to Dashboard
+                Back to Home
             </Link>
             </div>
 
