@@ -1,27 +1,30 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {Link} from "react-router-dom";
 import toast from "react-hot-toast";
 import {
     getAppointments,
     cancelAppointment,
     createAppointment,
+    getAppointmentOptions,
 } from "../services/appointments.js";
 
 
 function AppointmentPage() {
     const [appointments, setAppointments] = useState([]);
+    const [timeSlots, setTimeSlots] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [optionsLoading, setOptionsLoading] = useState(true);
     const [submitting, setSubmitting] = useState(false);
     const [cancellingId, setCancellingId] = useState("");
 
     const [formData, setFormData] = useState({
-        expertName: "",
-        expertEmail: "",
         date: "",
         timeSlot: "",
         consultationType: "General",
         mode: "Online",
     })
+
+    const todayInputValue = new Date().toLocaleDateString("en-CA");
 
     useEffect(() => {
         const loadAppointments = async () => {
@@ -36,6 +39,21 @@ function AppointmentPage() {
         };
 
         loadAppointments();
+    }, []);
+
+    useEffect(() => {
+        const loadAppointmentOptions = async () => {
+            try {
+                const response = await getAppointmentOptions();
+                setTimeSlots(response.data?.timeSlots || []);
+            } catch (error) {
+                toast.error(error.message || "Failed to load appointment options");
+            } finally {
+                setOptionsLoading(false);
+            }
+        };
+
+        loadAppointmentOptions();
     }, []);
 
 
@@ -58,8 +76,6 @@ function AppointmentPage() {
                 ...current
             ])
             setFormData({
-                expertName: "",
-                expertEmail: "",
                 date: "",
                 timeSlot: "",
                 consultationType: "General",
@@ -80,10 +96,11 @@ function AppointmentPage() {
 
         try {
             const response = await cancelAppointment(appointmentId);
-            setAppointments((current) => 
-            current.map((appointment) => appointment.id === appointmentId? response.data : appointment,
-        )
-        )
+            setAppointments((current) =>
+                current.map((appointment) =>
+                    appointment._id === appointmentId ? response.data : appointment,
+                ),
+            );
         toast.success("Appointment cancelled successfully");
         } catch (error) {
             toast.error(error.message || "Failed to cancel appointment");
@@ -123,35 +140,6 @@ function AppointmentPage() {
 
             <form onSubmit={handleSubmit} className="mt-6 grid gap-5 md:grid-cols-2">
                 <div>
-                <label className="mb-2 block text-sm text-stone-200">
-                    Expert Name
-                </label>
-                <input
-                    type="text"
-                    name="expertName"
-                    value={formData.expertName}
-                    onChange={handleChange}
-                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
-                    placeholder="Pandit Sharma"
-                    required
-                />
-                </div>
-
-                <div>
-                <label className="mb-2 block text-sm text-stone-200">
-                    Expert Email
-                </label>
-                <input
-                    type="email"
-                    name="expertEmail"
-                    value={formData.expertEmail}
-                    onChange={handleChange}
-                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
-                    placeholder="expert@example.com"
-                />
-                </div>
-
-                <div>
                 <label className="mb-2 block text-sm text-stone-200">Date</label>
                 <input
                     type="date"
@@ -159,6 +147,7 @@ function AppointmentPage() {
                     value={formData.date}
                     onChange={handleChange}
                     className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                    min={todayInputValue}
                     required
                 />
                 </div>
@@ -167,15 +156,23 @@ function AppointmentPage() {
                 <label className="mb-2 block text-sm text-stone-200">
                     Time Slot
                 </label>
-                <input
-                    type="text"
+                <select
                     name="timeSlot"
                     value={formData.timeSlot}
                     onChange={handleChange}
                     className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
-                    placeholder="10:00 AM - 10:30 AM"
                     required
-                />
+                    disabled={optionsLoading}
+                >
+                    <option value="">
+                        {optionsLoading ? "Loading time slots..." : "Select a time slot"}
+                    </option>
+                    {timeSlots.map((slot) => (
+                        <option key={slot} value={slot}>
+                            {slot}
+                        </option>
+                    ))}
+                </select>
                 </div>
 
                 <div>
@@ -187,6 +184,7 @@ function AppointmentPage() {
                     value={formData.consultationType}
                     onChange={handleChange}
                     className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                    required
                 >
                     <option value="General">General</option>
                     <option value="Marriage">Marriage</option>
