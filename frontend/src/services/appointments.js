@@ -7,6 +7,12 @@ async function getAppointments() {
     });
 }
 
+async function getAppointmentOptions() {
+    return apiRequest("/appointments/options", {
+        method: "GET",
+    });
+}
+
 async function createAppointment(payload) {
     return apiRequest("/appointments", {
         method: "POST",
@@ -20,4 +26,4 @@ async function cancelAppointment(appointmentId) {
     })
 }
 
-export {getAppointments, createAppointment, cancelAppointment}
+export {getAppointments, getAppointmentOptions, createAppointment, cancelAppointment}
