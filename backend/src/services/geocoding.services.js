@@ -13,6 +13,20 @@ const getLocationDataFromPlace = async (placeOfBirth) => {
             },
         });
 
+        const result = response.data?.results?.[0];
+
+        if(!result) {
+            throw new ApiError(404, "Unable to resolve place of Birth");
+        }
+
+        const latitude = result.lat;
+        const longitude = result.lon;
+
+        const timeZoneOffset = result.timezone?.offset_STD || result.timezone?.offset_DST;
+
+        if(!latitude || !longitude || !timeZoneOffset){
+                throw new ApiError(400, "Incomplete location data returned from geocoding service");
+        }
     } catch (error) {
         
     }
