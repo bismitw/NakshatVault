@@ -17,6 +17,18 @@ const validateAppointmentInput = (req, res, next) => {
         );
     }
 
+    const selectedDate = new Date(`${date}T00:00:00`);
+    if (Number.isNaN(selectedDate.getTime())) {
+        return next(new ApiError(400, "Invalid appointment date"));
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (selectedDate < today) {
+        return next(new ApiError(400, "Appointment date cannot be in the past"));
+    }
+
     const trimmedTimeSlot = timeSlot.trim();
 
     if (!APPOINTMENT_TIME_SLOTS.includes(trimmedTimeSlot)) {
