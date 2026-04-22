@@ -36,6 +36,13 @@ const getLocationDataFromPlace = async (placeOfBirth) => {
             raw: result,
         };
     } catch (error) {
-        
+
+        if(error instanceof ApiError){
+            throw error
+        }
+
+        throw new ApiError(500, "Failed to geocode place of birth");
     }
 }
+
+export {getLocationDataFromPlace}
