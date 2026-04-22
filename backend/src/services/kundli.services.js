@@ -2,6 +2,7 @@ import {Kundli} from "../models/kundli.models.js"
 import {User} from "../models/user.models.js"
 import { ApiError } from "../utils/apiError.utils.js"
 import { fetchKundliDataFromProkerala } from "./astrology.services.js"
+import { getLocationDataFromPlace } from "./geocoding.services.js"
 
 const createKundliService = async ( userId, kundliData ) => {
     if(!userId){
