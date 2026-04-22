@@ -145,22 +145,20 @@ const generateKundliService = async(userId, kundliInput) => {
         throw new ApiError(400, "User id is required")
     }
 
-    const {title, description, dateOfBirth, timeOfBirth, placeOfBirth, latitude, longitude, timezone} = kundliInput
+    const {title, description, dateOfBirth, timeOfBirth, placeOfBirth} = kundliInput
 
     if(!dateOfBirth || !placeOfBirth || !timeOfBirth){
         throw new ApiError(400, "Date of birth, time of birth, and place of birth are required");
     }
 
-    if(!latitude || !longitude ||!timezone){
-        throw new ApiError(400, "Latitude, longitude, and timezone are required for kundli generation")
-    }
+    const locationData = await getLocationDataFromPlace(placeOfBirth);
 
     const providerResponse = await fetchKundliDataFromProkerala({
         dateOfBirth,
         timeOfBirth,
-        latitude,
-        longitude,
-        timezone,
+        latitude: locationData.latitude,
+        longitude: locationData.longitude,
+        timezone: locationData.timezone,
     });
 
     const generatedProfile = providerResponse?.data || {};
@@ -171,7 +169,7 @@ const generateKundliService = async(userId, kundliInput) => {
         description: description?.trim() || "Generated using Prokerala API",
         dateOfBirth,
         timeOfBirth: timeOfBirth.trim(),
-        placeOfBirth: placeOfBirth.trim(),
+        placeOfBirth: locationData.formattedAddress || placeOfBirth.trim(),
         provider: "Prokerala",
         nakshatraName: generatedProfile?.nakshatra?.name || null,
         nakshatraLord: generatedProfile?.nakshatra?.lord?.name || null,
