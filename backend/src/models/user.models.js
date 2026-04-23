@@ -27,11 +27,6 @@ const userSchema = new Schema(
             required: true,
             select: false, //never send password in response
         },
-        avatar: {
-            type: String, //URL or path to image
-            default: null,
-        }, 
-
         //Astro Details
         dateofBirth: {
             type: Date,
