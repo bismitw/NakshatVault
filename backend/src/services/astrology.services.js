@@ -2,6 +2,43 @@ import axios from "axios"
 import { astrologyApi } from "../config/astrology.js"
 import { ApiError } from "../utils/apiError.utils.js"
 
+const normalizeDate = (dateOfBirth) => {
+    if (dateOfBirth instanceof Date) {
+        return dateOfBirth.toISOString().slice(0, 10);
+    }
+
+    return String(dateOfBirth).slice(0, 10);
+};
+
+const normalizeTime = (timeOfBirth) => {
+    const value = String(timeOfBirth).trim();
+
+    const twentyFourHourMatch = value.match(/^([01]?\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$/);
+    if (twentyFourHourMatch) {
+        const hours = String(Number(twentyFourHourMatch[1])).padStart(2, "0");
+        const minutes = twentyFourHourMatch[2];
+        const seconds = twentyFourHourMatch[3] || ":00";
+        return `${hours}:${minutes}${seconds}`;
+    }
+
+    const amPmMatch = value.match(/^(\d{1,2}):([0-5]\d)\s*(AM|PM)$/i);
+    if (!amPmMatch) {
+        return value;
+    }
+
+    let hours = Number(amPmMatch[1]);
+    const minutes = amPmMatch[2];
+    const meridiem = amPmMatch[3].toUpperCase();
+
+    if (meridiem === "AM") {
+        hours = hours === 12 ? 0 : hours;
+    } else if (hours !== 12) {
+        hours += 12;
+    }
+
+    return `${String(hours).padStart(2, "0")}:${minutes}:00`;
+};
+
 
 const getProkeralaAccessToken = async () => {
     try {
@@ -36,13 +73,16 @@ const fetchKundliDataFromProkerala = async ({
 }) => {
     try {
         const accessToken = await getProkeralaAccessToken();
+        const normalizedDateOfBirth = normalizeDate(dateOfBirth);
+        const normalizedTimeOfBirth = normalizeTime(timeOfBirth);
+        const datetime = `${normalizedDateOfBirth}T${normalizedTimeOfBirth}${timezone}`;
 
         const response = await astrologyApi.get("/astrology/birth-details",{
             headers:{
                 Authorization: `Bearer ${accessToken}`,
             },
             params: {
-                datetime: `${dateOfBirth}T${timeOfBirth}${timezone}`,
+                datetime,
                 coordinates: `${latitude},${longitude}`,
                 ayanamsa: 1,
             }
