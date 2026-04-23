@@ -1,5 +1,7 @@
 import { ApiError } from "../utils/apiError.utils.js";
 
+const timeRegex = /^([01]?\d|2[0-3]):[0-5]\d(:[0-5]\d)?$/;
+
 const validateKundliInput = (req,res,next) => {
     const {title, description, dateOfBirth, timeOfBirth, placeOfBirth} = req.body
 
@@ -22,6 +24,10 @@ if(!dateOfBirth || !timeOfBirth || !placeOfBirth){
 
     if (!placeOfBirth.trim()) {
         return next(new ApiError(400, "Place of birth cannot be empty"));
+    }
+
+    if (!timeRegex.test(timeOfBirth.trim())) {
+        return next(new ApiError(400, "Time of birth must be in HH:MM format"));
     }
 
     if (title !== undefined) {
@@ -65,9 +71,13 @@ if (!timeOfBirth.trim()) {
     return next(new ApiError(400, "Time of birth cannot be empty"));
 }
 
-if (!placeOfBirth.trim()) {
-    return next(new ApiError(400, "Place of birth cannot be empty"));
-}
+    if (!placeOfBirth.trim()) {
+        return next(new ApiError(400, "Place of birth cannot be empty"));
+    }
+
+    if (!timeRegex.test(timeOfBirth.trim())) {
+        return next(new ApiError(400, "Time of birth must be in HH:MM format"));
+    }
 
 if (title !== undefined) {
     req.body.title = title.trim();
