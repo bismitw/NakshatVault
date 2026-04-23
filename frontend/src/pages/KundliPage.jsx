@@ -130,15 +130,15 @@ return (
                 Time of Birth
                 </label>
                 <input
-                type="text"
+                type="time"
                 name="timeOfBirth"
                 value={formData.timeOfBirth}
                 onChange={handleChange}
+                step="900"
                 className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
-                placeholder="06:45 AM"
                 required
                 />
-            </div>
+                </div>
 
             <div>
                 <label className="mb-2 block text-sm text-stone-200">
