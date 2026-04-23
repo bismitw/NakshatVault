@@ -6,7 +6,7 @@ const updateUserProfileService = async (userId, updateData) => {
         throw new ApiError(400, "User id is required")
     }
 
-    const allowedFields = ["fullName", "phone", "avatar"];
+    const allowedFields = ["fullName", "email", "phone"];
     const filteredData = {};
 
     for(const field of allowedFields) {
@@ -14,6 +14,19 @@ const updateUserProfileService = async (userId, updateData) => {
             filteredData[field] = typeof updateData[field] === "string"
             ? updateData[field].trim()
             : updateData[field];
+        }
+    }
+
+    if (filteredData.email) {
+        filteredData.email = filteredData.email.toLowerCase();
+
+        const existingUser = await User.findOne({
+            email: filteredData.email,
+            _id: { $ne: userId },
+        });
+
+        if (existingUser) {
+            throw new ApiError(409, "User with this email already exists");
         }
     }
 
