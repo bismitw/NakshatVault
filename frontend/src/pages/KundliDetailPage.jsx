@@ -6,6 +6,7 @@ import {
     getKundliById,
     updateKundli,
 } from "../services/kundli.js";
+import { normalizeTimeInputValue } from "../utils/time.js";
 
 function KundliDetailPage() {
     const {id} = useParams();
@@ -16,7 +17,7 @@ function KundliDetailPage() {
     const [saving, setSaving] = useState(false);
     const [deleting, setDeleting] = useState(false);
 
-    const [formData, setFormDate] = useState({
+    const [formData, setFormData] = useState({
         title: "",
         description: "",
         dateOfBirth: "",
@@ -35,11 +36,11 @@ function KundliDetailPage() {
                 title: record.title || "",
                 description: record.description || "",
                 dateOfBirth: record.dateOfBirth? new Date(record.dateOfBirth).toISOString().split("T")[0] : "",
-                timeOfBirth: record.timeOfBirth || "",
+                timeOfBirth: normalizeTimeInputValue(record.timeOfBirth),
                 placeOfBirth: record.placeOfBirth || "",
             });
         } catch (error) {
-            toast.error("failed to Load kundli details" || error.message);
+            toast.error("Failed to Load kundli details" || error.message);
         }finally{
             setLoading(false);
         }
@@ -56,7 +57,7 @@ function KundliDetailPage() {
         }))
     }
 
-    const handleUpdate = async () => {
+    const handleUpdate = async (event) => {
         event.preventDefault();
         setSaving(true);
 
@@ -72,7 +73,7 @@ function KundliDetailPage() {
     }
 
     const handleDelete = async () => {
-        const confirmed = Window.confirm("Are you sure you want to delete this kundli?");
+        const confirmed = window.confirm("Are you sure you want to delete this kundli?");
         if(!confirmed){
             return;
         }
@@ -81,10 +82,10 @@ function KundliDetailPage() {
 
         try {
             await deleteKundli(id);
-            toast.success("kundli deleted Successfully");
+            toast.success("Kundli deleted successfully");
             navigate("/kundli");
         } catch (error) {
-            toast.error("Failed to delete kundli" || error.message);
+            toast.error(error.message || "Failed to delete kundli");
         }finally{
             setDeleting(false);
         }
@@ -169,10 +170,11 @@ return (
                     Time of Birth
                 </label>
                 <input
-                    type="text"
+                    type="time"
                     name="timeOfBirth"
                     value={formData.timeOfBirth}
                     onChange={handleChange}
+                    step="900"
                     className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
                 />
                 </div>
