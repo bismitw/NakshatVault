@@ -22,6 +22,7 @@ async function generateKundli(payload) {
 async function updateKundli(kundliId, payload) {
     return apiRequest(`/kundli/${kundliId}`, {
         method: "PATCH",
+        body: JSON.stringify(payload),
     })
 }
 
