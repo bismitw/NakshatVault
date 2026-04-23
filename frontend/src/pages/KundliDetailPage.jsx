@@ -85,7 +85,7 @@ function KundliDetailPage() {
             toast.success("Kundli deleted successfully");
             navigate("/kundli");
         } catch (error) {
-            toast.error(error.message || "Failed to delete kundli");
+            toast.error("Failed to delete kundli" || error.message);
         }finally{
             setDeleting(false);
         }
