@@ -7,6 +7,7 @@ import {
     updateUserProfile,
 } from "../services/user.js";
 import { useAuth } from "../context/AuthContext.jsx";
+import { normalizeTimeInputValue } from "../utils/time.js";
 
 
 function ProfilePage(){
@@ -14,8 +15,8 @@ function ProfilePage(){
 
     const [profileForm, setProfileForm] = useState({
         fullName: "",
+        email: "",
         phone: "",
-        avatar: "",
     });
 
     const [birthForm, setBirthForm] = useState({
@@ -41,12 +42,12 @@ function ProfilePage(){
                 setUser(profile);
                 setProfileForm({
                     fullName: profile.fullName || "",
+                    email: profile.email || "",
                     phone: profile.phone || "",
-                    avatar: profile.avatar || "",
                 });
                 setBirthForm({
                     dateofBirth: profile.dateofBirth? new Date(profile.dateofBirth).toISOString().split("T")[0]: "",
-                    timeofBirth: profile.timeofBirth || "",
+                    timeofBirth: normalizeTimeInputValue(profile.timeofBirth),
                     placeofBirth: profile.placeofBirth || "",
                 });
 
@@ -151,7 +152,7 @@ function ProfilePage(){
                 Personal Profile
                 </h2>
                 <p className="mt-2 text-sm text-stone-300">
-                Update your name, phone number, and avatar URL.
+                Update your name, email address, and phone number.
                 </p>
 
                 <form onSubmit={handleProfileSubmit} className="mt-6 space-y-5">
@@ -166,6 +167,22 @@ function ProfilePage(){
                     onChange={handleProfileChange}
                     className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
                     placeholder="Your full name"
+                    required
+                    />
+                </div>
+
+                <div>
+                    <label className="mb-2 block text-sm text-stone-200">
+                    Email
+                    </label>
+                    <input
+                    type="email"
+                    name="email"
+                    value={profileForm.email}
+                    onChange={handleProfileChange}
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                    placeholder="you@example.com"
+                    required
                     />
                 </div>
 
@@ -180,20 +197,6 @@ function ProfilePage(){
                     onChange={handleProfileChange}
                     className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
                     placeholder="Phone number"
-                    />
-                </div>
-
-                <div>
-                    <label className="mb-2 block text-sm text-stone-200">
-                    Avatar URL
-                    </label>
-                    <input
-                    type="text"
-                    name="avatar"
-                    value={profileForm.avatar}
-                    onChange={handleProfileChange}
-                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
-                    placeholder="https://example.com/avatar.jpg"
                     />
                 </div>
 
@@ -242,12 +245,12 @@ function ProfilePage(){
                     Time of Birth
                     </label>
                     <input
-                    type="text"
+                    type="time"
                     name="timeofBirth"
                     value={birthForm.timeofBirth}
                     onChange={handleBirthChange}
+                    step="900"
                     className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
-                    placeholder="e.g. 06:45 AM"
                     />
                 </div>
 
