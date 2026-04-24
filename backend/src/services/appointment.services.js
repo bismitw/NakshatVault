@@ -133,7 +133,10 @@ const updateAppointmentStatusService = async (appointmentId, status) => {
         throw new ApiError(404, "Appointment not found");
     }
 
-    return appointment;
+    const populatedAppointment = await Appointment.findById(appointmentId)
+        .populate("userId", "fullName email role");
+
+    return populatedAppointment || appointment;
 };
 
 const markAppointmentEmailSentService = async (appointmentId, field) => {
