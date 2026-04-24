@@ -160,7 +160,7 @@ function AppointmentPage() {
                     name="timeSlot"
                     value={formData.timeSlot}
                     onChange={handleChange}
-                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                    className="w-full rounded-2xl border border-white/10 bg-slate-900/90 px-4 py-3 text-stone-100 outline-none [scheme:dark]"
                     required
                     disabled={optionsLoading}
                 >
@@ -183,7 +183,7 @@ function AppointmentPage() {
                     name="consultationType"
                     value={formData.consultationType}
                     onChange={handleChange}
-                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                    className="w-full rounded-2xl border border-white/10 bg-slate-900/90 px-4 py-3 text-stone-100 outline-none [scheme:dark]"
                     required
                 >
                     <option value="General">General</option>
@@ -201,7 +201,7 @@ function AppointmentPage() {
                     name="mode"
                     value={formData.mode}
                     onChange={handleChange}
-                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                    className="w-full rounded-2xl border border-white/10 bg-slate-900/90 px-4 py-3 text-stone-100 outline-none [scheme:dark]"
                 >
                     <option value="Online">Online</option>
                     <option value="Offline">Offline</option>
