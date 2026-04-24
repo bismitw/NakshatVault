@@ -66,7 +66,9 @@ function AdminDashboardPage() {
             const response = await updateAppointmentStatus(appointmentId, status);
             setAppointments((current) =>
                 current.map((appointment) =>
-                    appointment._id === appointmentId ? response.data : appointment,
+                    appointment._id === appointmentId
+                        ? { ...appointment, ...response.data }
+                        : appointment,
                 ),
             );
             toast.success("Appointment status updated");
