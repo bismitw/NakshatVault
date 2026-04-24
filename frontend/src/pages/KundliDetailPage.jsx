@@ -40,7 +40,7 @@ function KundliDetailPage() {
                 placeOfBirth: record.placeOfBirth || "",
             });
         } catch (error) {
-            toast.error("Failed to Load kundli details" || error.message);
+            toast.error(error.message || "Failed to load kundli details");
         }finally{
             setLoading(false);
         }
@@ -66,7 +66,7 @@ function KundliDetailPage() {
             setKundli(response.data);
             toast.success("Kundli updated successfully");
         } catch (error) {
-            toast.error("Failed to update kundli" || error.message);
+            toast.error(error.message || "Failed to update kundli");
         }finally{
             setSaving(false);
         }
@@ -85,7 +85,7 @@ function KundliDetailPage() {
             toast.success("Kundli deleted successfully");
             navigate("/kundli");
         } catch (error) {
-            toast.error("Failed to delete kundli" || error.message);
+            toast.error(error.message || "Failed to delete kundli");
         }finally{
             setDeleting(false);
         }
@@ -162,6 +162,7 @@ return (
                     value={formData.dateOfBirth}
                     onChange={handleChange}
                     className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
+                    max={new Date().toISOString().split("T")[0]}
                 />
                 </div>
 
