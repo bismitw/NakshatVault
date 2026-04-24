@@ -1,7 +1,7 @@
 import { ApiError } from "../utils/apiError.utils.js";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phoneRegex = /^[0-9+\-() ]{7,20}$/;
+const phoneRegex = /^\+?[0-9\s\-()]{7,20}$/;
 const timeRegex = /^([01]?\d|2[0-3]):[0-5]\d(:[0-5]\d)?$/;
 
 const isFutureDate = (dateValue) => {
@@ -37,7 +37,13 @@ const validateUserProfileInput = (req, res, next) => {
         return next(new ApiError(400, "Invalid email format"));
     }
 
-    if (trimmedPhone !== undefined && trimmedPhone && !phoneRegex.test(trimmedPhone)) {
+    const digitsOnlyPhone = trimmedPhone?.replace(/\D/g, "") || "";
+
+    if (
+        trimmedPhone !== undefined &&
+        trimmedPhone &&
+        (!phoneRegex.test(trimmedPhone) || digitsOnlyPhone.length < 7 || digitsOnlyPhone.length > 15)
+    ) {
         return next(new ApiError(400, "Invalid phone number"));
     }
 
