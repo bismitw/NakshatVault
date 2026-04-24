@@ -277,7 +277,7 @@ function AppointmentPage() {
                         </div>
                     </div>
 
-                    {appointment.status !== "Cancelled" && "Approved" ? (
+                    {appointment.status !== "Cancelled" && appointment.status !== "Approved" ? (
                         <div className="mt-5">
                         <button
                             type="button"
