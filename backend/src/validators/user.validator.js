@@ -4,6 +4,20 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRegex = /^[0-9+\-() ]{7,20}$/;
 const timeRegex = /^([01]?\d|2[0-3]):[0-5]\d(:[0-5]\d)?$/;
 
+const isFutureDate = (dateValue) => {
+    const parsedDate = new Date(dateValue);
+
+    if (Number.isNaN(parsedDate.getTime())) {
+        return false;
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    parsedDate.setHours(0, 0, 0, 0);
+
+    return parsedDate > today;
+};
+
 const validateUserProfileInput = (req, res, next) => {
     const { fullName, email, phone } = req.body;
 
@@ -53,6 +67,10 @@ const validateBirthDetailsInput = (req, res, next) => {
 
     if (Number.isNaN(parsedDate.getTime())) {
         return next(new ApiError(400, "Date of birth must be a valid date"));
+    }
+
+    if (isFutureDate(parsedDate)) {
+        return next(new ApiError(400, "Date of birth cannot be in the future"));
     }
 
     if (!timeofBirth.trim()) {
