@@ -170,7 +170,9 @@ const markAppointmentEmailSentService = async (appointmentId, field) => {
 
 
 const getAllAppointmentsService = async () => {
-    const appointments = await Appointment.find().sort({createdAt: -1});
+    const appointments = await Appointment.find()
+        .populate("userId", "fullName email role")
+        .sort({createdAt: -1});
     
     return appointments;
 }
