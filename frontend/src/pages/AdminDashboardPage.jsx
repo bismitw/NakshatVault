@@ -208,7 +208,7 @@ function AdminDashboardPage() {
                                             onChange={(event) =>
                                                 handleStatusChange(appointment._id, event.target.value)
                                             }
-                                            className="rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3 text-stone-100 outline-none"
+                                            className="rounded-2xl border border-white/10 bg-slate-900/90 px-4 py-3 text-stone-100 outline-none [scheme:dark]"
                                         >
                                             {STATUS_OPTIONS.map((status) => (
                                                 <option key={status} value={status}>
