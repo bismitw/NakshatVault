@@ -7,6 +7,12 @@ async function getAppointments() {
     });
 }
 
+async function getAllAppointments() {
+    return apiRequest("/appointments/admin/all", {
+        method: "GET",
+    });
+}
+
 async function getAppointmentOptions() {
     return apiRequest("/appointments/options", {
         method: "GET",
@@ -26,4 +32,11 @@ async function cancelAppointment(appointmentId) {
     })
 }
 
-export {getAppointments, getAppointmentOptions, createAppointment, cancelAppointment}
+async function updateAppointmentStatus(appointmentId, status) {
+    return apiRequest(`/appointments/${appointmentId}/status`, {
+        method: "PATCH",
+        body: JSON.stringify({ status }),
+    });
+}
+
+export {getAppointments, getAllAppointments, getAppointmentOptions, createAppointment, cancelAppointment, updateAppointmentStatus}
