@@ -20,4 +20,10 @@ async function updateBirthDetails(payload) {
     })
 }
 
-export { getUserProfile, updateUserProfile, updateBirthDetails };
+async function getAllUsers() {
+    return apiRequest("/users/admin/all", {
+        method: "GET",
+    });
+}
+
+export { getUserProfile, updateUserProfile, updateBirthDetails, getAllUsers };
