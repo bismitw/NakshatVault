@@ -290,40 +290,53 @@ function ProfilePage(){
 
             <section className="rounded-3xl border border-white/10 bg-slate-950/70 p-6">
             <h2 className="text-2xl font-semibold text-stone-100">
-                Current Account Snapshot
+                Profile Snapshot
             </h2>
+            <p className="mt-2 text-sm text-stone-300">
+                A quick view of your personal and birth details.
+            </p>
 
-            <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p className="text-xs uppercase tracking-[0.28em] text-stone-400">
-                    Email
+            <div className="mt-5 grid gap-4 lg:grid-cols-2">
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <p className="text-xs uppercase tracking-[0.28em] text-amber-300">
+                    Personal Profile
                 </p>
-                <p className="mt-2 text-sm text-stone-100">{user?.email || "-"}</p>
+                <div className="mt-4 space-y-3 text-sm text-stone-100">
+                    <div>
+                    <span className="text-stone-400">Full Name:</span>{" "}
+                    {user?.fullName || "-"}
+                    </div>
+                    <div>
+                    <span className="text-stone-400">Email:</span>{" "}
+                    {user?.email || "-"}
+                    </div>
+                    <div>
+                    <span className="text-stone-400">Phone:</span>{" "}
+                    {user?.phone || "-"}
+                    </div>
+                </div>
                 </div>
 
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p className="text-xs uppercase tracking-[0.28em] text-stone-400">
-                    Role
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <p className="text-xs uppercase tracking-[0.28em] text-amber-300">
+                    Birth Details
                 </p>
-                <p className="mt-2 text-sm text-stone-100">{user?.role || "-"}</p>
+                <div className="mt-4 space-y-3 text-sm text-stone-100">
+                    <div>
+                    <span className="text-stone-400">Date of Birth:</span>{" "}
+                    {user?.dateofBirth
+                        ? new Date(user.dateofBirth).toLocaleDateString()
+                        : "-"}
+                    </div>
+                    <div>
+                    <span className="text-stone-400">Time of Birth:</span>{" "}
+                    {normalizeTimeInputValue(user?.timeofBirth) || "-"}
+                    </div>
+                    <div>
+                    <span className="text-stone-400">Place of Birth:</span>{" "}
+                    {user?.placeofBirth || "-"}
+                    </div>
                 </div>
-
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p className="text-xs uppercase tracking-[0.28em] text-stone-400">
-                    Zodiac Sign
-                </p>
-                <p className="mt-2 text-sm text-stone-100">
-                    {user?.zodiacSign || "Not set"}
-                </p>
-                </div>
-
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p className="text-xs uppercase tracking-[0.28em] text-stone-400">
-                    Nakshatra
-                </p>
-                <p className="mt-2 text-sm text-stone-100">
-                    {user?.nakshatra || "Not set"}
-                </p>
                 </div>
             </div>
             </section>
