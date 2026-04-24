@@ -2,6 +2,20 @@ import { ApiError } from "../utils/apiError.utils.js";
 
 const timeRegex = /^([01]?\d|2[0-3]):[0-5]\d(:[0-5]\d)?$/;
 
+const isFutureDate = (dateValue) => {
+    const parsedDate = new Date(dateValue);
+
+    if (Number.isNaN(parsedDate.getTime())) {
+        return false;
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    parsedDate.setHours(0, 0, 0, 0);
+
+    return parsedDate > today;
+};
+
 const validateKundliInput = (req,res,next) => {
     const {title, description, dateOfBirth, timeOfBirth, placeOfBirth} = req.body
 
@@ -28,6 +42,10 @@ if(!dateOfBirth || !timeOfBirth || !placeOfBirth){
 
     if (!timeRegex.test(timeOfBirth.trim())) {
         return next(new ApiError(400, "Time of birth must be in HH:MM format"));
+    }
+
+    if (isFutureDate(dateOfBirth)) {
+        return next(new ApiError(400, "Date of birth cannot be in the future"));
     }
 
     if (title !== undefined) {
@@ -77,6 +95,10 @@ if (!timeOfBirth.trim()) {
 
     if (!timeRegex.test(timeOfBirth.trim())) {
         return next(new ApiError(400, "Time of birth must be in HH:MM format"));
+    }
+
+    if (isFutureDate(dateOfBirth)) {
+        return next(new ApiError(400, "Date of birth cannot be in the future"));
     }
 
 if (title !== undefined) {
