@@ -73,4 +73,12 @@ const updateBirthDetailsService = async (userId, birthData) => {
     return updatedUser
 }
 
-export { updateUserProfileService, updateBirthDetailsService }
+const getAllUsersService = async () => {
+    const users = await User.find()
+        .select("-password -refreshToken")
+        .sort({ createdAt: -1 });
+
+    return users;
+};
+
+export { updateUserProfileService, updateBirthDetailsService, getAllUsersService }
