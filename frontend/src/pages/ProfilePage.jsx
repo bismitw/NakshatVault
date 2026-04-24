@@ -191,12 +191,14 @@ function ProfilePage(){
                     Phone
                     </label>
                     <input
-                    type="text"
+                    type="tel"
                     name="phone"
                     value={profileForm.phone}
                     onChange={handleProfileChange}
+                    inputMode="tel"
+                    pattern="^\+?[0-9\s\-()]{7,20}$"
                     className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
-                    placeholder="Phone number"
+                    placeholder="98765 43210"
                     />
                 </div>
 
