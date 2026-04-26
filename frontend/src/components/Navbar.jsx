@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom"; 
+import { Link, useNavigate } from "react-router-dom"; 
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext.jsx";
 
@@ -133,11 +133,11 @@ function Navbar() {
             }
         }
     return (
-        <header className="sticky top-0 z-30 px-4 pt-4">
+        <header className="sticky top-0 z-30 px-4">
         <div className={`mx-auto flex w-full max-w-7xl items-center justify-between rounded-full border px-6 py-4 backdrop-blur-xl border-white/10 bg-slate-950/25 shadow-[0_12px_45px_rgba(0,0,0,0.25)]`}>
             <Link
             to="/"
-            className={`text-sm font-semibold uppercase tracking-[0.35em] text-amber-200`}
+            className={`text-sm font-semibold uppercase tracking-[0.35em] text-amber-400`}
             >
             NakshatVault
             </Link>
@@ -145,19 +145,19 @@ function Navbar() {
             <nav className="hidden items-center gap-8 md:flex">
             <a
                 href="#about"
-                className="text-sm text-stone-100/75 transition hover:text-amber-200"
+                className="text-lg text-stone-100/75 transition hover:text-amber-200"
             >
                 About
             </a>
             <a
                 href="#features"
-                className="text-sm text-stone-100/75 transition hover:text-amber-200"
+                className="text-lg text-stone-100/75 transition hover:text-amber-200"
             >
                 Features
             </a>
             <a
                 href="#process"
-                className="text-sm text-stone-100/75 transition hover:text-amber-200"
+                className="text-lg text-stone-100/75 transition hover:text-amber-200"
             >
                 Process
             </a>
