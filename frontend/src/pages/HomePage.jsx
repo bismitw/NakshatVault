@@ -198,26 +198,22 @@
     {
         quote:
         "Everything feels organized. I can save my birth details and come back to my kundli anytime.",
-        name: "A user",
-        role: "Kundli records",
+        name: "Riya Sharma",
     },
     {
         quote:
         "The Sun sign, Moon sign, and nakshatra summary is exactly what I wanted at a glance.",
-        name: "A user",
-        role: "Astrology profile",
+        name: "Neha Verma",
     },
     {
         quote:
         "Appointments are easy to track. It makes consultations smoother because everything is already saved.",
-        name: "A user",
-        role: "Consultation booking",
+        name: "Arjun Mehta",
     },
     {
         quote:
         "Clean UI, no clutter. It feels calm compared to most astrology sites.",
-        name: "A user",
-        role: "Experience",
+        name: "Kavya Iyer",
     },
     ];
 
@@ -246,11 +242,9 @@
         }}
         className="relative min-h-screen overflow-hidden bg-gray-950 px-4 pb-24 text-gray-200"
         >
-        <div className="relative z-20 pt-4">
-            <Navbar />
-        </div>
+        <Navbar fixed />
 
-        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-7rem)] max-w-4xl flex-col items-center justify-center">
+        <div className="relative z-10 mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center pt-24">
             <span className="mb-1.5 inline-block rounded-full bg-gray-600/50 px-3 py-1.5 text-sm">
             Live Now
             </span>
@@ -435,13 +429,12 @@
                 <div className="flex w-max gap-4" style={{ animation: "nv-marquee 35s linear infinite" }}>
                 {[...HOME_TESTIMONIALS, ...HOME_TESTIMONIALS].map((t, i) => (
                     <figure
-                    key={`${t.role}-${i}`}
+                    key={`${t.name}-${i}`}
                     className="w-[320px] shrink-0 rounded-3xl border border-white/10 bg-slate-950/35 p-6 shadow-[0_18px_55px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:w-95"
                     >
                     <blockquote className="text-sm leading-relaxed text-stone-200">"{t.quote}"</blockquote>
-                    <figcaption className="mt-5 flex items-center justify-between gap-4 text-xs">
+                    <figcaption className="mt-5 text-xs text-center">
                         <span className="uppercase tracking-[0.25em] text-amber-300">{t.name}</span>
-                        <span className="text-stone-300">{t.role}</span>
                     </figcaption>
                     </figure>
                 ))}
@@ -485,26 +478,26 @@
                 </h2>
                 </div>
 
-                <div className="mt-10 grid gap-8 lg:mt-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-                <div className="relative overflow-hidden rounded-3xl">
+                <div className="mt-10 grid gap-8 lg:mt-16 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-3xl lg:mx-0">
                     <img
-                    src="\public\Images\Hanshika_Tiwari.jpg"
+                    src="/Images/Hanshika_Tiwari.jpg"
                     alt="Lead astrologist"
                     className="aspect-4/5 w-full rounded-2xl object-cover"
                     />
                 </div>
 
                 <div className="pt-1">
-                    <h3 className="text-3xl font-semibold text-stone-100">Hanshika Tiwari</h3>
-                    <p className="mt-4 text-base leading-relaxed text-stone-300">
+                    <h3 className="text-4xl font-semibold text-stone-100">Hanshika Tiwari</h3>
+                    <p className="mt-4 text-lg leading-relaxed text-stone-300">
                     Hanshika is a Vedic astrologer known for combining classical principles with practical, modern
                     guidance. Her sessions focus on life timing, emotional clarity, and actionable next steps.
                     </p>
-                    <p className="mt-4 text-base leading-relaxed text-stone-300">
+                    <p className="mt-4 text-lg leading-relaxed text-stone-300">
                     She specializes in birth chart interpretation, moon sign psychology, nakshatra-based personality
                     insights, relationship compatibility, and career direction.
                     </p>
-                    <p className="mt-4 text-base leading-relaxed text-stone-300">
+                    <p className="mt-4 text-lg leading-relaxed text-stone-300">
                     Her approach is calm, compassionate, and easy to understand, helping clients turn complex chart
                     patterns into grounded decisions.
                     </p>
@@ -577,4 +570,3 @@
 
     
     export default HomePage;
-
