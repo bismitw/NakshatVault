@@ -142,24 +142,42 @@ function Navbar() {
             NakshatVault
             </Link>
 
-            <nav className="hidden items-center gap-8 md:flex">
+            <nav className="hidden items-center gap-6 md:flex">
             <a
                 href="#about"
-                className="text-lg text-stone-100/75 transition hover:text-amber-200"
+                className="text-sm text-stone-100/75 transition hover:text-amber-200"
             >
                 About
             </a>
             <a
                 href="#features"
-                className="text-lg text-stone-100/75 transition hover:text-amber-200"
+                className="text-sm text-stone-100/75 transition hover:text-amber-200"
             >
                 Features
             </a>
             <a
                 href="#process"
-                className="text-lg text-stone-100/75 transition hover:text-amber-200"
+                className="text-sm text-stone-100/75 transition hover:text-amber-200"
             >
                 Process
+            </a>
+            <a
+                href="#testimonials"
+                className="text-sm text-stone-100/75 transition hover:text-amber-200"
+            >
+                Testimonials
+            </a>
+            <a
+                href="#team"
+                className="text-sm text-stone-100/75 transition hover:text-amber-200"
+            >
+                Our Team
+            </a>
+            <a
+                href="#contact"
+                className="text-sm text-stone-100/75 transition hover:text-amber-200"
+            >
+                Contact
             </a>
             </nav>
 
