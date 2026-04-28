@@ -249,7 +249,7 @@
             Live Now
             </span>
             <h1 className="max-w-3xl bg-linear-to-br from-white to-gray-400 bg-clip-text text-center text-3xl font-medium leading-tight text-transparent sm:text-5xl sm:leading-tight md:text-7xl md:leading-tight">
-            Astrology, designed with clarity
+            <p>Astrology</p> designed with clarity
             </h1>
             <p className="my-6 max-w-xl text-center text-base leading-relaxed md:text-lg md:leading-relaxed">
             Discover your cosmic blueprint through a refined digital astrology
@@ -342,7 +342,7 @@
             <section id="features" className="scroll-mt-28">
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 mt-25">
                 <div className="text-center">
-                <h2 className="text-3xl font-bold leading-tight text-stone-100 sm:text-4xl xl:text-5xl">
+                <h2 className="text-3xl font-bold leading-tight text-amber-400 sm:text-4xl xl:text-5xl">
                     Make every step user-centric
                 </h2>
                 <p className="mt-4 text-base leading-7 text-stone-300 sm:mt-8">
@@ -378,7 +378,7 @@
             <section id="process" className="scroll-mt-28">
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 mt-25">
                 <div className="max-w-2xl mx-auto text-center">
-                <h2 className="text-3xl font-bold leading-tight text-stone-100 sm:text-4xl lg:text-5xl">
+                <h2 className="text-3xl font-bold leading-tight text-amber-400 sm:text-4xl lg:text-5xl">
                     How does it work?
                 </h2>
                 <p className="max-w-lg mx-auto mt-4 text-base leading-relaxed text-stone-300">
@@ -419,7 +419,7 @@
 
             <section id="testimonials" className="scroll-mt-28 text-center">
             <p className="mt-25 text-xs uppercase tracking-[0.35em] text-amber-300">Testimonials</p>
-            <h2 className="mt-4 text-3xl font-semibold text-stone-100 sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-semibold text-amber-400 sm:text-4xl">
                 Loved for its clarity
             </h2>
             <div className="relative mt-8 overflow-hidden rounded-3xl bg-white/5 px-2 py-10">
@@ -473,7 +473,7 @@
             <section id="team" className="scroll-mt-28">
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div className="text-center">
-                <h2 className="text-3xl font-bold leading-tight text-stone-100 sm:text-4xl xl:text-5xl">
+                <h2 className="text-3xl font-bold leading-tight text-amber-400 sm:text-4xl xl:text-5xl">
                     Lead Astrologist
                 </h2>
                 </div>
