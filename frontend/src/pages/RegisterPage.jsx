@@ -52,16 +52,16 @@ function RegisterPage() {
             <button
                 type="button"
                 onClick={() => navigate(-1)}
-                className="inline-flex items-center gap-2 text-sm text-stone-300 transition hover:text-stone-100"
+                className="inline-flex items-center gap-2 text-sm text-stone-300 transition hover:text-stone-100 cursor-pointer mb-5"
                 aria-label="Go back"
             >
                 <FiArrowLeft size={18} />
                 Back
             </button>
-            <p className="text-xs uppercase tracking-[0.35em] text-amber-300">
+            <p className="text-xs uppercase tracking-[0.35em] text-amber-300 flex justify-center">
             Begin Your Journey
             </p>
-            <h1 className="mt-4 text-3xl font-semibold text-stone-100">Register</h1>
+            <h1 className="mt-4 text-3xl font-semibold text-stone-100 flex justify-center">Register</h1>
 
             <form onSubmit={handleSubmit} className="mt-8 space-y-5">
             <div>
