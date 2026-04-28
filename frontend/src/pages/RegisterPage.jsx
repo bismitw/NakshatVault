@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthContext.jsx";
+import { FiArrowLeft, FiEye, FiEyeOff } from "react-icons/fi";
 
 function RegisterPage() { 
 
@@ -19,6 +20,7 @@ function RegisterPage() {
 
     const [submitting, setSubmitting] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -38,7 +40,7 @@ function RegisterPage() {
             navigate("/login");
         } catch (error) {
             setErrorMessage(error.message);
-            toast.error("Registration failed. Please try again." || error.message);
+            toast.error(error.message || "Registration failed. Please try again.");
         }finally{
             setSubmitting(false);
         }
@@ -47,6 +49,15 @@ function RegisterPage() {
     return (
         <main className="flex min-h-screen items-center justify-center px-4 py-10">
         <section className="w-full max-w-md rounded-3xl border border-white/10 bg-slate-950/70 p-8 shadow-2xl">
+            <button
+                type="button"
+                onClick={() => navigate(-1)}
+                className="inline-flex items-center gap-2 text-sm text-stone-300 transition hover:text-stone-100"
+                aria-label="Go back"
+            >
+                <FiArrowLeft size={18} />
+                Back
+            </button>
             <p className="text-xs uppercase tracking-[0.35em] text-amber-300">
             Begin Your Journey
             </p>
@@ -81,15 +92,25 @@ function RegisterPage() {
 
             <div>
                 <label className="mb-2 block text-sm text-stone-200">Password</label>
-                <input
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-stone-100 outline-none"
-                placeholder="Strong password"
-                required
-                />
+                <div className="relative">
+                    <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 pr-12 text-stone-100 outline-none"
+                    placeholder="Strong password"
+                    required
+                    />
+                    <button
+                    type="button"
+                    onClick={() => setShowPassword((current) => !current)}
+                    className="absolute inset-y-0 right-0 flex items-center px-4 text-stone-300 transition hover:text-stone-100"
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                    >
+                        {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
+                    </button>
+                </div>
             </div>
 
             <div>
