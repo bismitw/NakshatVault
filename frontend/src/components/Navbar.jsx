@@ -133,7 +133,7 @@ function Navbar({ fixed = false }) {
             }
         }
     return (
-        <header className={fixed ? "fixed inset-x-0 top-0 z-40 px-4 pt-4" : "sticky top-0 z-30 px-4"}>
+        <header className={fixed ? "fixed inset-x-0 top-0 z-40 px-4" : "sticky top-0 z-30 px-4"}>
         <div className={`mx-auto flex w-full max-w-7xl items-center justify-between rounded-full border px-6 py-4 backdrop-blur-xl border-white/10 bg-slate-950/25 shadow-[0_12px_45px_rgba(0,0,0,0.25)]`}>
             <Link
             to="/"
