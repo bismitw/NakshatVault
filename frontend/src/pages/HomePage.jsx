@@ -339,6 +339,57 @@
             </div>
             </section>
 
+                        <section id="team" className="scroll-mt-28">
+            <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div className="text-center">
+                <h2 className="text-3xl font-bold leading-tight text-amber-400 sm:text-4xl xl:text-5xl">
+                    Lead Astrologist
+                </h2>
+                </div>
+
+                <div className="mt-10 grid gap-8 lg:mt-16 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-3xl lg:mx-0">
+                    <img
+                    src="/Images/Hanshika_Tiwari.jpg"
+                    alt="Lead astrologist"
+                    className="aspect-4/5 w-full rounded-2xl object-cover"
+                    />
+                </div>
+
+                <div className="pt-1">
+                    <h3 className="text-4xl font-semibold text-stone-100">Hanshika Tiwari</h3>
+                    <p className="mt-4 text-lg leading-relaxed text-stone-300">
+                    Hanshika is a Vedic astrologer known for combining classical principles with practical, modern
+                    guidance. Her sessions focus on life timing, emotional clarity, and actionable next steps.
+                    </p>
+                    <p className="mt-4 text-lg leading-relaxed text-stone-300">
+                    She specializes in birth chart interpretation, moon sign psychology, nakshatra-based personality
+                    insights, relationship compatibility, and career direction.
+                    </p>
+                    <p className="mt-4 text-lg leading-relaxed text-stone-300">
+                    Her approach is calm, compassionate, and easy to understand, helping clients turn complex chart
+                    patterns into grounded decisions.
+                    </p>
+
+                    <div className="mt-6 flex flex-wrap gap-3">
+                    <Link
+                        to="/appointment"
+                        className="rounded-full bg-linear-to-r from-amber-300 via-yellow-200 to-amber-500 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:brightness-105"
+                    >
+                        Book Consultation
+                    </Link>
+                    <a
+                        href="#contact"
+                        className="rounded-full border border-white/15 bg-slate-950/40 px-6 py-3 text-sm font-medium text-stone-100 transition hover:bg-white/10"
+                    >
+                        Ask a Question
+                    </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </section>
+
             <section id="features" className="scroll-mt-28">
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 mt-25">
                 <div className="text-center">
@@ -470,56 +521,7 @@
             </div>
             </section>
 
-            <section id="team" className="scroll-mt-28">
-            <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <div className="text-center">
-                <h2 className="text-3xl font-bold leading-tight text-amber-400 sm:text-4xl xl:text-5xl">
-                    Lead Astrologist
-                </h2>
-                </div>
 
-                <div className="mt-10 grid gap-8 lg:mt-16 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
-                <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-3xl lg:mx-0">
-                    <img
-                    src="/Images/Hanshika_Tiwari.jpg"
-                    alt="Lead astrologist"
-                    className="aspect-4/5 w-full rounded-2xl object-cover"
-                    />
-                </div>
-
-                <div className="pt-1">
-                    <h3 className="text-4xl font-semibold text-stone-100">Hanshika Tiwari</h3>
-                    <p className="mt-4 text-lg leading-relaxed text-stone-300">
-                    Hanshika is a Vedic astrologer known for combining classical principles with practical, modern
-                    guidance. Her sessions focus on life timing, emotional clarity, and actionable next steps.
-                    </p>
-                    <p className="mt-4 text-lg leading-relaxed text-stone-300">
-                    She specializes in birth chart interpretation, moon sign psychology, nakshatra-based personality
-                    insights, relationship compatibility, and career direction.
-                    </p>
-                    <p className="mt-4 text-lg leading-relaxed text-stone-300">
-                    Her approach is calm, compassionate, and easy to understand, helping clients turn complex chart
-                    patterns into grounded decisions.
-                    </p>
-
-                    <div className="mt-6 flex flex-wrap gap-3">
-                    <Link
-                        to="/appointment"
-                        className="rounded-full bg-linear-to-r from-amber-300 via-yellow-200 to-amber-500 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:brightness-105"
-                    >
-                        Book Consultation
-                    </Link>
-                    <a
-                        href="#contact"
-                        className="rounded-full border border-white/15 bg-slate-950/40 px-6 py-3 text-sm font-medium text-stone-100 transition hover:bg-white/10"
-                    >
-                        Ask a Question
-                    </a>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </section>
 
             <section id="contact" className="scroll-mt-28">
             <div className="text-center">
