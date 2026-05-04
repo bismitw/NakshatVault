@@ -12,8 +12,7 @@ return (
             </h2>
 
             <p className="text-base leading-relaxed text-gray-200 mt-7">
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-            amet sint. Velit officia consequat duis enim velit mollit.
+                Start your astrology journey instantly with us.
             </p>
 
             <ul className="flex items-center space-x-3 mt-9">
@@ -95,7 +94,7 @@ return (
 
         <div>
             <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">
-            Company
+            Information
             </p>
 
             <ul className="mt-6 space-y-4">
@@ -131,17 +130,6 @@ return (
                 Process{" "}
                 </a>
             </li>
-
-            <li>
-                <a
-                href="#"
-                title=""
-                className="flex text-base text-gray-200 transition-all duration-200 hover:text-amber-400 "
-                >
-                {" "}
-                Career{" "}
-                </a>
-            </li>
             </ul>
         </div>
 
@@ -159,17 +147,6 @@ return (
                 >
                 {" "}
                 Customer Support{" "}
-                </a>
-            </li>
-
-            <li>
-                <a
-                href="#"
-                title=""
-                className="flex text-base text-gray-200 transition-all duration-200 hover:text-amber-400"
-                >
-                {" "}
-                Delivery Details{" "}
                 </a>
             </li>
 
