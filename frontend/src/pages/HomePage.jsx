@@ -552,7 +552,7 @@
 
                 <button
                     type="submit"
-                    className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-linear-to-r from-amber-300 via-yellow-200 to-amber-500 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:brightness-105"
+                    className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-linear-to-r from-amber-300 via-yellow-200 to-amber-500 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:brightness-105 cursor-pointer"
                 >
                     Send Message
                 </button>
