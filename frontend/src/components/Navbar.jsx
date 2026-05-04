@@ -168,12 +168,6 @@ function Navbar({ fixed = false }) {
                 Testimonials
             </a>
             <a
-                href="#team"
-                className="text-sm text-stone-100/75 transition hover:text-amber-200"
-            >
-                Our Team
-            </a>
-            <a
                 href="#contact"
                 className="text-sm text-stone-100/75 transition hover:text-amber-200"
             >
