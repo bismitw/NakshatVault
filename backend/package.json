@@ -2,7 +2,7 @@
   "name": "nakshatvault-backend",
   "version": "1.0.0",
   "description": "Free Vedic Astrology API",
-  "license": "ISC",
+  "license": "MIT",
   "author": "Bismit Wagle",
   "type": "module",
   "main": "server.js",
