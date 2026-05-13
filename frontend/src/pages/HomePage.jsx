@@ -8,6 +8,7 @@
     useMotionValue,
     motion,
     animate,
+    useReducedMotion,
     } from "framer-motion";
     import Navbar from "../components/Navbar.jsx";
     import Footer from "../components/Footer.jsx";
@@ -217,8 +218,21 @@
     },
     ];
 
+    const sectionReveal = {
+    hidden: { opacity: 0, y: 28 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+        duration: 0.65,
+        ease: [0.22, 1, 0.36, 1],
+        },
+    },
+    };
+
     function HomePage() {
     const color = useMotionValue(COLORS_TOP[0]);
+    const prefersReducedMotion = useReducedMotion();
 
     useEffect(() => {
         animate(color, COLORS_TOP, {
@@ -288,7 +302,14 @@
                 100% { transform: translateX(-50%); }
             }
             `}</style>
-            <section id="about" className="grid scroll-mt-28 gap-10 lg:grid-cols-2 lg:items-center">
+            <motion.section
+            id="about"
+            className="grid scroll-mt-28 gap-10 lg:grid-cols-2 lg:items-center"
+            variants={sectionReveal}
+            initial={prefersReducedMotion ? false : "hidden"}
+            whileInView={prefersReducedMotion ? undefined : "visible"}
+            viewport={{ once: true, amount: 0.25 }}
+            >
             <div>
                 <p className="text-xs uppercase tracking-[0.35em] text-amber-300">
                 About
@@ -337,7 +358,7 @@
                 </div>
                 </div>
             </div>
-            </section>
+            </motion.section>
 
                         <section id="team" className="scroll-mt-28">
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -390,7 +411,14 @@
             </div>
             </section>
 
-            <section id="features" className="scroll-mt-28">
+            <motion.section
+            id="features"
+            className="scroll-mt-28"
+            variants={sectionReveal}
+            initial={prefersReducedMotion ? false : "hidden"}
+            whileInView={prefersReducedMotion ? undefined : "visible"}
+            viewport={{ once: true, amount: 0.2 }}
+            >
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 mt-25">
                 <div className="text-center">
                 <h2 className="text-3xl font-bold leading-tight text-amber-400 sm:text-4xl xl:text-5xl">
@@ -415,16 +443,20 @@
                     const Icon = feature.Icon ?? FeatureIconKundli;
 
                     return (
-                    <div key={feature.title} className={`md:p-6 lg:p-10 ${borderClasses}`}>
+                    <motion.div
+                        key={feature.title}
+                        className={`md:p-6 lg:p-10 ${borderClasses}`}
+                        variants={sectionReveal}
+                    >
                         <Icon className="mx-auto h-10 w-10 text-amber-300" />
                         <h3 className="mt-8 text-xl font-bold text-stone-100">{feature.title}</h3>
                         <p className="mt-3 text-base text-stone-300">{feature.description}</p>
-                    </div>
+                    </motion.div>
                     );
                 })}
                 </div>
             </div>
-            </section>
+            </motion.section>
 
             <section id="process" className="scroll-mt-28">
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 mt-25">
