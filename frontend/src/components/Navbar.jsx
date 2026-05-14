@@ -134,7 +134,7 @@ function Navbar({ fixed = false }) {
         }
     return (
         <header className={fixed ? "fixed inset-x-0 top-0 z-40 px-4" : "sticky top-0 z-30 px-4"}>
-        <div className={`mx-auto flex w-full max-w-7xl items-center justify-between rounded-full border px-6 py-4 backdrop-blur-xl border-white/10 bg-slate-950/25 shadow-[0_12px_45px_rgba(0,0,0,0.25)]`}>
+        <div className={`mx-auto flex w-full max-w-7xl items-center justify-between rounded-full border px-6 py-4 backdrop-blur-md border-white/10 bg-slate-950/25 shadow-[0_8px_30px_rgba(0,0,0,0.2)]`}>
             <Link
             to="/"
             className={`text-sm font-semibold uppercase tracking-[0.35em] text-amber-400`}
@@ -202,7 +202,7 @@ function Navbar({ fixed = false }) {
                 </button>
 
                 {menuOpen ? (
-                <div className="absolute right-0 top-[calc(100%+0.75rem)] z-40 hidden w-64 overflow-hidden rounded-3xl border border-white/10 bg-slate-950/95 p-2 shadow-[0_18px_50px_rgba(0,0,0,0.35)] backdrop-blur-xl md:block">
+                <div className="absolute right-0 top-[calc(100%+0.75rem)] z-40 hidden w-64 overflow-hidden rounded-3xl border border-white/10 bg-slate-950/95 p-2 shadow-[0_18px_50px_rgba(0,0,0,0.35)] backdrop-blur-md md:block">
                     <Link
                     to="/profile"
                     onClick={() => setMenuOpen(false)}
@@ -263,7 +263,7 @@ function Navbar({ fixed = false }) {
         </div>
 
         {menuOpen ? (
-        <div className="mx-auto mt-3 w-full max-w-7xl rounded-3xl border border-white/10 bg-slate-950/95 p-2 shadow-[0_18px_50px_rgba(0,0,0,0.35)] backdrop-blur-xl md:hidden">
+        <div className="mx-auto mt-3 w-full max-w-7xl rounded-3xl border border-white/10 bg-slate-950/95 p-2 shadow-[0_18px_50px_rgba(0,0,0,0.35)] backdrop-blur-md md:hidden">
             <a
             href="#about"
             onClick={() => setMenuOpen(false)}
