@@ -230,6 +230,67 @@
     },
     };
 
+    const aboutLeftReveal = {
+    hidden: { opacity: 0, x: -36, filter: "blur(8px)" },
+    visible: {
+        opacity: 1,
+        x: 0,
+        filter: "blur(0px)",
+        transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] },
+    },
+    };
+
+    const aboutRightReveal = {
+    hidden: { opacity: 0, x: 36, rotate: 1.5, scale: 0.98 },
+    visible: {
+        opacity: 1,
+        x: 0,
+        rotate: 0,
+        scale: 1,
+        transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1], delay: 0.1 },
+    },
+    };
+
+    const featureGridReveal = {
+    hidden: {},
+    visible: {
+        transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.08,
+        },
+    },
+    };
+
+    const featureCardReveal = {
+    hidden: { opacity: 0, y: 28, scale: 0.95 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    },
+    };
+
+    const teamImageReveal = {
+    hidden: { opacity: 0, scale: 1.08, y: 24, filter: "blur(10px)" },
+    visible: {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        filter: "blur(0px)",
+        transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
+    },
+    };
+
+    const teamTextReveal = {
+    hidden: { opacity: 0, x: 42 },
+    visible: {
+        opacity: 1,
+        x: 0,
+        transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.12 },
+    },
+    };
+
     function HomePage() {
     const color = useMotionValue(COLORS_TOP[0]);
     const prefersReducedMotion = useReducedMotion();
@@ -310,7 +371,12 @@
             whileInView={prefersReducedMotion ? undefined : "visible"}
             viewport={{ once: true, amount: 0.25 }}
             >
-            <div>
+            <motion.div
+            variants={aboutLeftReveal}
+            initial={prefersReducedMotion ? false : "hidden"}
+            whileInView={prefersReducedMotion ? undefined : "visible"}
+            viewport={{ once: true, amount: 0.35 }}
+            >
                 <p className="text-xs uppercase tracking-[0.35em] text-amber-300">
                 About
                 </p>
@@ -335,9 +401,15 @@
                     Generate Kundli
                 </Link>
                 </div>
-            </div>
+            </motion.div>
 
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <motion.div
+                className="rounded-3xl border border-white/10 bg-white/5 p-6"
+                variants={aboutRightReveal}
+                initial={prefersReducedMotion ? false : "hidden"}
+                whileInView={prefersReducedMotion ? undefined : "visible"}
+                viewport={{ once: true, amount: 0.35 }}
+            >
                 <p className="text-xs uppercase tracking-[0.35em] text-amber-300">What you get</p>
                 <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 <div className="rounded-2xl border border-white/10 bg-slate-950/40 p-4">
@@ -357,27 +429,48 @@
                     <p className="mt-1 text-sm text-stone-300">Book consultations when you’re ready.</p>
                 </div>
                 </div>
-            </div>
+            </motion.div>
             </motion.section>
 
-                        <section id="team" className="scroll-mt-28">
+                        <motion.section
+            id="team"
+            className="scroll-mt-28"
+            variants={sectionReveal}
+            initial={prefersReducedMotion ? false : "hidden"}
+            whileInView={prefersReducedMotion ? undefined : "visible"}
+            viewport={{ once: true, amount: 0.2 }}
+            >
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <div className="text-center">
+                <motion.div className="text-center" variants={sectionReveal}>
                 <h2 className="text-3xl font-bold leading-tight text-amber-400 sm:text-4xl xl:text-5xl">
                     Lead Astrologist
                 </h2>
-                </div>
+                </motion.div>
 
                 <div className="mt-10 grid gap-8 lg:mt-16 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
-                <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-3xl lg:mx-0">
-                    <img
+                <motion.div
+                    className="relative mx-auto w-full max-w-sm overflow-hidden rounded-3xl lg:mx-0"
+                    variants={teamImageReveal}
+                    initial={prefersReducedMotion ? false : "hidden"}
+                    whileInView={prefersReducedMotion ? undefined : "visible"}
+                    viewport={{ once: true, amount: 0.3 }}
+                >
+                    <motion.img
                     src="/Images/Hanshika_Tiwari.jpg"
                     alt="Lead astrologist"
                     className="aspect-4/5 w-full rounded-2xl object-cover"
+                    whileHover={prefersReducedMotion ? undefined : { scale: 1.03 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
                     />
-                </div>
+                </motion.div>
 
-                <div className="pt-1">
+                <motion.div
+                    className="pt-1"
+                    variants={teamTextReveal}
+                    initial={prefersReducedMotion ? false : "hidden"}
+                    whileInView={prefersReducedMotion ? undefined : "visible"}
+                    viewport={{ once: true, amount: 0.3 }}
+                >
                     <h3 className="text-4xl font-semibold text-stone-100">Hanshika Tiwari</h3>
                     <p className="mt-4 text-lg leading-relaxed text-stone-300">
                     Hanshika is a Vedic astrologer known for combining classical principles with practical, modern
@@ -406,10 +499,10 @@
                         Ask a Question
                     </a>
                     </div>
-                </div>
+                </motion.div>
                 </div>
             </div>
-            </section>
+            </motion.section>
 
             <motion.section
             id="features"
@@ -429,7 +522,13 @@
                 </p>
                 </div>
 
-                <div className="grid grid-cols-1 mt-10 text-center sm:mt-16 sm:grid-cols-2 sm:gap-x-12 gap-y-12 md:grid-cols-3 md:gap-0 xl:mt-24">
+                <motion.div
+                className="grid grid-cols-1 mt-10 text-center sm:mt-16 sm:grid-cols-2 sm:gap-x-12 gap-y-12 md:grid-cols-3 md:gap-0 xl:mt-24"
+                variants={featureGridReveal}
+                initial={prefersReducedMotion ? false : "hidden"}
+                whileInView={prefersReducedMotion ? undefined : "visible"}
+                viewport={{ once: true, amount: 0.2 }}
+                >
                 {HOME_FEATURES.map((feature, index) => {
                     const isSecondColumn = index % 3 === 1;
                     const isThirdColumn = index % 3 === 2;
@@ -446,7 +545,8 @@
                     <motion.div
                         key={feature.title}
                         className={`md:p-6 lg:p-10 ${borderClasses}`}
-                        variants={sectionReveal}
+                        variants={featureCardReveal}
+                        whileHover={prefersReducedMotion ? undefined : { y: -6, scale: 1.015 }}
                     >
                         <Icon className="mx-auto h-10 w-10 text-amber-300" />
                         <h3 className="mt-8 text-xl font-bold text-stone-100">{feature.title}</h3>
@@ -454,7 +554,7 @@
                     </motion.div>
                     );
                 })}
-                </div>
+                </motion.div>
             </div>
             </motion.section>
 
