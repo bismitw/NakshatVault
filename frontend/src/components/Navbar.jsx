@@ -195,14 +195,14 @@ function Navbar({ fixed = false }) {
                 <button
                 type="button"
                 onClick={() => setMenuOpen((current) => !current)}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-stone-100 transition hover:bg-white/10"
+                className="hidden cursor-pointer items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-stone-100 transition hover:bg-white/10 md:inline-flex"
                 >
                 <MenuIcon />
                 <span>Menu</span>
                 </button>
 
                 {menuOpen ? (
-                <div className="absolute right-0 top-[calc(100%+0.75rem)] z-40 w-64 overflow-hidden rounded-3xl border border-white/10 bg-slate-950/95 p-2 shadow-[0_18px_50px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+                <div className="absolute right-0 top-[calc(100%+0.75rem)] z-40 hidden w-64 overflow-hidden rounded-3xl border border-white/10 bg-slate-950/95 p-2 shadow-[0_18px_50px_rgba(0,0,0,0.35)] backdrop-blur-xl md:block">
                     <Link
                     to="/profile"
                     onClick={() => setMenuOpen(false)}
@@ -249,7 +249,122 @@ function Navbar({ fixed = false }) {
                 ) : null}
             </div>
             )}
+
+            <button
+            type="button"
+            onClick={() => setMenuOpen((current) => !current)}
+            className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-stone-100 transition hover:bg-white/10 md:hidden"
+            aria-expanded={menuOpen}
+            aria-label="Toggle menu"
+            >
+            <MenuIcon />
+            <span>Menu</span>
+            </button>
         </div>
+
+        {menuOpen ? (
+        <div className="mx-auto mt-3 w-full max-w-7xl rounded-3xl border border-white/10 bg-slate-950/95 p-2 shadow-[0_18px_50px_rgba(0,0,0,0.35)] backdrop-blur-xl md:hidden">
+            <a
+            href="#about"
+            onClick={() => setMenuOpen(false)}
+            className="block rounded-2xl px-4 py-3 text-sm text-stone-100 transition hover:bg-white/10"
+            >
+            About
+            </a>
+            <a
+            href="#features"
+            onClick={() => setMenuOpen(false)}
+            className="block rounded-2xl px-4 py-3 text-sm text-stone-100 transition hover:bg-white/10"
+            >
+            Features
+            </a>
+            <a
+            href="#process"
+            onClick={() => setMenuOpen(false)}
+            className="block rounded-2xl px-4 py-3 text-sm text-stone-100 transition hover:bg-white/10"
+            >
+            Process
+            </a>
+            <a
+            href="#testimonials"
+            onClick={() => setMenuOpen(false)}
+            className="block rounded-2xl px-4 py-3 text-sm text-stone-100 transition hover:bg-white/10"
+            >
+            Testimonials
+            </a>
+            <a
+            href="#contact"
+            onClick={() => setMenuOpen(false)}
+            className="block rounded-2xl px-4 py-3 text-sm text-stone-100 transition hover:bg-white/10"
+            >
+            Contact
+            </a>
+
+            {!user ? (
+            <div className="mt-1 grid gap-2">
+                <Link
+                to="/login"
+                onClick={() => setMenuOpen(false)}
+                className="rounded-2xl border border-white/15 bg-white/5 px-4 py-3 text-sm font-medium text-stone-100 transition hover:bg-white/10"
+                >
+                Login
+                </Link>
+                <Link
+                to="/register"
+                onClick={() => setMenuOpen(false)}
+                className="rounded-2xl bg-linear-to-r from-amber-300 via-yellow-200 to-amber-500 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:brightness-105"
+                >
+                Get Started
+                </Link>
+            </div>
+            ) : (
+            <div className="mt-1">
+                <Link
+                to="/profile"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm text-stone-100 transition hover:bg-white/10"
+                >
+                <ProfileIcon />
+                <span>Profile</span>
+                </Link>
+                <Link
+                to="/appointment"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm text-stone-100 transition hover:bg-white/10"
+                >
+                <AppointmentIcon />
+                <span>Appointments</span>
+                </Link>
+                <Link
+                to="/kundli"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm text-stone-100 transition hover:bg-white/10"
+                >
+                <KundliIcon />
+                <span>Kundli</span>
+                </Link>
+                {user?.role === "admin" ? (
+                <Link
+                    to="/admin/dashboard"
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm text-stone-100 transition hover:bg-white/10"
+                >
+                    <AdminIcon />
+                    <span>Admin Dashboard</span>
+                </Link>
+                ) : null}
+                <button
+                type="button"
+                onClick={handleLogout}
+                className="mt-1 flex w-full cursor-pointer items-center gap-3 rounded-2xl bg-linear-to-r from-amber-300 via-yellow-200 to-amber-500 px-4 py-3 text-left text-sm font-semibold text-slate-950 transition hover:brightness-105"
+                >
+                <LogoutIcon />
+                <span>Logout</span>
+                </button>
+            </div>
+            )}
+        </div>
+        ) : null}
     </header>
     );
     }
