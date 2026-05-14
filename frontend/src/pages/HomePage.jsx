@@ -298,7 +298,7 @@
     useEffect(() => {
         animate(color, COLORS_TOP, {
         ease: "easeInOut",
-        duration: 10,
+        duration: 16,
         repeat: Infinity,
         repeatType: "mirror",
         });
@@ -349,8 +349,8 @@
         </div>
 
         <div className="absolute inset-0 z-0">
-            <Canvas>
-            <Stars radius={50} count={2500} factor={4} fade speed={2} />
+            <Canvas dpr={[1, 1.25]} gl={{ powerPreference: "low-power", antialias: false }}>
+            <Stars radius={42} count={900} factor={2} fade speed={0.6} />
             </Canvas>
         </div>
         </motion.section>
