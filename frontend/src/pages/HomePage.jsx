@@ -272,12 +272,11 @@
     };
 
     const teamImageReveal = {
-    hidden: { opacity: 0, scale: 1.08, y: 24, filter: "blur(10px)" },
+    hidden: { opacity: 0, scale: 1.03, y: 20 },
     visible: {
         opacity: 1,
         scale: 1,
         y: 0,
-        filter: "blur(0px)",
         transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] },
     },
     };
@@ -453,7 +452,7 @@
                     variants={teamImageReveal}
                     initial={prefersReducedMotion ? false : "hidden"}
                     whileInView={prefersReducedMotion ? undefined : "visible"}
-                    viewport={{ once: true, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.1 }}
                 >
                     <motion.img
                     src="/Images/Hanshika_Tiwari.jpg"
@@ -469,7 +468,7 @@
                     variants={teamTextReveal}
                     initial={prefersReducedMotion ? false : "hidden"}
                     whileInView={prefersReducedMotion ? undefined : "visible"}
-                    viewport={{ once: true, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.1 }}
                 >
                     <h3 className="text-4xl font-semibold text-stone-100">Hanshika Tiwari</h3>
                     <p className="mt-4 text-lg leading-relaxed text-stone-300">
@@ -605,10 +604,7 @@
             <h2 className="mt-4 text-3xl font-semibold text-amber-400 sm:text-4xl">
                 Loved for its clarity
             </h2>
-            <div className="relative mt-8 overflow-hidden rounded-3xl bg-white/5 px-2 py-10">
-                <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-linear-to-r from-slate-950 to-transparent" />
-                <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-linear-to-l from-slate-950 to-transparent" />
-
+            <div className="relative mt-8 overflow-hidden rounded-3xl bg-transparent px-2 py-10">
                 <div className="flex w-max gap-4" style={{ animation: "nv-marquee 35s linear infinite" }}>
                 {[...HOME_TESTIMONIALS, ...HOME_TESTIMONIALS].map((t, i) => (
                     <figure
