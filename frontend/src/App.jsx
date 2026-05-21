@@ -10,12 +10,24 @@ import AdminDashboardPage from './pages/AdminDashboardPage.jsx'
 import AppointmentPage from './pages/AppointmentPage.jsx'
 import KundliPage from './pages/KundliPage.jsx'
 import KundliDetailPage from './pages/KundliDetailPage.jsx'
+import AboutInfoPage from './pages/AboutInfoPage.jsx'
+import FeaturesInfoPage from './pages/FeaturesInfoPage.jsx'
+import ProcessInfoPage from './pages/ProcessInfoPage.jsx'
+import CustomerSupportPage from './pages/CustomerSupportPage.jsx'
+import TermsAndConditionsPage from './pages/TermsAndConditionsPage.jsx'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage.jsx'
 
 function App() {
 
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutInfoPage />} />
+      <Route path="/features" element={<FeaturesInfoPage />} />
+      <Route path="/process" element={<ProcessInfoPage />} />
+      <Route path="/customer-support" element={<CustomerSupportPage />} />
+      <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
 
