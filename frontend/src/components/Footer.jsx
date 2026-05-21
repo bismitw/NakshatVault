@@ -1,4 +1,4 @@
-import { exp } from "three/src/nodes/math/MathNode.js";
+import { Link } from "react-router-dom";
 
 function Footer() { 
 
@@ -99,36 +99,36 @@ return (
 
             <ul className="mt-6 space-y-4">
             <li>
-                <a
-                href="#"
+                <Link
+                to="/about"
                 title=""
                 className="flex text-base text-gray-200 transition-all duration-200 hover:text-amber-400 "
                 >
                 {" "}
                 About{" "}
-                </a>
+                </Link>
             </li>
 
             <li>
-                <a
-                href="#"
+                <Link
+                to="/features"
                 title=""
                 className="flex text-base text-gray-200 transition-all duration-200 hover:text-amber-400 "
                 >
                 {" "}
                 Features{" "}
-                </a>
+                </Link>
             </li>
 
             <li>
-                <a
-                href="#"
+                <Link
+                to="/process"
                 title=""
                 className="flex text-base text-gray-200 transition-all duration-200 hover:text-amber-400 "
                 >
                 {" "}
                 Process{" "}
-                </a>
+                </Link>
             </li>
             </ul>
         </div>
@@ -140,36 +140,36 @@ return (
 
             <ul className="mt-6 space-y-4">
             <li>
-                <a
-                href="#"
+                <Link
+                to="/customer-support"
                 title=""
                 className="flex text-base text-gray-200 transition-all duration-200 hover:text-amber-400"
                 >
                 {" "}
                 Customer Support{" "}
-                </a>
+                </Link>
             </li>
 
             <li>
-                <a
-                href="#"
+                <Link
+                to="/terms-and-conditions"
                 title=""
                 className="flex text-base text-gray-200 transition-all duration-200 hover:text-amber-400 "
                 >
                 {" "}
                 Terms & Conditions{" "}
-                </a>
+                </Link>
             </li>
 
             <li>
-                <a
-                href="#"
+                <Link
+                to="/privacy-policy"
                 title=""
                 className="flex text-base text-gray-200 transition-all duration-200 hover:text-amber-400"
                 >
                 {" "}
                 Privacy Policy{" "}
-                </a>
+                </Link>
             </li>
             </ul>
         </div>
