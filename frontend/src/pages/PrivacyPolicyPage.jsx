@@ -1,33 +1,52 @@
 import { Link } from "react-router-dom";
+import InfoPageLayout from "../components/InfoPageLayout.jsx";
 
 function PrivacyPolicyPage() {
     return (
-        <main className="min-h-screen bg-slate-950 px-4 py-20 text-stone-100">
-            <div className="mx-auto max-w-4xl">
-                <h1 className="text-4xl font-bold text-amber-400">Privacy Policy</h1>
-                <p className="mt-2 text-sm text-stone-400">Last updated: May 20, 2026</p>
-                <div className="mt-6 space-y-5 text-base leading-relaxed text-stone-300">
-                    <p>
-                        NakshatVault collects account information, profile details, and birth details required to
-                        provide kundli generation and consultation features.
+        <InfoPageLayout
+            eyebrow="Legal"
+            title="Privacy Policy"
+            subtitle="This page explains what data we collect, why we collect it, and how we protect user privacy."
+        >
+            <p className="text-sm text-stone-400">Last updated: May 20, 2026</p>
+
+            <section className="grid gap-6 md:grid-cols-2">
+                <article className="rounded-3xl border border-white/10 bg-slate-950/50 p-6">
+                    <h2 className="text-xl font-semibold text-amber-300">Data We Collect</h2>
+                    <p className="mt-3 text-sm leading-relaxed text-stone-300">
+                        Account details, profile information, birth details, and appointment-related records.
                     </p>
-                    <p>
-                        We use this data to operate the platform, improve user experience, and maintain account
-                        security. We do not sell personal user data.
+                </article>
+                <article className="rounded-3xl border border-white/10 bg-slate-950/50 p-6">
+                    <h2 className="text-xl font-semibold text-amber-300">Why We Use It</h2>
+                    <p className="mt-3 text-sm leading-relaxed text-stone-300">
+                        To provide kundli generation, support consultations, and maintain security and service quality.
                     </p>
-                    <p>
-                        You may request account-related assistance or data removal support by contacting our support
-                        team at support@nakshatvault.com.
+                </article>
+                <article className="rounded-3xl border border-white/10 bg-slate-950/50 p-6">
+                    <h2 className="text-xl font-semibold text-amber-300">Data Sharing</h2>
+                    <p className="mt-3 text-sm leading-relaxed text-stone-300">
+                        We do not sell personal data. Limited third-party processing may be used for hosting, email,
+                        and infrastructure operations.
                     </p>
-                </div>
+                </article>
+                <article className="rounded-3xl border border-white/10 bg-slate-950/50 p-6">
+                    <h2 className="text-xl font-semibold text-amber-300">User Requests</h2>
+                    <p className="mt-3 text-sm leading-relaxed text-stone-300">
+                        For account support, data questions, or deletion requests, contact support@nakshatvault.com.
+                    </p>
+                </article>
+            </section>
+
+            <div>
                 <Link
                     to="/"
-                    className="mt-8 inline-flex rounded-full border border-white/20 px-5 py-2.5 text-sm font-medium text-stone-100 transition hover:bg-white/10"
+                    className="inline-flex rounded-full border border-white/20 px-5 py-2.5 text-sm font-medium text-stone-100 transition hover:bg-white/10"
                 >
                     Back to Home
                 </Link>
             </div>
-        </main>
+        </InfoPageLayout>
     );
 }
 
