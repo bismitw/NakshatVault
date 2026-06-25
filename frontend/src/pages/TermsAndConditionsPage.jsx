@@ -1,32 +1,51 @@
 import { Link } from "react-router-dom";
+import InfoPageLayout from "../components/InfoPageLayout.jsx";
 
 function TermsAndConditionsPage() {
     return (
-        <main className="min-h-screen bg-slate-950 px-4 py-20 text-stone-100">
-            <div className="mx-auto max-w-4xl">
-                <h1 className="text-4xl font-bold text-amber-400">Terms & Conditions</h1>
-                <p className="mt-2 text-sm text-stone-400">Last updated: May 20, 2026</p>
-                <div className="mt-6 space-y-5 text-base leading-relaxed text-stone-300">
-                    <p>
-                        By using NakshatVault, you agree to use the platform lawfully and provide accurate account and
-                        birth detail information.
+        <InfoPageLayout
+            eyebrow="Legal"
+            title="Terms & Conditions"
+            subtitle="These terms describe acceptable use, responsibilities, and service boundaries for NakshatVault users."
+        >
+            <p className="text-sm text-stone-400">Last updated: May 20, 2026</p>
+
+            <section className="grid gap-6 md:grid-cols-2">
+                <article className="rounded-3xl border border-white/10 bg-slate-950/50 p-6">
+                    <h2 className="text-xl font-semibold text-amber-300">Account Responsibility</h2>
+                    <p className="mt-3 text-sm leading-relaxed text-stone-300">
+                        You agree to provide accurate details and keep account access credentials secure.
                     </p>
-                    <p>
-                        Astrology content is provided for informational and spiritual guidance and should not be treated
-                        as medical, legal, or financial advice.
+                </article>
+                <article className="rounded-3xl border border-white/10 bg-slate-950/50 p-6">
+                    <h2 className="text-xl font-semibold text-amber-300">Use of Service</h2>
+                    <p className="mt-3 text-sm leading-relaxed text-stone-300">
+                        Platform access must be used lawfully and without abuse, reverse engineering, or harmful activity.
                     </p>
-                    <p>
-                        We may update features, limits, or policies to improve service quality and security.
+                </article>
+                <article className="rounded-3xl border border-white/10 bg-slate-950/50 p-6">
+                    <h2 className="text-xl font-semibold text-amber-300">Guidance Disclaimer</h2>
+                    <p className="mt-3 text-sm leading-relaxed text-stone-300">
+                        Astrology insights are informational and not a substitute for medical, legal, or financial advice.
                     </p>
-                </div>
+                </article>
+                <article className="rounded-3xl border border-white/10 bg-slate-950/50 p-6">
+                    <h2 className="text-xl font-semibold text-amber-300">Service Updates</h2>
+                    <p className="mt-3 text-sm leading-relaxed text-stone-300">
+                        Features and policies may evolve as we improve platform stability, compliance, and user safety.
+                    </p>
+                </article>
+            </section>
+
+            <div>
                 <Link
                     to="/"
-                    className="mt-8 inline-flex rounded-full border border-white/20 px-5 py-2.5 text-sm font-medium text-stone-100 transition hover:bg-white/10"
+                    className="inline-flex rounded-full border border-white/20 px-5 py-2.5 text-sm font-medium text-stone-100 transition hover:bg-white/10"
                 >
                     Back to Home
                 </Link>
             </div>
-        </main>
+        </InfoPageLayout>
     );
 }
 
